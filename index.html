@@ -353,23 +353,29 @@
     }
     .featured-marquee-wrap {
       overflow: hidden;
-      border-top: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
-      border-bottom: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
-      padding: 1.5rem 0;
+      border-top: 1px solid color-mix(in oklch, var(--primary) 40%, transparent);
+      border-bottom: 1px solid color-mix(in oklch, var(--primary) 40%, transparent);
+      padding: 2rem 0;
+      background: color-mix(in oklch, var(--primary) 4%, transparent);
     }
     .featured-marquee-track {
       display: flex;
       width: max-content;
       align-items: center;
-      gap: 2.5rem;
+      gap: 3rem;
       font-family: var(--font-serif);
-      font-size: 1.25rem;
-      color: color-mix(in oklch, var(--foreground) 70%, transparent);
-      animation: featured-marquee 28s linear infinite;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--foreground);
+      animation: featured-marquee 30s linear infinite;
       white-space: nowrap;
+      letter-spacing: 0.02em;
     }
     .featured-marquee-track span.dot {
       color: var(--primary);
+      font-style: normal;
+      font-size: 1.25rem;
     }
     @keyframes featured-marquee {
       from { transform: translateX(0); }
@@ -521,7 +527,9 @@
     }
     /* Colour variants */
     .bento-gold   { background: var(--primary); color: #fff; }
-    .bento-dark   { background: oklch(0.22 0.015 60); color: #fff; }
+    .bento-dark   { background: oklch(0.95 0.04 75); color: oklch(0.25 0.02 60); border: 1px solid oklch(0.85 0.05 75); }
+    .bento-black  { background: oklch(0.22 0.015 60); color: #fff; }
+    .bento-black .bento-card-icon { color: #fff; }
     .bento-white  { background: #fff; color: var(--foreground); border: 1px solid var(--border); }
     .bento-tan    { background: oklch(0.82 0.06 75); color: oklch(0.25 0.02 60); }
 
@@ -531,8 +539,8 @@
       right: 1.25rem;
       opacity: 0.55;
     }
-    .bento-gold .bento-card-icon,
-    .bento-dark .bento-card-icon { color: #fff; }
+    .bento-gold .bento-card-icon { color: #fff; }
+    .bento-dark .bento-card-icon { color: var(--primary); }
     .bento-tan .bento-card-icon  { color: oklch(0.35 0.06 60); }
     .bento-white .bento-card-icon { color: var(--primary); }
     .bento-card-icon svg { width: 2rem; height: 2rem; }
@@ -1092,8 +1100,8 @@
       <div class="bento-label">Traveled with kids in tow</div>
     </div>
 
-    <!-- $200,000+ Debt Paid — dark -->
-    <div class="bento-card bento-dark">
+    <!-- $200,000+ Debt Paid — black -->
+    <div class="bento-card bento-black">
       <div class="bento-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="6" width="20" height="14" rx="2"/><path d="M22 10H2"/><path d="M7 15h.01M11 15h2"/>
@@ -1402,7 +1410,7 @@
     }, { passive: true });
 
     window.addEventListener('resize', updateCarousel);
-    // Init after fonts/layout settle
+    // Init after fonts/layout 
     setTimeout(updateCarousel, 100);
   })();
 </script>
