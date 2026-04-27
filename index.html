@@ -233,21 +233,95 @@
     }
     .journey-grid {
       display: grid;
-      gap: 2.5rem;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    .section-title {
+    .journey-title-block h2 {
       font-family: var(--font-serif);
-      font-size: 1.875rem;
-      color: var(--primary);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--foreground);
     }
-    .journey-body {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--muted-foreground);
-      max-width: 42rem;
+    .journey-title-block h2 em {
+      font-style: italic;
+      color: var(--foreground);
+      display: block;
+    }
+    .journey-map-side {
+      position: relative;
+      min-height: 380px;
+    }
+    /* Gold map background panel */
+    .journey-map-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 75%;
+      height: 100%;
+      background: oklch(0.72 0.09 75);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      z-index: 0;
+    }
+    /* Topographic SVG lines on gold bg */
+    .journey-map-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' opacity='0.18'%3E%3Ccircle cx='200' cy='200' r='180' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='140' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='100' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='60' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='20' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='20' y1='200' x2='380' y2='200' stroke='%23fff' stroke-width='0.5'/%3E%3Cline x1='200' y1='20' x2='200' y2='380' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+    /* Compass rose top-right */
+    .journey-compass {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      width: 5rem;
+      height: 5rem;
+      opacity: 0.55;
+      z-index: 1;
+      color: #fff;
+    }
+    /* Location pin bottom-right */
+    .journey-pin {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      color: oklch(0.35 0.06 60);
+      z-index: 2;
+      opacity: 0.7;
+    }
+    .journey-pin svg { width: 2.5rem; height: 2.5rem; }
+    /* The parchment card */
+    .journey-card {
+      position: relative;
+      z-index: 2;
+      background: oklch(0.97 0.03 80);
+      border-radius: 0.75rem;
+      padding: 2rem 2.25rem;
+      box-shadow: 0 8px 40px oklch(0 0 0 / 0.15);
+      width: 68%;
+      margin-left: 0;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      /* subtle topographic lines on card */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' opacity='0.07'%3E%3Ccircle cx='150' cy='300' r='200' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='160' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='120' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='80' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='40' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+    .journey-card p {
+      font-size: 0.975rem;
+      line-height: 1.8;
+      color: oklch(0.3 0.02 60);
+      margin-bottom: 1.1rem;
+    }
+    .journey-card p:last-child { margin-bottom: 0; }
+
+    @media (min-width: 768px) {
+      .journey-grid { grid-template-columns: 1fr 1.6fr; gap: 4rem; }
+      .journey-map-side { min-height: 440px; }
+      .journey-card { width: 72%; }
     }
 
     /* ===== FEATURED IN ===== */
@@ -395,32 +469,86 @@
       font-size: 1rem;
     }
 
-    /* ===== CREDENTIALS / STATS ===== */
-    .stats-section {
+    /* ===== BY NUMBERS BENTO ===== */
+    .bento-section {
       max-width: 1152px;
       margin: 0 auto;
       padding: 5rem 1.5rem;
     }
-    .stats-grid {
-      display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+    .bento-heading {
+      margin-bottom: 2.5rem;
     }
-    .stat-item {
-      background: var(--background);
-      padding: 1.5rem;
-    }
-    .stat-title {
+    .bento-heading h2 {
       font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--foreground);
     }
-    .stat-body {
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-      line-height: 1.625;
+    .bento-heading h2 em {
+      font-style: italic;
+      color: var(--foreground);
+      display: block;
+    }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 0.75rem;
+    }
+    .bento-card {
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 160px;
+    }
+    /* Colour variants */
+    .bento-gold   { background: var(--primary); color: #fff; }
+    .bento-dark   { background: oklch(0.22 0.015 60); color: #fff; }
+    .bento-white  { background: #fff; color: var(--foreground); border: 1px solid var(--border); }
+    .bento-tan    { background: oklch(0.82 0.06 75); color: oklch(0.25 0.02 60); }
+
+    .bento-card-icon {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      opacity: 0.55;
+    }
+    .bento-gold .bento-card-icon,
+    .bento-dark .bento-card-icon { color: #fff; }
+    .bento-tan .bento-card-icon  { color: oklch(0.35 0.06 60); }
+    .bento-white .bento-card-icon { color: var(--primary); }
+    .bento-card-icon svg { width: 2rem; height: 2rem; }
+
+    .bento-stat {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .bento-label {
+      font-size: 0.78rem;
+      opacity: 0.78;
+      line-height: 1.5;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Tall card spans 2 rows */
+    .bento-tall { grid-row: span 2; min-height: 340px; }
+    /* Wide card spans 2 cols */
+    .bento-wide { grid-column: span 2; }
+
+    @media (min-width: 768px) {
+      .bento-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .bento-card { min-height: 130px; }
+      .bento-tall { min-height: 260px; }
     }
 
     /* ===== GLOBAL CONTEXT ===== */
@@ -605,52 +733,107 @@
       line-height: 1.625;
     }
 
-    /* ===== CONNECT ===== */
+    /* ===== HERO BUTTONS ===== */
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.85rem 1.75rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--primary);
+      transition: background 0.2s, color 0.2s;
+      box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.25);
+    }
+    .btn-gold:hover { background: oklch(0.55 0.10 75); border-color: oklch(0.55 0.10 75); }
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--primary);
+      padding: 0.85rem 1.75rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--primary);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-gold:hover { background: var(--primary); color: #fff; }
+
+    /* ===== CONNECT UPGRADED ===== */
     .connect {
       max-width: 1152px;
       margin: 0 auto;
-      padding: 6rem 1.5rem;
+      padding: 7rem 1.5rem;
       text-align: center;
       scroll-margin-top: 6rem;
     }
     .connect-label {
+      display: inline-block;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      border: 1px solid var(--primary);
+      padding: 0.35rem 1.25rem;
+      margin-bottom: 2rem;
     }
     .connect-headline {
       font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      line-height: 1.4;
-      max-width: 36rem;
-      margin: 0 auto;
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 42rem;
+      margin: 0 auto 1rem;
+      color: var(--foreground);
+    }
+    .connect-sub {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      color: var(--muted-foreground);
+      max-width: 32rem;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
     }
     .connect-links {
-      margin-top: 2.5rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
-      font-size: 0.875rem;
+      gap: 1.25rem;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
       color: var(--muted-foreground);
     }
     .connect-links a {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: color 0.2s;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
     }
-    .connect-links a:hover { color: var(--primary); }
-    .connect-links svg { width: 1rem; height: 1rem; }
+    .connect-links a:hover { color: var(--primary); border-color: var(--primary); }
+    .connect-links svg { width: 1.1rem; height: 1.1rem; }
 
     /* ===== RESPONSIVE ===== */
     @media (min-width: 640px) {
       .focus-grid { grid-template-columns: 1fr 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
       .services-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -666,7 +849,6 @@
     }
 
     @media (min-width: 1024px) {
-      .stats-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     @media (max-width: 767px) {
@@ -725,6 +907,10 @@
           <p>I build and lead businesses across travel, media, and impact — creating experiences, platforms, and opportunities that connect people, culture, and possibility around the world.</p>
           <p>I don't just talk about living differently — I've built a life and business around it.</p>
         </div>
+        <div class="hero-buttons">
+          <a href="#focus" class="btn-gold">Explore My Work</a>
+          <a href="#connect" class="btn-outline-gold">Work With Me</a>
+        </div>
       </div>
       <div>
         <div class="hero-img-wrap">
@@ -740,14 +926,45 @@
 <!-- JOURNEY -->
 <section id="journey" class="journey">
   <div class="journey-grid">
-    <h2 class="section-title">The Journey</h2>
-    <div class="journey-body">
-      <p>I'm Kay, an entrepreneur, founder, and philanthropist building across travel, media, and impact.</p>
-      <p>After traveling to over 70 countries with kids in tow, I turned lived experience into a global ecosystem, building businesses, platforms, and experiences that help people live with intention, build freedom, and see the world differently.</p>
-      <p>My journey wasn't mapped out, it was shaped through experience, perspective, and a decision to live life on my own terms. Over time, that became more than just a lifestyle, it became the foundation for everything I build.</p>
-      <p>Today, my work sits at the intersection of travel, lifestyle, and global experiences — creating opportunities for people to explore more, think differently, and expand how they see the world.</p>
-      <p>As the founder of multiple brands, I focus on building platforms and experiences that connect people, culture, and possibility across the world.</p>
+
+    <!-- Left: Big title -->
+    <div class="journey-title-block">
+      <h2>The <em>Journey</em></h2>
     </div>
+
+    <!-- Right: Map + parchment card -->
+    <div class="journey-map-side">
+      <!-- Gold map background -->
+      <div class="journey-map-bg">
+        <!-- Compass rose -->
+        <svg class="journey-compass" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="1"/>
+          <circle cx="50" cy="50" r="36" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <polygon points="50,5 54,46 50,50 46,46" fill="currentColor"/>
+          <polygon points="50,95 54,54 50,50 46,54" fill="currentColor" opacity="0.5"/>
+          <polygon points="5,50 46,46 50,50 46,54" fill="currentColor" opacity="0.5"/>
+          <polygon points="95,50 54,54 50,50 54,46" fill="currentColor"/>
+          <text x="50" y="20" text-anchor="middle" font-size="10" fill="currentColor" font-family="serif">N</text>
+          <text x="50" y="88" text-anchor="middle" font-size="8" fill="currentColor" font-family="serif" opacity="0.6">S</text>
+          <text x="82" y="54" text-anchor="middle" font-size="8" fill="currentColor" font-family="serif">E</text>
+          <text x="18" y="54" text-anchor="middle" font-size="8" fill="currentColor" font-family="serif" opacity="0.6">W</text>
+        </svg>
+        <!-- Location pin -->
+        <div class="journey-pin">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Parchment card overlapping -->
+      <div class="journey-card">
+        <p>I'm Kay, an entrepreneur, founder, and philanthropist building across travel, media, and impact.</p>
+        <p>After traveling to over 70 countries with kids in tow, I turned lived experience into a global ecosystem, building businesses, platforms, and experiences that help people live with intention, build freedom, and see the world differently.</p>
+        <p>My journey wasn't mapped out, it was shaped through experience, perspective, and a decision to live life on my own terms. Over time, that became more than just a lifestyle, it became the foundation for everything I build.</p>
+        <p>Today, my work sits at the intersection of travel, lifestyle, and global experiences — creating opportunities for people to explore more, think differently, and expand how they see the world.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -825,9 +1042,7 @@
       <p class="focus-item-desc">Through my work and initiatives, I support communities, create access, and build opportunities that extend beyond business.</p>
     </div>
   </div>
-  <div class="focus-cta">
-    <a href="#process" class="btn-primary">Explore my work</a>
-  </div>
+
 </section>
 
 <!-- PHILOSOPHY / MANIFESTO -->
@@ -836,7 +1051,7 @@
     <div>
       <p class="manifesto-label">Philosophy</p>
       <h2 class="manifesto-quote">I believe life is meant to be experienced, not followed.</h2>
-      <p class="manifesto-tags">Expertise · Lifestyle · Roster · Media · Belief</p>
+
     </div>
     <ul class="beliefs">
       <li class="belief-item">That education goes beyond classrooms.</li>
@@ -846,41 +1061,115 @@
   </div>
 </section>
 
-<!-- CREDENTIALS GRID -->
-<section class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-item">
-      <h3 class="stat-title">Bachelor's &amp; Master's</h3>
-      <p class="stat-body">Background in education.</p>
+<!-- BY NUMBERS BENTO -->
+<section class="bento-section">
+  <div class="bento-heading">
+    <h2>By <em>Numbers</em></h2>
+  </div>
+  <div class="bento-grid">
+
+    <!-- 70+ Countries — gold tall -->
+    <div class="bento-card bento-gold bento-tall">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="bento-stat">70+<br>Countries</div>
+      <div class="bento-label">Traveled with kids in tow</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">70+ Countries</h3>
-      <p class="stat-body">Traveled to 70+ countries and counting — still curious.</p>
+
+    <!-- $200,000+ Debt Paid — dark -->
+    <div class="bento-card bento-dark">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="14" rx="2"/><path d="M22 10H2"/><path d="M7 15h.01M11 15h2"/>
+        </svg>
+      </div>
+      <div class="bento-stat">$200,000+<br>Debt Paid</div>
+      <div class="bento-label">Transitioned to a freedom-based lifestyle</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">Intentional Living</h3>
-      <p class="stat-body">Built a life centered around freedom and intentional living.</p>
+
+    <!-- Multiple Brands — dark -->
+    <div class="bento-card bento-dark">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Multiple<br>Brands</div>
+      <div class="bento-label">Built and scaled across lifestyle, travel, and media</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">Founder &amp; CEO</h3>
-      <p class="stat-body">Building a global ecosystem across travel, media, and impact.</p>
+
+    <!-- Bachelor's & Master's — gold tall -->
+    <div class="bento-card bento-gold bento-tall">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Bachelor's<br>&amp; Master's</div>
+      <div class="bento-label">Background in education</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">Multiple Brands</h3>
-      <p class="stat-body">Built and scaled multiple brands across lifestyle, travel, and digital media.</p>
+
+    <!-- Intentional Living — gold -->
+    <div class="bento-card bento-gold">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Intentional<br>Living</div>
+      <div class="bento-label">Built life centered around freedom</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">$200,000+ Debt Paid</h3>
-      <p class="stat-body">Paid off and freed for a freedom-based lifestyle.</p>
+
+    <!-- Founder & CEO — tan tall -->
+    <div class="bento-card bento-tan bento-tall">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Founder<br>&amp; CEO</div>
+      <div class="bento-label">Building a global ecosystem across travel, media, and impact</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">Community Impact</h3>
-      <p class="stat-body">Creator of global travel experiences, coach programs, and community initiatives.</p>
+
+    <!-- Community Impact — white -->
+    <div class="bento-card bento-white">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Community<br>Impact</div>
+      <div class="bento-label">Creator of global travel experiences, youth programs, and community initiatives</div>
     </div>
-    <div class="stat-item">
-      <h3 class="stat-title">Global Media</h3>
-      <p class="stat-body">Featured in Good Morning America, USA Today, Forbes, GMA, and Vogue.</p>
+
+    <!-- Global Media — white -->
+    <div class="bento-card bento-white">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Global<br>Media</div>
+      <div class="bento-label">Featured in Good Morning America, USA Today, Essence, CNBC, and People</div>
     </div>
+
+    <!-- Featured In — dark wide -->
+    <div class="bento-card bento-dark bento-wide">
+      <div class="bento-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>
+        </svg>
+      </div>
+      <div class="bento-stat">Featured In</div>
+      <div class="bento-label">Good Morning America · USA Today · Essence · CNBC · People</div>
+    </div>
+
   </div>
 </section>
 
@@ -977,7 +1266,8 @@
 <!-- CONNECT -->
 <section id="connect" class="connect">
   <p class="connect-label">Connect</p>
-  <h2 class="connect-headline">If you're looking to build, explore, or move differently, let's connect.</h2>
+  <h2 class="connect-headline">If you're looking to build, explore, or move differently — let's connect.</h2>
+  <p class="connect-sub">Open to brand partnerships, speaking engagements, collaborations, and meaningful conversations.</p>
   <div class="connect-links">
     <a href="mailto:hello@kay.co">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -985,11 +1275,11 @@
       </svg>
       <span>hello@kay.co</span>
     </a>
-    <a href="#">
+    <a href="https://www.instagram.com/themomtrotter/" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
       </svg>
-      <span>@kay</span>
+      <span>@themomtrotter</span>
     </a>
   </div>
 </section>
