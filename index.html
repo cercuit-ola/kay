@@ -447,45 +447,31 @@
     .manifesto {
       background: var(--primary);
       color: var(--primary-foreground);
-      padding: 6rem 0;
+      padding: 7rem 0;
       scroll-margin-top: 6rem;
     }
     .manifesto-inner {
-      max-width: 100%;
-      padding: 0 4rem;
-      display: grid;
-      gap: 4rem;
-      align-items: center;
-    }
-    @media (min-width: 768px) {
-      .manifesto-inner { padding: 0 6rem; gap: 6rem; }
-    }
-    @media (min-width: 1024px) {
-      .manifesto-inner { padding: 0 8rem; gap: 8rem; }
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      text-align: center;
     }
     .manifesto-label {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
+      opacity: 0.75;
+      margin-bottom: 2rem;
+      display: block;
     }
     .manifesto-quote {
       font-family: var(--font-serif);
-      font-size: clamp(2rem, 4.5vw, 3.5rem);
-      line-height: 1.2;
-      font-weight: 600;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      line-height: 1.45;
+      font-weight: 400;
     }
-    .beliefs {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .belief-item {
-      border-left: 2px solid color-mix(in oklch, var(--primary-foreground) 60%, transparent);
-      padding-left: 1.25rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .manifesto-quote em {
+      font-style: italic;
     }
 
     /* ===== BY NUMBERS BENTO ===== */
@@ -1068,16 +1054,10 @@
 <!-- PHILOSOPHY / MANIFESTO -->
 <section id="manifesto" class="manifesto">
   <div class="manifesto-inner">
-    <div>
-      <p class="manifesto-label">Philosophy</p>
-      <h2 class="manifesto-quote">I believe life is meant to be experienced, not followed.</h2>
-
-    </div>
-    <ul class="beliefs">
-      <li class="belief-item">That education goes beyond classrooms.</li>
-      <li class="belief-item">That freedom is something you build.</li>
-      <li class="belief-item">That exposure changes everything.</li>
-    </ul>
+    <p class="manifesto-label">Philosophy</p>
+    <h2 class="manifesto-quote">
+      <em>I believe life is meant to be experienced, not followed — that education goes beyond classrooms, that freedom is something you build, and that exposure changes everything.</em>
+    </h2>
   </div>
 </section>
 
@@ -1410,7 +1390,7 @@
     }, { passive: true });
 
     window.addEventListener('resize', updateCarousel);
-    // Init after fonts/layout 
+    // Init after fonts/layout settle
     setTimeout(updateCarousel, 100);
   })();
 </script>
