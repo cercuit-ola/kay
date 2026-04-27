@@ -432,12 +432,17 @@
       scroll-margin-top: 6rem;
     }
     .manifesto-inner {
-      max-width: 1152px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+      max-width: 100%;
+      padding: 0 4rem;
       display: grid;
-      gap: 3rem;
-      align-items: start;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .manifesto-inner { padding: 0 6rem; gap: 6rem; }
+    }
+    @media (min-width: 1024px) {
+      .manifesto-inner { padding: 0 8rem; gap: 8rem; }
     }
     .manifesto-label {
       font-size: 0.75rem;
@@ -448,25 +453,20 @@
     }
     .manifesto-quote {
       font-family: var(--font-serif);
-      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
       line-height: 1.2;
-    }
-    .manifesto-tags {
-      margin-top: 2.5rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      opacity: 0.7;
+      font-weight: 600;
     }
     .beliefs {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
     .belief-item {
       border-left: 2px solid color-mix(in oklch, var(--primary-foreground) 60%, transparent);
-      padding-left: 1rem;
-      font-size: 1rem;
+      padding-left: 1.25rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     /* ===== BY NUMBERS BENTO ===== */
@@ -1159,14 +1159,14 @@
       <div class="bento-label">Featured in Good Morning America, USA Today, Essence, CNBC, and People</div>
     </div>
 
-    <!-- Featured In — dark wide -->
-    <div class="bento-card bento-dark bento-wide">
+    <!-- Featured In — dark, same size as Global Media -->
+    <div class="bento-card bento-dark">
       <div class="bento-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>
         </svg>
       </div>
-      <div class="bento-stat">Featured In</div>
+      <div class="bento-stat">Featured<br>In</div>
       <div class="bento-label">Good Morning America · USA Today · Essence · CNBC · People</div>
     </div>
 
