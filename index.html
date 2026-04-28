@@ -46,16 +46,200 @@
   @media (max-width: 767px) { .nav-links { display: none; } .nav-inquire-wrap { display: none; } .mobile-menu { display: block; } }
   @media (min-width: 768px) { .mobile-menu { display: none !important; } .nav-links { display: flex !important; } .nav-inquire-wrap { display: block !important; } }
 
-  /* HERO BANNER (home full screen) */
-  .hero-banner { position: relative; width: 100%; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
-  .hero-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0; }
-  .hero-banner-overlay { position: absolute; inset: 0; background: linear-gradient(to top, oklch(0.1 0.01 60/0.88) 0%, oklch(0.1 0.01 60/0.45) 50%, transparent 100%); z-index: 1; }
-  .hero-banner-content { position: relative; z-index: 2; width: 100%; max-width: 1152px; margin: 0 auto; padding: 0 1.5rem 6rem; }
-  .hero-banner-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); margin-bottom: 1rem; font-family: 'Nunito', sans-serif; display: block; }
-  .hero-banner-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; line-height: 1.0; color: #fff; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-  .hero-banner-title em { font-style: italic; color: var(--primary); }
-  .hero-banner-body { font-family: 'Nunito', sans-serif; font-size: 1.1rem; color: oklch(0.88 0.01 80); max-width: 36rem; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 400; }
-  .hero-banner-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+  /* ═══ HERO BANNER — FEMININE REDESIGN ═══ */
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--background);
+  }
+  .hero-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+  /* Light airy overlay */
+  .hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 50% 50%, rgba(255,252,245,0.55) 0%, transparent 75%),
+      linear-gradient(to bottom, rgba(255,252,245,0.5) 0%, rgba(255,252,245,0.25) 40%, rgba(255,252,245,0.45) 100%);
+    z-index: 1;
+  }
+
+  /* ── FLORAL BORDER FRAME ── */
+  .hero-floral-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  /* Outer decorative border line */
+  .hero-floral-frame::before {
+    content: '';
+    position: absolute;
+    inset: 1.25rem;
+    border: 1px solid oklch(0.62 0.11 75/0.55);
+    pointer-events: none;
+  }
+  /* Inner border line */
+  .hero-floral-frame::after {
+    content: '';
+    position: absolute;
+    inset: 1.6rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    pointer-events: none;
+  }
+
+  /* ── CONTENT CENTER ── */
+  .hero-banner-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1152px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  @media (max-width: 640px) {
+    .hero-banner-content { padding: 2rem 1.5rem; }
+  }
+  /* Decorative serif line above name */
+  .hero-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: oklch(0.62 0.11 75);
+    letter-spacing: 0.25em;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+  }
+  /* Main name */
+  .hero-banner-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 0.9;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    text-shadow: none;
+  }
+  /* Thin ornamental divider */
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    width: min(280px, 60vw);
+  }
+  .hero-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, oklch(0.62 0.11 75/0.8), transparent);
+  }
+  .hero-divider-gem {
+    width: 6px;
+    height: 6px;
+    border: 1.5px solid oklch(0.62 0.11 75);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  /* Subtitle */
+  .hero-banner-label {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    color: var(--muted-foreground);
+    letter-spacing: 0.18em;
+    margin-bottom: 2.5rem;
+  }
+  /* CTA Buttons */
+  .hero-banner-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  .btn-hero-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(0.62 0.11 75);
+    color: var(--foreground);
+    padding: 0.9rem 2.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1.5px solid oklch(0.62 0.11 75);
+    border-radius: 2rem;
+    transition: background 0.25s, transform 0.2s;
+    box-shadow: 0 4px 20px oklch(0.62 0.11 75/0.35);
+  }
+  .btn-hero-gold:hover { background: oklch(0.55 0.1 75); transform: translateY(-2px); }
+  .btn-hero-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--foreground);
+    padding: 0.9rem 2.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--foreground);
+    border-radius: 2rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    
+  }
+  .btn-hero-outline:hover { background: var(--foreground); color: #fff; transform: translateY(-2px); }
+
+  /* ── SCROLL INDICATOR ── */
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: oklch(0.4 0.02 70);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+  .hero-scroll svg { width: 1.25rem; height: 1.25rem; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0)} 50%{opacity:0.9;transform:translateX(-50%) translateY(5px)} }
+
+  @media (max-width: 640px) {
+    .hero-floral-frame::before { inset: 0.75rem; }
+    .hero-floral-frame::after { inset: 1.05rem; }
+    .hero-banner-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  }
 
   /* PAGE HERO (sub-pages) */
   .page-hero { position: relative; width: 100%; height: 75vh; min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; }
@@ -183,30 +367,12 @@
   .service-desc { font-size:0.875rem; color:var(--muted-foreground); line-height:1.625; font-family:'Nunito',sans-serif; }
   @media (min-width:640px) { .services-grid { grid-template-columns:1fr 1fr; } }
   @media (min-width:768px) { .services-grid { grid-template-columns:1fr 1fr 1fr; } }
-  /* FLOWERY HERO DECORATION */
-  .hero-flowers { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-  .flower { position: absolute; border-radius: 50%; opacity: 0.18; }
-  .flower::before, .flower::after { content: ''; position: absolute; border-radius: 50%; }
-  /* Petal clusters */
-  .flower-1 { width: 280px; height: 280px; top: -60px; right: 5%; background: radial-gradient(circle, oklch(0.62 0.11 75) 0%, transparent 70%); animation: floatA 8s ease-in-out infinite; }
-  .flower-2 { width: 180px; height: 180px; top: 30%; right: 2%; background: radial-gradient(circle, oklch(0.85 0.08 75) 0%, transparent 70%); animation: floatB 11s ease-in-out infinite; opacity: 0.12; }
-  .flower-3 { width: 120px; height: 120px; bottom: 15%; right: 20%; background: radial-gradient(circle, oklch(0.62 0.11 75) 0%, transparent 70%); animation: floatA 7s ease-in-out infinite reverse; opacity: 0.15; }
-  .flower-4 { width: 200px; height: 200px; bottom: -40px; right: -20px; background: radial-gradient(circle, oklch(0.72 0.09 75) 0%, transparent 70%); animation: floatB 9s ease-in-out infinite; opacity: 0.2; }
-  /* Petal rings — SVG-style circle clusters */
-  .petal-ring { position: absolute; border-radius: 50%; border: 1.5px solid oklch(0.62 0.11 75/0.35); }
-  .petal-ring-1 { width: 380px; height: 380px; top: -100px; right: -60px; animation: spinSlow 30s linear infinite; }
-  .petal-ring-1::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid oklch(0.62 0.11 75/0.2); }
-  .petal-ring-1::after { content: ''; position: absolute; inset: 80px; border-radius: 50%; border: 1px solid oklch(0.62 0.11 75/0.15); }
-  .petal-ring-2 { width: 220px; height: 220px; bottom: 60px; right: 100px; animation: spinSlow 20s linear infinite reverse; border-color: oklch(0.62 0.11 75/0.2); }
-  @keyframes floatA { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-18px) scale(1.04)} }
-  @keyframes floatB { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(14px) scale(0.97)} }
-  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
   /* VIDEO SECTION */
-  .video-section { background: var(--foreground); padding: 5rem 0; }
+  .video-section { background: oklch(0.62 0.11 75); padding: 5rem 0; }
   .video-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: grid; gap: 3rem; align-items: center; }
   @media (min-width: 768px) { .video-inner { grid-template-columns: 1fr 1.4fr; } }
   .video-inner .section-heading { color: #fff; }
+  .video-inner p { color: rgba(255,255,255,0.85); }
   .video-inner .section-label { color: var(--primary) !important; }
   .video-embed-wrap { border-radius: 0.75rem; overflow: hidden; }
   .video-embed-wrap iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
@@ -250,26 +416,190 @@
 
 <!-- HERO BANNER -->
 <section class="hero-banner">
-  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384783/Screenshot_2026-04-28_at_14.59.22_vkangn.png" alt="Kay — Entrepreneur and Founder" />
+  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777404932/Untitled_design_1_p3xpml.png" alt="Kay — Entrepreneur and Founder" />
   <div class="hero-banner-overlay"></div>
 
-  <!-- Flowery CSS decoration -->
-  <div class="hero-flowers" aria-hidden="true">
-    <div class="flower flower-1"></div>
-    <div class="flower flower-2"></div>
-    <div class="flower flower-3"></div>
-    <div class="flower flower-4"></div>
-    <div class="petal-ring petal-ring-1"></div>
-    <div class="petal-ring petal-ring-2"></div>
+  <!-- Full floral border frame (SVG flowers along all edges) -->
+  <div class="hero-floral-frame">
+    <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+      <defs>
+        <style>
+          .fl { fill: none; stroke: oklch(0.72 0.12 75); stroke-width: 0.8; opacity: 0.75; }
+          .flw { fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 0.6; }
+          .flfill { fill: oklch(0.72 0.12 75); opacity: 0.6; }
+          .flfillw { fill: rgba(255,255,255,0.55); }
+        </style>
+        <!-- Petal shape -->
+        <g id="petal">
+          <ellipse cx="0" cy="-10" rx="3.5" ry="9" class="fl"/>
+        </g>
+        <!-- Full rose -->
+        <g id="rose">
+          <use href="#petal" transform="rotate(0)"/>
+          <use href="#petal" transform="rotate(45)"/>
+          <use href="#petal" transform="rotate(90)"/>
+          <use href="#petal" transform="rotate(135)"/>
+          <use href="#petal" transform="rotate(180)"/>
+          <use href="#petal" transform="rotate(225)"/>
+          <use href="#petal" transform="rotate(270)"/>
+          <use href="#petal" transform="rotate(315)"/>
+          <circle cx="0" cy="0" r="4" class="fl"/>
+          <circle cx="0" cy="0" r="2" class="flfill"/>
+        </g>
+        <!-- Small blossom -->
+        <g id="blossom">
+          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" class="flw"/>
+          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(72)" class="flw"/>
+          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(144)" class="flw"/>
+          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(216)" class="flw"/>
+          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(288)" class="flw"/>
+          <circle cx="0" cy="0" r="2.5" class="flfillw"/>
+        </g>
+        <!-- Leaf -->
+        <g id="leaf">
+          <path d="M0,0 Q5,-12 0,-20 Q-5,-12 0,0Z" class="fl"/>
+        </g>
+      </defs>
+
+      <!-- ═══ TOP BORDER ═══ -->
+      <!-- Stem line top -->
+      <path d="M20,20 Q360,40 720,22 Q1080,4 1420,20" class="fl" stroke-width="0.7"/>
+      <!-- Top roses -->
+      <use href="#rose" transform="translate(20,22)"/>
+      <use href="#rose" transform="translate(180,26)"/>
+      <use href="#rose" transform="translate(360,20)"/>
+      <use href="#rose" transform="translate(540,24)"/>
+      <use href="#rose" transform="translate(720,22)"/>
+      <use href="#rose" transform="translate(900,20)"/>
+      <use href="#rose" transform="translate(1080,24)"/>
+      <use href="#rose" transform="translate(1260,22)"/>
+      <use href="#rose" transform="translate(1420,22)"/>
+      <!-- Top blossoms -->
+      <use href="#blossom" transform="translate(90,30)"/>
+      <use href="#blossom" transform="translate(270,28)"/>
+      <use href="#blossom" transform="translate(450,22)"/>
+      <use href="#blossom" transform="translate(630,26)"/>
+      <use href="#blossom" transform="translate(810,22)"/>
+      <use href="#blossom" transform="translate(990,26)"/>
+      <use href="#blossom" transform="translate(1170,28)"/>
+      <use href="#blossom" transform="translate(1350,24)"/>
+      <!-- Top leaves -->
+      <use href="#leaf" transform="translate(135,24) rotate(-20)"/>
+      <use href="#leaf" transform="translate(315,22) rotate(15)"/>
+      <use href="#leaf" transform="translate(495,20) rotate(-10)"/>
+      <use href="#leaf" transform="translate(675,24) rotate(20)"/>
+      <use href="#leaf" transform="translate(855,22) rotate(-15)"/>
+      <use href="#leaf" transform="translate(1035,24) rotate(10)"/>
+      <use href="#leaf" transform="translate(1215,22) rotate(-20)"/>
+
+      <!-- ═══ BOTTOM BORDER ═══ -->
+      <path d="M20,878 Q360,860 720,878 Q1080,896 1420,878" class="fl" stroke-width="0.7"/>
+      <use href="#rose" transform="translate(20,878)"/>
+      <use href="#rose" transform="translate(180,874)"/>
+      <use href="#rose" transform="translate(360,878)"/>
+      <use href="#rose" transform="translate(540,876)"/>
+      <use href="#rose" transform="translate(720,878)"/>
+      <use href="#rose" transform="translate(900,876)"/>
+      <use href="#rose" transform="translate(1080,878)"/>
+      <use href="#rose" transform="translate(1260,876)"/>
+      <use href="#rose" transform="translate(1420,878)"/>
+      <use href="#blossom" transform="translate(90,870)"/>
+      <use href="#blossom" transform="translate(270,874)"/>
+      <use href="#blossom" transform="translate(450,878)"/>
+      <use href="#blossom" transform="translate(630,874)"/>
+      <use href="#blossom" transform="translate(810,878)"/>
+      <use href="#blossom" transform="translate(990,874)"/>
+      <use href="#blossom" transform="translate(1170,870)"/>
+      <use href="#blossom" transform="translate(1350,876)"/>
+
+      <!-- ═══ LEFT BORDER ═══ -->
+      <path d="M20,20 Q38,225 22,450 Q6,675 20,878" class="fl" stroke-width="0.7"/>
+      <use href="#rose" transform="translate(22,100)"/>
+      <use href="#rose" transform="translate(20,200)"/>
+      <use href="#rose" transform="translate(22,300)"/>
+      <use href="#rose" transform="translate(20,400)"/>
+      <use href="#rose" transform="translate(22,500)"/>
+      <use href="#rose" transform="translate(20,600)"/>
+      <use href="#rose" transform="translate(22,700)"/>
+      <use href="#rose" transform="translate(20,800)"/>
+      <use href="#blossom" transform="translate(30,150)"/>
+      <use href="#blossom" transform="translate(28,250)"/>
+      <use href="#blossom" transform="translate(30,350)"/>
+      <use href="#blossom" transform="translate(28,450)"/>
+      <use href="#blossom" transform="translate(30,550)"/>
+      <use href="#blossom" transform="translate(28,650)"/>
+      <use href="#blossom" transform="translate(30,750)"/>
+
+      <!-- ═══ RIGHT BORDER ═══ -->
+      <path d="M1420,20 Q1402,225 1418,450 Q1434,675 1420,878" class="fl" stroke-width="0.7"/>
+      <use href="#rose" transform="translate(1418,100)"/>
+      <use href="#rose" transform="translate(1420,200)"/>
+      <use href="#rose" transform="translate(1418,300)"/>
+      <use href="#rose" transform="translate(1420,400)"/>
+      <use href="#rose" transform="translate(1418,500)"/>
+      <use href="#rose" transform="translate(1420,600)"/>
+      <use href="#rose" transform="translate(1418,700)"/>
+      <use href="#rose" transform="translate(1420,800)"/>
+      <use href="#blossom" transform="translate(1410,150)"/>
+      <use href="#blossom" transform="translate(1412,250)"/>
+      <use href="#blossom" transform="translate(1410,350)"/>
+      <use href="#blossom" transform="translate(1412,450)"/>
+      <use href="#blossom" transform="translate(1410,550)"/>
+      <use href="#blossom" transform="translate(1412,650)"/>
+      <use href="#blossom" transform="translate(1410,750)"/>
+
+      <!-- ═══ CORNER CLUSTERS ═══ -->
+      <!-- Top-left corner -->
+      <use href="#rose" transform="translate(55,55) scale(1.6)"/>
+      <use href="#blossom" transform="translate(90,45)"/>
+      <use href="#blossom" transform="translate(48,88)"/>
+      <use href="#leaf" transform="translate(72,60) rotate(40)"/>
+      <use href="#leaf" transform="translate(55,80) rotate(-30)"/>
+
+      <!-- Top-right corner -->
+      <use href="#rose" transform="translate(1385,55) scale(1.6)"/>
+      <use href="#blossom" transform="translate(1350,45)"/>
+      <use href="#blossom" transform="translate(1392,88)"/>
+      <use href="#leaf" transform="translate(1368,60) rotate(-40)"/>
+      <use href="#leaf" transform="translate(1385,80) rotate(30)"/>
+
+      <!-- Bottom-left corner -->
+      <use href="#rose" transform="translate(55,845) scale(1.6)"/>
+      <use href="#blossom" transform="translate(90,855)"/>
+      <use href="#blossom" transform="translate(48,812)"/>
+      <use href="#leaf" transform="translate(72,840) rotate(-40)"/>
+      <use href="#leaf" transform="translate(55,820) rotate(30)"/>
+
+      <!-- Bottom-right corner -->
+      <use href="#rose" transform="translate(1385,845) scale(1.6)"/>
+      <use href="#blossom" transform="translate(1350,855)"/>
+      <use href="#blossom" transform="translate(1392,812)"/>
+      <use href="#leaf" transform="translate(1368,840) rotate(40)"/>
+      <use href="#leaf" transform="translate(1385,820) rotate(-30)"/>
+    </svg>
   </div>
 
+  <!-- Text & CTAs — centered -->
   <div class="hero-banner-content">
-    <span class="hero-banner-label">Founder · Entrepreneur</span>
-    <h1 class="hero-banner-title">KAY</h1>
-    <div class="hero-banner-buttons">
-      <a href="#focus" class="btn-gold">Explore My Work</a>
-      <a href="#connect" class="btn-outline-white">Work With Me</a>
+    <span class="hero-eyebrow">Founder &nbsp;·&nbsp; Entrepreneur &nbsp;·&nbsp; Philanthropist</span>
+    <h1 class="hero-banner-title">Kay</h1>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-gem"></div>
+      <div class="hero-divider-line"></div>
     </div>
+    <span class="hero-banner-label">Building a life — and a world — worth exploring</span>
+    <div class="hero-banner-buttons">
+      <a href="#focus" class="btn-hero-gold">Explore My Work</a>
+      <a href="#connect" class="btn-hero-outline">Work With Me</a>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
   </div>
 </section>
 
