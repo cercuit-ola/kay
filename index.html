@@ -146,7 +146,7 @@
   .bento-tan { background:oklch(0.82 0.06 75); color:oklch(0.25 0.02 60); }
   .bento-card-icon { position:absolute; top:1.25rem; right:1.25rem; opacity:0.55; }
   .bento-gold .bento-card-icon { color:#fff; } .bento-dark .bento-card-icon { color:var(--primary); } .bento-black .bento-card-icon { color:#fff; } .bento-tan .bento-card-icon { color:oklch(0.35 0.06 60); } .bento-white .bento-card-icon { color:var(--primary); }
-  .bento-card-icon svg { width:2rem; height:2rem; }
+  .bento-card-icon svg { width:2rem; height:2rem; } @media (max-width:639px) { .bento-card-icon svg { width:1.25rem; height:1.25rem; } .bento-card-icon { top:0.75rem; right:0.75rem; } }
   .bento-stat { font-family:var(--font-serif); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; line-height:1.1; margin-bottom:0.4rem; }
   .bento-label { font-size:0.78rem; opacity:0.78; line-height:1.5; font-family:'Nunito',sans-serif; }
   .bento-tall { grid-row:span 2; min-height:340px; }
@@ -183,7 +183,36 @@
   .service-desc { font-size:0.875rem; color:var(--muted-foreground); line-height:1.625; font-family:'Nunito',sans-serif; }
   @media (min-width:640px) { .services-grid { grid-template-columns:1fr 1fr; } }
   @media (min-width:768px) { .services-grid { grid-template-columns:1fr 1fr 1fr; } }
-  .journey-section { max-width:1152px; margin:0 auto; padding:5rem 1.5rem; }
+  /* FLOWERY HERO DECORATION */
+  .hero-flowers { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .flower { position: absolute; border-radius: 50%; opacity: 0.18; }
+  .flower::before, .flower::after { content: ''; position: absolute; border-radius: 50%; }
+  /* Petal clusters */
+  .flower-1 { width: 280px; height: 280px; top: -60px; right: 5%; background: radial-gradient(circle, oklch(0.62 0.11 75) 0%, transparent 70%); animation: floatA 8s ease-in-out infinite; }
+  .flower-2 { width: 180px; height: 180px; top: 30%; right: 2%; background: radial-gradient(circle, oklch(0.85 0.08 75) 0%, transparent 70%); animation: floatB 11s ease-in-out infinite; opacity: 0.12; }
+  .flower-3 { width: 120px; height: 120px; bottom: 15%; right: 20%; background: radial-gradient(circle, oklch(0.62 0.11 75) 0%, transparent 70%); animation: floatA 7s ease-in-out infinite reverse; opacity: 0.15; }
+  .flower-4 { width: 200px; height: 200px; bottom: -40px; right: -20px; background: radial-gradient(circle, oklch(0.72 0.09 75) 0%, transparent 70%); animation: floatB 9s ease-in-out infinite; opacity: 0.2; }
+  /* Petal rings — SVG-style circle clusters */
+  .petal-ring { position: absolute; border-radius: 50%; border: 1.5px solid oklch(0.62 0.11 75/0.35); }
+  .petal-ring-1 { width: 380px; height: 380px; top: -100px; right: -60px; animation: spinSlow 30s linear infinite; }
+  .petal-ring-1::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid oklch(0.62 0.11 75/0.2); }
+  .petal-ring-1::after { content: ''; position: absolute; inset: 80px; border-radius: 50%; border: 1px solid oklch(0.62 0.11 75/0.15); }
+  .petal-ring-2 { width: 220px; height: 220px; bottom: 60px; right: 100px; animation: spinSlow 20s linear infinite reverse; border-color: oklch(0.62 0.11 75/0.2); }
+  @keyframes floatA { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-18px) scale(1.04)} }
+  @keyframes floatB { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(14px) scale(0.97)} }
+  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  /* VIDEO SECTION */
+  .video-section { background: var(--foreground); padding: 5rem 0; }
+  .video-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 768px) { .video-inner { grid-template-columns: 1fr 1.4fr; } }
+  .video-inner .section-heading { color: #fff; }
+  .video-inner .section-label { color: var(--primary) !important; }
+  .video-embed-wrap { border-radius: 0.75rem; overflow: hidden; }
+  .video-embed-wrap iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+  .video-placeholder { aspect-ratio: 16/9; background: oklch(0.18 0.01 60); border: 1.5px solid oklch(0.62 0.11 75/0.4); border-radius: 0.75rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+  .video-play-icon svg { width: 4rem; height: 4rem; }
+  .video-placeholder-text { font-family: 'Nunito', sans-serif; font-size: 0.8rem; color: oklch(0.55 0.02 70); letter-spacing: 0.1em; }
   .journey-grid { display:grid; gap:3rem; align-items:center; }
   @media (min-width:768px) { .journey-grid { grid-template-columns:1fr 1.6fr; gap:4rem; } }
   .journey-title h2 { font-family:var(--font-serif); font-size:clamp(3rem,8vw,5.5rem); font-weight:700; line-height:1.0; color:var(--foreground); }
@@ -221,14 +250,47 @@
 
 <!-- HERO BANNER -->
 <section class="hero-banner">
-  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay — Entrepreneur and Founder" />
+  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384783/Screenshot_2026-04-28_at_14.59.22_vkangn.png" alt="Kay — Entrepreneur and Founder" />
   <div class="hero-banner-overlay"></div>
+
+  <!-- Flowery CSS decoration -->
+  <div class="hero-flowers" aria-hidden="true">
+    <div class="flower flower-1"></div>
+    <div class="flower flower-2"></div>
+    <div class="flower flower-3"></div>
+    <div class="flower flower-4"></div>
+    <div class="petal-ring petal-ring-1"></div>
+    <div class="petal-ring petal-ring-2"></div>
+  </div>
+
   <div class="hero-banner-content">
     <span class="hero-banner-label">Founder · Entrepreneur</span>
     <h1 class="hero-banner-title">KAY</h1>
     <div class="hero-banner-buttons">
       <a href="#focus" class="btn-gold">Explore My Work</a>
       <a href="#connect" class="btn-outline-white">Work With Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA VIDEO SECTION -->
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-text">
+      <span class="section-label" style="color:var(--primary);">Watch</span>
+      <h2 class="section-heading">Kay in <em>Motion</em></h2>
+      <p style="color:var(--muted-foreground);max-width:32rem;line-height:1.75;">Featured across global media — from Good Morning America to living rooms worldwide. Watch Kay's story unfold.</p>
+    </div>
+    <div class="video-embed-wrap">
+      <div class="video-placeholder">
+        <div class="video-play-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="oklch(0.62 0.11 75/0.15)" stroke="oklch(0.62 0.11 75)" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="oklch(0.62 0.11 75)"/></svg>
+        </div>
+        <p class="video-placeholder-text">Paste your video embed URL here</p>
+        <!-- Replace the div above with an iframe like:
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Kay Feature" frameborder="0" allowfullscreen></iframe>
+        -->
+      </div>
     </div>
   </div>
 </section>
@@ -362,13 +424,13 @@
     </div>
   </div>
   <div class="gc-outer"><div class="gc-track" id="gcTrack">
-    <div class="gc-card" data-index="0"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Kay &amp; Fam with Massai Tribe" /><div class="gc-card-label"><p class="gc-card-city">Africa</p><p class="gc-card-desc">Kay &amp; Fam with Massai Tribe</p></div></div>
-    <div class="gc-card featured" data-index="1"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Kay CEO &amp; Fam Safari" /><div class="gc-card-label"><p class="gc-card-city">Safari</p><p class="gc-card-desc">Kay CEO &amp; Fam Safari</p></div></div>
-    <div class="gc-card" data-index="2"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Kay Travel Agency" /><div class="gc-card-label"><p class="gc-card-city">Travel</p><p class="gc-card-desc">Kay Travel Agency</p></div></div>
-    <div class="gc-card" data-index="3"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Mum Trotter in Asia" /><div class="gc-card-label"><p class="gc-card-city">Asia</p><p class="gc-card-desc">Mum Trotter in Asia</p></div></div>
-    <div class="gc-card" data-index="4"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Mum Trotter in Paris" /><div class="gc-card-label"><p class="gc-card-city">Paris</p><p class="gc-card-desc">Mum Trotter in Paris</p></div></div>
+    <div class="gc-card" data-index="0"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Kay &amp; Fam with Massai Tribe" /></div>
+    <div class="gc-card featured" data-index="1"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Kay CEO &amp; Fam Safari" /></div>
+    <div class="gc-card" data-index="2"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Kay Travel Agency" /></div>
+    <div class="gc-card" data-index="3"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Mum Trotter in Asia" /></div>
+    <div class="gc-card" data-index="4"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Mum Trotter in Paris" /></div>
     <div class="gc-card" data-index="5"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Entrepreneur" /></div>
-    <div class="gc-card" data-index="6"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay Global" /><div class="gc-card-label"><p class="gc-card-city">Global</p><p class="gc-card-desc">Kay — Global Entrepreneur</p></div></div>
+    <div class="gc-card" data-index="6"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay Global" /></div>
   </div></div>
 </section>
 
@@ -428,9 +490,9 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <span>hello@kay.co</span>
     </a>
-    <a href="https://www.instagram.com/themomtrotter/" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.instagram.com/kayco/" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      <span>@themomtrotter</span>
+      <span>@KayCO</span>
     </a>
   </div>
 </section>
