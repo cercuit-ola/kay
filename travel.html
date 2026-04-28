@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kay — Travel &amp; Experiences</title>
+  <meta name="description" content="Curated group trips and global travel programs." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://res.cloudinary.com" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com https://images.unsplash.com data:; connect-src 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+  :root { --background: oklch(0.985 0.005 85); --foreground: oklch(0.22 0.015 60); --primary: oklch(0.62 0.11 75); --primary-foreground: oklch(0.99 0.005 85); --muted-foreground: oklch(0.5 0.02 70); --border: oklch(0.88 0.015 80); --font-serif: 'Playfair Display', Georgia, serif; --font-sans: 'DM Sans', system-ui, sans-serif; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--background); color: var(--foreground); font-family: var(--font-sans); font-weight: 300; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { display: block; max-width: 100%; }
+  p { font-family: 'Nunito', system-ui, sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.01em; line-height: 1.75; }
+
+  /* NAV */
+  header { position: sticky; top: 0; z-index: 50; background: color-mix(in oklch, var(--background) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid color-mix(in oklch, var(--primary) 30%, transparent); }
+  nav { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; height: 5rem; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.25rem; letter-spacing: 0.25em; color: var(--primary); font-weight: 600; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted-foreground); }
+  .nav-links a:hover { color: var(--foreground); }
+  .nav-links a.active { color: var(--primary); border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
+  .nav-inquire { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--foreground); color: var(--foreground); padding: 0.5rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; transition: background 0.2s, color 0.2s; }
+  .nav-inquire:hover { background: var(--foreground); color: var(--background); }
+  .mobile-menu { display: none; position: relative; }
+  .mobile-menu-btn { display: flex; height: 2.75rem; width: 2.75rem; cursor: pointer; align-items: center; justify-content: center; border: 1px solid var(--primary); color: var(--primary); background: none; }
+  .mobile-menu-btn svg { width: 1.25rem; height: 1.25rem; }
+  .mobile-dropdown { display: none; position: absolute; right: 0; top: 3.5rem; width: 16rem; border: 1px solid var(--primary); background: var(--background); padding: 1.25rem; box-shadow: 0 25px 50px -12px oklch(0 0 0/0.25); z-index: 100; }
+  .mobile-dropdown.open { display: block; }
+  .mobile-dropdown ul { display: flex; flex-direction: column; gap: 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted-foreground); }
+  .mobile-dropdown .mobile-inquire { margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; border: 1px solid var(--foreground); color: var(--foreground); padding: 0.75rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; transition: background 0.2s, color 0.2s; }
+  @media (max-width: 767px) { .nav-links { display: none; } .nav-inquire-wrap { display: none; } .mobile-menu { display: block; } }
+  @media (min-width: 768px) { .mobile-menu { display: none !important; } .nav-links { display: flex !important; } .nav-inquire-wrap { display: block !important; } }
+
+  /* HERO BANNER (home full screen) */
+  .hero-banner { position: relative; width: 100%; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0; }
+  .hero-banner-overlay { position: absolute; inset: 0; background: linear-gradient(to top, oklch(0.1 0.01 60/0.88) 0%, oklch(0.1 0.01 60/0.45) 50%, transparent 100%); z-index: 1; }
+  .hero-banner-content { position: relative; z-index: 2; width: 100%; max-width: 1152px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+  .hero-banner-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); margin-bottom: 1rem; font-family: 'Nunito', sans-serif; display: block; }
+  .hero-banner-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; line-height: 1.0; color: #fff; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .hero-banner-title em { font-style: italic; color: var(--primary); }
+  .hero-banner-body { font-family: 'Nunito', sans-serif; font-size: 1.1rem; color: oklch(0.88 0.01 80); max-width: 36rem; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 400; }
+  .hero-banner-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  /* PAGE HERO (sub-pages) */
+  .page-hero { position: relative; width: 100%; height: 75vh; min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; }
+  .page-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, oklch(0.1 0.01 60/0.85) 0%, oklch(0.1 0.01 60/0.35) 60%, transparent 100%); z-index: 1; }
+  .page-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1152px; margin: 0 auto; padding: 0 1.5rem 4.5rem; }
+  .page-hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); font-family: 'Nunito', sans-serif; margin-bottom: 0.75rem; display: block; }
+  .page-hero-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 700; color: #fff; line-height: 1.05; }
+  .page-hero-title em { font-style: italic; }
+  .page-hero-sub { font-family: 'Nunito', sans-serif; font-size: 1.05rem; color: oklch(0.85 0.01 80); max-width: 34rem; margin-top: 1rem; line-height: 1.7; font-weight: 400; }
+
+  /* BUTTONS */
+  .btn-gold { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #fff; padding: 0.85rem 1.75rem; font-family: 'Nunito', sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid var(--primary); transition: background 0.2s; }
+  .btn-gold:hover { background: oklch(0.55 0.10 75); border-color: oklch(0.55 0.10 75); }
+  .btn-outline-white { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #fff; padding: 0.85rem 1.75rem; font-family: 'Nunito', sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.6); transition: background 0.2s, border-color 0.2s; }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+  /* CONTENT */
+  .divider { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+  .divider-line { height: 1px; background: color-mix(in oklch, var(--primary) 40%, transparent); }
+  .content-section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
+  .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); font-family: 'Nunito', sans-serif; margin-bottom: 0.75rem; display: block; }
+  .section-heading { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; color: var(--foreground); line-height: 1.15; margin-bottom: 2rem; }
+  .section-heading em { font-style: italic; color: var(--primary); }
+  .section-body { display: flex; flex-direction: column; gap: 1.25rem; color: var(--muted-foreground); max-width: 42rem; }
+  .two-col { display: grid; gap: 3rem; }
+  @media (min-width: 768px) { .two-col { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .three-col { display: grid; gap: 2rem; }
+  @media (min-width: 640px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .three-col { grid-template-columns: 1fr 1fr 1fr; } }
+  .info-card { border: 1px solid var(--primary); padding: 1.75rem; transition: background 0.2s; }
+  .info-card:hover { background: color-mix(in oklch, var(--primary) 5%, var(--background)); }
+  .info-card-icon { color: var(--primary); margin-bottom: 0.75rem; }
+  .info-card-icon svg { width: 1.25rem; height: 1.25rem; }
+  .info-card-title { font-family: var(--font-serif); font-size: 1.25rem; color: var(--primary); margin-bottom: 0.5rem; }
+  .info-card-body { font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.65; font-family: 'Nunito', sans-serif; }
+  .pull-quote { font-family: var(--font-serif); font-size: clamp(1.25rem, 3vw, 1.875rem); font-style: italic; color: var(--primary); border-left: 3px solid var(--primary); padding-left: 1.5rem; line-height: 1.55; margin: 3rem 0; }
+  .full-img { width: 100%; height: 500px; object-fit: cover; display: block; }
+  @media (max-width: 640px) { .full-img { height: 280px; } }
+  .gold-band { background: var(--primary); color: #fff; padding: 5rem 0; }
+  .gold-band-inner { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; text-align: center; }
+  .gold-band-quote { font-family: var(--font-serif); font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.45; font-style: italic; }
+
+  /* CONNECT / FOOTER */
+  .connect { max-width: 1152px; margin: 0 auto; padding: 7rem 1.5rem; text-align: center; }
+  .connect-label { display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); border: 1px solid var(--primary); padding: 0.35rem 1.25rem; margin-bottom: 2rem; }
+  .connect-headline { font-family: var(--font-serif); font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 600; line-height: 1.25; max-width: 42rem; margin: 0 auto 1rem; color: var(--foreground); }
+  .connect-sub { font-family: 'Nunito', sans-serif; font-size: 1.05rem; color: var(--muted-foreground); max-width: 32rem; margin: 0 auto 3rem; line-height: 1.7; }
+  .connect-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; font-size: 1rem; font-family: 'Nunito', sans-serif; font-weight: 500; color: var(--muted-foreground); }
+  .connect-links a { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem; border: 1.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .connect-links a:hover { color: var(--primary); border-color: var(--primary); }
+  .connect-links svg { width: 1.1rem; height: 1.1rem; }
+  .site-footer { background: var(--foreground); color: var(--primary-foreground); text-align: center; padding: 1.25rem; font-size: 0.75rem; font-family: 'Nunito', sans-serif; letter-spacing: 0.1em; opacity: 0.9; }
+  </style>
+
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">KAY</a>
+    <ul class="nav-links"><li><a href="journey.html">Journey</a></li><li><a href="travel.html" class="active">Travel</a></li><li><a href="media.html">Media</a></li><li><a href="impact.html">Impact</a></li></ul>
+    <div class="nav-inquire-wrap"><a href="#connect" class="nav-inquire">Inquire</a></div>
+    <div class="mobile-menu">
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="mobile-dropdown" id="mobileDropdown">
+        <ul><li><a href="journey.html" onclick="closeMenu()">Journey</a></li><li><a href="travel.html" onclick="closeMenu()">Travel</a></li><li><a href="media.html" onclick="closeMenu()">Media</a></li><li><a href="impact.html" onclick="closeMenu()">Impact</a></li></ul>
+        <a href="#connect" class="mobile-inquire" onclick="closeMenu()">Inquire</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Travel Experiences" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Travel &amp; Experiences</span>
+    <h1 class="page-hero-title">See the <em>World</em><br>Differently</h1>
+    <p class="page-hero-sub">Curated group trips, global programs, and immersive experiences rooted in connection, culture, and depth.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="two-col">
+    <div>
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-heading">Experiences <em>by design</em></h2>
+    </div>
+    <div class="section-body">
+      <p>I design and lead curated travel experiences, group trips, and global programs rooted in connection, culture, and depth. These aren't just vacations — they are life-changing journeys that shift your perspective and expand your world.</p>
+      <p>Through my platforms, I share what it looks like to live intentionally, using travel, lifestyle, and real experiences to shift how people think about life.</p>
+    </div>
+  </div>
+</section>
+
+<img class="full-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Mum Trotter in Asia" />
+
+<section class="content-section">
+  <blockquote class="pull-quote">"Travel is the fastest way to undo everything you thought you knew."</blockquote>
+  <div class="three-col">
+    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"/></svg></div><h3 class="info-card-title">Group Trips</h3><p class="info-card-body">Carefully curated group travel experiences that bring together like-minded explorers across continents.</p></div>
+    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3 class="info-card-title">Family Programs</h3><p class="info-card-body">Designed for families who want to explore the world together — with depth, not just sightseeing.</p></div>
+    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3 class="info-card-title">Cultural Immersion</h3><p class="info-card-body">Go beyond tourism — connect with communities, traditions, and ways of life that reshape your worldview.</p></div>
+  </div>
+</section>
+
+<!-- ═══ TRAVEL GALLERY ═══ -->
+<style>
+  .gallery-section { padding: 5rem 0; background: var(--foreground); }
+  .gallery-header { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem 3rem; display: flex; align-items: flex-end; justify-content: space-between; }
+  .gallery-title { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #fff; line-height: 1.05; }
+  .gallery-title em { font-style: italic; color: var(--primary); }
+  .gallery-count { font-family: 'Nunito', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: oklch(0.7 0.02 80); }
+
+  /* BIG HERO CAROUSEL */
+  .gallery-hero { position: relative; width: 100%; height: 80vh; min-height: 520px; overflow: hidden; cursor: pointer; }
+  .gallery-hero-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .gallery-hero-slide { flex: 0 0 100%; height: 100%; position: relative; }
+  .gallery-hero-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, oklch(0.1 0.01 60/0.6) 0%, transparent 60%); }
+  .gallery-hero-caption { position: absolute; bottom: 2rem; left: 2rem; color: #fff; font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; }
+  .gallery-hero-caption span { display: block; font-family: 'Nunito', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--primary); font-style: normal; margin-bottom: 0.25rem; }
+
+  /* ARROW CONTROLS */
+  .gallery-hero-arrows { position: absolute; top: 50%; right: 1.5rem; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.5rem; z-index: 5; }
+  .gallery-hero-arrow { width: 3rem; height: 3rem; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.5); background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.2s, border-color 0.2s; }
+  .gallery-hero-arrow:hover { background: var(--primary); border-color: var(--primary); }
+  .gallery-hero-arrow svg { width: 1rem; height: 1rem; }
+
+  /* DOTS */
+  .gallery-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; }
+  .gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: oklch(0.5 0.02 70); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .gallery-dot.active { background: var(--primary); transform: scale(1.4); }
+
+  /* MASONRY THUMBNAIL STRIP */
+  .gallery-strip { max-width: 1152px; margin: 3rem auto 0; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 0.5rem; }
+  .gallery-strip-item { overflow: hidden; cursor: pointer; position: relative; }
+  .gallery-strip-item.tall { grid-row: span 2; }
+  .gallery-strip-item.wide { grid-column: span 2; }
+  .gallery-strip-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+  .gallery-strip-item:hover img { transform: scale(1.05); }
+  .gallery-strip-item .strip-hover { position: absolute; inset: 0; background: oklch(0.62 0.11 75/0); transition: background 0.3s; display: flex; align-items: center; justify-content: center; }
+  .gallery-strip-item:hover .strip-hover { background: oklch(0.62 0.11 75/0.25); }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; background: oklch(0.05 0.01 60/0.95); z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
+
+  @media (max-width: 767px) {
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+    .gallery-strip-item.wide { grid-column: span 1; }
+    .gallery-hero { height: 60vw; min-height: 300px; }
+    .gallery-hero-arrows { flex-direction: row; top: auto; right: auto; bottom: 1rem; left: 50%; transform: translateX(-50%); }
+  }
+</style>
+
+<section class="gallery-section">
+  <div class="gallery-header">
+    <h2 class="gallery-title">Around the <em>World</em></h2>
+    <span class="gallery-count">7 destinations</span>
+  </div>
+
+  <!-- Hero carousel -->
+  <div class="gallery-hero" id="galleryHero">
+    <div class="gallery-hero-track" id="galleryTrack">
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Massai Tribe Africa" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Africa</span>With the Massai Tribe</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Safari" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Safari</span>Family Safari Experience</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Travel Agency" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Travel</span>Kay Travel Agency</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Asia" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Asia</span>Mum Trotter in Asia</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Paris" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Paris</span>Mum Trotter in Paris</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Entrepreneur" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Global</span>Entrepreneur</div></div>
+      <div class="gallery-hero-slide"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay" /><div class="gallery-hero-overlay"></div><div class="gallery-hero-caption"><span>Global</span>Kay — Global Entrepreneur</div></div>
+    </div>
+    <!-- Arrows -->
+    <div class="gallery-hero-arrows">
+      <button class="gallery-hero-arrow" id="galPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></button>
+      <button class="gallery-hero-arrow" id="galNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="gallery-dots" id="galleryDots"></div>
+
+  <!-- Thumbnail masonry strip -->
+  <div class="gallery-strip">
+    <div class="gallery-strip-item tall" onclick="jumpSlide(0)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Africa" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item" onclick="jumpSlide(1)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Safari" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item wide" onclick="jumpSlide(2)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Travel" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item" onclick="jumpSlide(3)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Asia" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item tall" onclick="jumpSlide(4)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Paris" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item" onclick="jumpSlide(5)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Entrepreneur" /><div class="strip-hover"></div></div>
+    <div class="gallery-strip-item" onclick="jumpSlide(6)"><img src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Global" /><div class="strip-hover"></div></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">&times;</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<script>
+(function(){
+  const track = document.getElementById('galleryTrack');
+  const slides = track.querySelectorAll('.gallery-hero-slide');
+  const dotsEl = document.getElementById('galleryDots');
+  let cur = 0, timer;
+
+  // Build dots
+  slides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'gallery-dot' + (i===0?' active':'');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    cur = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + cur*100 + '%)';
+    dotsEl.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===cur));
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur+1), 5000);
+  }
+
+  window.jumpSlide = (n) => { goTo(n); document.getElementById('galleryHero').scrollIntoView({behavior:'smooth', block:'center'}); };
+
+  document.getElementById('galPrev').onclick = () => goTo(cur-1);
+  document.getElementById('galNext').onclick = () => goTo(cur+1);
+
+  // Swipe
+  let sx=0;
+  track.addEventListener('touchstart', e => sx=e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => { const d=sx-e.changedTouches[0].clientX; if(Math.abs(d)>40){if(d>0)goTo(cur+1);else goTo(cur-1);} }, {passive:true});
+
+  // Lightbox on thumbnail click
+  document.querySelectorAll('.gallery-strip-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target===this) this.classList.remove('open');
+  });
+
+  resetTimer();
+})();
+</script>
+
+<div class="gold-band">
+  <div class="gold-band-inner">
+    <p class="gold-band-quote">"Every destination is a classroom. Every culture, a lesson. Every person you meet, a mirror."</p>
+  </div>
+</div>
+<div class="divider"><div class="divider-line"></div></div>
+<section id="connect" class="connect">
+  <p class="connect-label">Connect</p>
+  <h2 class="connect-headline">If you're looking to build, explore, or move differently — let's connect.</h2>
+  <p class="connect-sub">Open to brand partnerships, speaking engagements, collaborations, and meaningful conversations.</p>
+  <div class="connect-links">
+    <a href="mailto:hello@kay.co">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span>hello@kay.co</span>
+    </a>
+    <a href="https://www.instagram.com/themomtrotter/" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>@themomtrotter</span>
+    </a>
+  </div>
+</section>
+<footer class="site-footer">&copy; 2025 Kay &mdash; Entrepreneur. Founder. All rights reserved.</footer>
+<script>
+  function toggleMenu() { document.getElementById('mobileDropdown').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileDropdown').classList.remove('open'); }
+  document.addEventListener('click', function(e) {
+    const menu = document.querySelector('.mobile-menu');
+    if (menu && !menu.contains(e.target)) document.getElementById('mobileDropdown').classList.remove('open');
+  });
+</script>
+</body>
+</html>
