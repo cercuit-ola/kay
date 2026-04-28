@@ -119,9 +119,10 @@
   }
   /* Decorative serif line above name */
   .hero-eyebrow {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
     color: oklch(0.62 0.11 75);
     letter-spacing: 0.25em;
     margin-bottom: 1rem;
@@ -129,13 +130,14 @@
   }
   /* Main name */
   .hero-banner-title {
-    font-family: var(--font-serif);
+    font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 0.9;
+    font-weight: 900;
+    font-style: normal;
+    line-height: 0.95;
     color: var(--foreground);
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     margin-bottom: 1.25rem;
     text-shadow: none;
   }
@@ -161,11 +163,13 @@
   }
   /* Subtitle */
   .hero-banner-label {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
     color: var(--muted-foreground);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     margin-bottom: 2.5rem;
   }
   /* CTA Buttons */
@@ -367,31 +371,19 @@
   .service-desc { font-size:0.875rem; color:var(--muted-foreground); line-height:1.625; font-family:'Nunito',sans-serif; }
   @media (min-width:640px) { .services-grid { grid-template-columns:1fr 1fr; } }
   @media (min-width:768px) { .services-grid { grid-template-columns:1fr 1fr 1fr; } }
-  /* VIDEO SECTION */
-  .video-section { background: oklch(0.62 0.11 75); padding: 5rem 0; }
-  .video-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: grid; gap: 3rem; align-items: center; }
-  @media (min-width: 768px) { .video-inner { grid-template-columns: 1fr 1.4fr; } }
-  .video-inner .section-heading { color: #fff; }
-  .video-inner p { color: rgba(255,255,255,0.85); }
-  .video-inner .section-label { color: var(--primary) !important; }
-  .video-embed-wrap { border-radius: 0.75rem; overflow: hidden; }
-  .video-embed-wrap iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
-  .video-placeholder { aspect-ratio: 16/9; background: oklch(0.18 0.01 60); border: 1.5px solid oklch(0.62 0.11 75/0.4); border-radius: 0.75rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
-  .video-play-icon svg { width: 4rem; height: 4rem; }
-  .video-placeholder-text { font-family: 'Nunito', sans-serif; font-size: 0.8rem; color: oklch(0.55 0.02 70); letter-spacing: 0.1em; }
   .journey-grid { display:grid; gap:3rem; align-items:center; }
   @media (min-width:768px) { .journey-grid { grid-template-columns:1fr 1.6fr; gap:4rem; } }
   .journey-title h2 { font-family:var(--font-serif); font-size:clamp(3rem,8vw,5.5rem); font-weight:700; line-height:1.0; color:var(--foreground); }
   .journey-title h2 em { font-style:italic; display:block; }
   .journey-map-side { position:relative; min-height:380px; }
   @media (min-width:768px) { .journey-map-side { min-height:440px; } }
-  .journey-map-bg { position:absolute; top:0; right:0; width:75%; height:100%; background:oklch(0.72 0.09 75); border-radius:0.5rem; overflow:hidden; z-index:0; }
+  .journey-map-bg { position:absolute; top:0; right:0; width:28%; height:100%; background:oklch(0.72 0.09 75); border-radius:0.5rem; overflow:hidden; z-index:0; }
   .journey-map-bg::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' opacity='0.18'%3E%3Ccircle cx='200' cy='200' r='180' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='140' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='100' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='60' fill='none' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='20' fill='none' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E"); background-size:cover; }
   .journey-compass { position:absolute; top:1rem; right:1.5rem; width:5rem; height:5rem; opacity:0.55; z-index:1; color:#fff; }
   .journey-pin { position:absolute; bottom:2rem; right:2.5rem; color:oklch(0.35 0.06 60); z-index:2; opacity:0.7; }
   .journey-pin svg { width:2.5rem; height:2.5rem; }
-  .journey-card { position:relative; z-index:2; background:oklch(0.97 0.03 80); border-radius:0.75rem; padding:2rem 2.25rem; box-shadow:0 8px 40px oklch(0 0 0/0.15); width:68%; margin:2rem 0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' opacity='0.07'%3E%3Ccircle cx='150' cy='300' r='200' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='160' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='120' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='80' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='40' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3C/svg%3E"); background-size:cover; }
-  @media (min-width:768px) { .journey-card { width:72%; } }
+  .journey-card { position:relative; z-index:2; background:oklch(0.97 0.03 80); border-radius:0.75rem; padding:2.25rem 2.75rem; box-shadow:0 8px 40px oklch(0 0 0/0.15); width:90%; margin:2rem 0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' opacity='0.07'%3E%3Ccircle cx='150' cy='300' r='200' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='160' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='120' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='80' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3Ccircle cx='150' cy='300' r='40' fill='none' stroke='%23a07840' stroke-width='1.2'/%3E%3C/svg%3E"); background-size:cover; }
+  @media (min-width:768px) { .journey-card { width:92%; } }
   .journey-card p { font-size:0.975rem; line-height:1.8; color:oklch(0.3 0.02 60); margin-bottom:1.1rem; }
   .journey-card p:last-child { margin-bottom:0; }
 </style>
@@ -416,7 +408,7 @@
 
 <!-- HERO BANNER -->
 <section class="hero-banner">
-  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777404932/Untitled_design_1_p3xpml.png" alt="Kay — Entrepreneur and Founder" />
+  <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384502/Screenshot_2026-04-28_at_14.54.20_awkmv8.png" alt="Kay — Entrepreneur and Founder" />
   <div class="hero-banner-overlay"></div>
 
   <!-- Full floral border frame (SVG flowers along all edges) -->
@@ -603,27 +595,6 @@
   </div>
 </section>
 
-<!-- MEDIA VIDEO SECTION -->
-<section class="video-section">
-  <div class="video-inner">
-    <div class="video-text">
-      <span class="section-label" style="color:var(--primary);">Watch</span>
-      <h2 class="section-heading">Kay in <em>Motion</em></h2>
-      <p style="color:var(--muted-foreground);max-width:32rem;line-height:1.75;">Featured across global media — from Good Morning America to living rooms worldwide. Watch Kay's story unfold.</p>
-    </div>
-    <div class="video-embed-wrap">
-      <div class="video-placeholder">
-        <div class="video-play-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="oklch(0.62 0.11 75/0.15)" stroke="oklch(0.62 0.11 75)" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="oklch(0.62 0.11 75)"/></svg>
-        </div>
-        <p class="video-placeholder-text">Paste your video embed URL here</p>
-        <!-- Replace the div above with an iframe like:
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Kay Feature" frameborder="0" allowfullscreen></iframe>
-        -->
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- JOURNEY SECTION -->
 <section class="journey-section">
