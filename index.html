@@ -336,8 +336,34 @@
   .bento-stat { font-family:var(--font-serif); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; line-height:1.1; margin-bottom:0.4rem; }
   .bento-label { font-size:0.78rem; opacity:0.78; line-height:1.5; font-family:'Nunito',sans-serif; }
   .bento-tall { grid-row:span 2; min-height:340px; }
+  /* Mobile small; single column, no tall spanning */
+  @media (max-width:399px) {
+    .bento-grid { grid-template-columns:1fr; gap:0.5rem; }
+    .bento-tall { grid-row:span 1; min-height:130px; }
+    .bento-card { min-height:120px; padding:1.1rem; border-radius:0.5rem; }
+    .bento-stat { font-size:1.3rem; }
+    .bento-label { font-size:0.72rem; }
+    .bento-card-icon { top:0.6rem; right:0.6rem; }
+    .bento-card-icon svg { width:1rem; height:1rem; }
+  }
+  /* Mobile medium; 2 col, compact */
+  @media (min-width:400px) and (max-width:639px) {
+    .bento-grid { grid-template-columns:1fr 1fr; gap:0.5rem; }
+    .bento-tall { min-height:220px; }
+    .bento-card { min-height:120px; padding:1.1rem; border-radius:0.5rem; }
+    .bento-stat { font-size:clamp(1rem,4vw,1.5rem); }
+    .bento-label { font-size:0.68rem; }
+    .bento-card-icon { top:0.6rem; right:0.6rem; }
+    .bento-card-icon svg { width:1rem; height:1rem; }
+  }
+  /* Tablet */
+  @media (min-width:640px) and (max-width:767px) {
+    .bento-grid { grid-template-columns:1fr 1fr; gap:0.65rem; }
+    .bento-tall { min-height:280px; }
+    .bento-card { min-height:140px; }
+    .bento-stat { font-size:clamp(1.2rem,3vw,1.8rem); }
+  }
   @media (min-width:768px) { .bento-grid { grid-template-columns:1fr 1fr 1fr; } }
-  @media (max-width:480px) { .bento-card { min-height:130px; } .bento-tall { min-height:260px; } }
   .gc-section { max-width:1152px; margin:0 auto; padding:5rem 1.5rem 6rem; }
   .gc-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:3rem; }
   .gc-title { font-family:var(--font-serif); font-size:clamp(1.75rem,4vw,2.5rem); font-weight:600; color:var(--foreground); }
@@ -363,6 +389,7 @@
   .services-grid { display:grid; gap:2rem; }
   .service-item { border:1px solid var(--primary); padding:1.5rem; transition:background 0.2s; }
   .service-item:hover { background:color-mix(in oklch,var(--primary) 5%,var(--background)); }
+  a.service-item { display:block; }
   .service-icon { color:var(--primary); margin-bottom:0.75rem; }
   .service-icon svg { width:1.25rem; height:1.25rem; }
   .service-title { font-family:var(--font-serif); font-size:1.25rem; color:var(--primary); margin-bottom:0.5rem; }
@@ -607,7 +634,7 @@
       <div class="journey-card">
         <p>I'm Kay, an entrepreneur, founder, and philanthropist building across travel, media, and impact.</p>
         <p>After traveling to over 70 countries with kids in tow, I turned lived experience into a global ecosystem, building businesses, platforms, and experiences that help people live with intention, build freedom, and see the world differently.</p>
-        <p>My journey wasn't mapped out, it was shaped through experience, perspective, and a decision to live life on my own terms. Over time, that became more than just a lifestyle, it became the foundation for everything I build.</p>
+        <p>My journey wasn't mapped out; it was shaped through experience, perspective, and a decision to live life on my own terms. Over time, that became more than just a lifestyle, it became the foundation for everything I build.</p>
         <p>Today, my work sits at the intersection of travel, lifestyle, and global experiences; creating opportunities for people to explore more, think differently, and expand how they see the world.</p>
       </div>
     </div>
@@ -736,8 +763,8 @@
     <p>Let's build something. Collaborations with brands, organizations, and individuals where there is genuine alignment; not just visibility.</p>
   </div>
   <div class="services-grid">
-    <div class="service-item"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a5 5 0 0 1-5-5 5 5 0 0 1 5-5"/><path d="M13 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"/><line x1="9" y1="12" x2="15" y2="12"/></svg></div><h3 class="service-title">Brand Partnerships</h3><p class="service-desc">Strategic collaborations and paid campaigns with global audiences.</p></div>
-    <div class="service-item"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><h3 class="service-title">Speaking Engagements</h3><p class="service-desc">Talks on entrepreneurship, travel, lifestyle, and building unconventional paths.</p></div>
+    <a href="workwithme.html#brand-partnerships" class="service-item"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a5 5 0 0 1-5-5 5 5 0 0 1 5-5"/><path d="M13 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"/><line x1="9" y1="12" x2="15" y2="12"/></svg></div><h3 class="service-title">Brand Partnerships</h3><p class="service-desc">Strategic collaborations and paid campaigns with global audiences.</p></a>
+    <a href="workwithme.html#speaking" class="service-item"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><h3 class="service-title">Speaking Engagements</h3><p class="service-desc">Talks on entrepreneurship, travel, lifestyle, and building unconventional paths.</p></a>
     <div class="service-item"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div><h3 class="service-title">Consultations</h3><p class="service-desc">Personal guidance for those looking to build a freedom based and intentional lifestyle.</p></div>
   </div>
 </section>
@@ -777,7 +804,7 @@
 <section id="connect" class="connect">
   <p class="connect-label">Connect</p>
   <h2 class="connect-headline">If you're looking to build, explore, or move differently; let's connect.</h2>
-  <p class="connect-sub">Open to brand partnerships, speaking engagements, collaborations, and meaningful conversations.</p>
+  <p class="connect-sub">Open to brand partnerships, speaking engagements, collaborations and meaningful conversations.</p>
   <div class="connect-links">
     <a href="mailto:hello@kay.co">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>

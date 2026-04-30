@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Work With Kay — Brand Partnerships, Speaking, Consultations</title>
+  <meta name="description" content="Work with Kay. Brand partnerships, speaking engagements, and personal consultations for those ready to move differently." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://res.cloudinary.com" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com https://images.unsplash.com data:; connect-src 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Josefin+Sans:wght@300;400;600;700&family=Nunito:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --background: oklch(0.985 0.005 85);
+    --foreground: oklch(0.22 0.015 60);
+    --primary: oklch(0.62 0.11 75);
+    --primary-foreground: oklch(0.99 0.005 85);
+    --muted-foreground: oklch(0.5 0.02 70);
+    --border: oklch(0.88 0.015 80);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { display: block; max-width: 100%; }
+  p { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 500; line-height: 1.75; }
+
+  /* NAV */
+  header { position: sticky; top: 0; z-index: 50; background: color-mix(in oklch, var(--background) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid color-mix(in oklch, var(--primary) 30%, transparent); }
+  nav { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; height: 5rem; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.25rem; letter-spacing: 0.25em; color: var(--primary); font-weight: 600; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted-foreground); }
+  .nav-links a:hover { color: var(--foreground); }
+  .nav-links a.active { color: var(--primary); border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
+  .nav-inquire { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--foreground); color: var(--foreground); padding: 0.5rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; transition: background 0.2s, color 0.2s; }
+  .nav-inquire:hover { background: var(--foreground); color: var(--background); }
+  .mobile-menu { display: none; position: relative; }
+  .mobile-menu-btn { display: flex; height: 2.75rem; width: 2.75rem; cursor: pointer; align-items: center; justify-content: center; border: 1px solid var(--primary); color: var(--primary); background: none; }
+  .mobile-menu-btn svg { width: 1.25rem; height: 1.25rem; }
+  .mobile-dropdown { display: none; position: absolute; right: 0; top: 3.5rem; width: 16rem; border: 1px solid var(--primary); background: var(--background); padding: 1.25rem; box-shadow: 0 25px 50px -12px oklch(0 0 0/0.25); z-index: 100; }
+  .mobile-dropdown.open { display: block; }
+  .mobile-dropdown ul { display: flex; flex-direction: column; gap: 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted-foreground); }
+  .mobile-dropdown .mobile-inquire { margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; border: 1px solid var(--foreground); color: var(--foreground); padding: 0.75rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.22em; transition: background 0.2s, color 0.2s; }
+  @media (max-width: 767px) { .nav-links { display: none; } .nav-inquire-wrap { display: none; } .mobile-menu { display: block; } }
+  @media (min-width: 768px) { .mobile-menu { display: none !important; } .nav-links { display: flex !important; } .nav-inquire-wrap { display: block !important; } }
+
+  /* PAGE HERO */
+  .page-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 480px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; z-index: 0;
+  }
+  .page-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, oklch(0.1 0.01 60/0.82) 0%, oklch(0.1 0.01 60/0.3) 60%, transparent 100%);
+    z-index: 1;
+  }
+  .page-hero-content {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 1152px; margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+  .page-hero-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em;
+    color: var(--primary); font-family: 'Nunito', sans-serif;
+    margin-bottom: 0.75rem; display: block;
+  }
+  .page-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700; color: #fff; line-height: 1.05;
+  }
+  .page-hero-title em { font-style: italic; color: var(--primary); }
+  .page-hero-sub {
+    font-family: 'Nunito', sans-serif; font-size: 1.05rem;
+    color: oklch(0.85 0.01 80); max-width: 34rem;
+    margin-top: 1rem; line-height: 1.7; font-weight: 400;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+  .divider { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+  .divider-line { height: 1px; background: color-mix(in oklch, var(--primary) 40%, transparent); }
+  .section-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em;
+    color: var(--primary); font-family: 'Nunito', sans-serif;
+    margin-bottom: 0.75rem; display: block;
+  }
+  .section-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 600; color: var(--foreground); line-height: 1.15;
+  }
+  .section-heading em { font-style: italic; color: var(--primary); }
+
+  /* INTRO STRIP */
+  .intro-strip {
+    background: var(--primary);
+    padding: 4rem 0;
+  }
+  .intro-strip-inner {
+    max-width: 860px; margin: 0 auto; padding: 0 2rem; text-align: center;
+  }
+  .intro-strip-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 3vw, 2.1rem);
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  /* SERVICE CARDS */
+  .services-section { padding: 6rem 0; }
+  .services-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+  .services-section-title { text-align: center; margin-bottom: 4rem; }
+
+  .service-card {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.3s;
+  }
+  .service-card:hover { box-shadow: 0 12px 40px oklch(0 0 0/0.1); }
+  @media (min-width: 768px) {
+    .service-card { grid-template-columns: 1fr 1fr; }
+    .service-card.reverse { direction: rtl; }
+    .service-card.reverse > * { direction: ltr; }
+  }
+
+  .service-card-img {
+    width: 100%; height: 320px; object-fit: cover; display: block;
+  }
+  @media (max-width: 767px) { .service-card-img { height: 220px; } }
+
+  .service-card-body {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--background);
+  }
+  .service-card-icon {
+    width: 2.5rem; height: 2.5rem;
+    background: color-mix(in oklch, var(--primary) 12%, transparent);
+    border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+  }
+  .service-card-icon svg { width: 1.1rem; height: 1.1rem; }
+  .service-card-label {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.28em;
+    color: var(--primary); font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600; margin-bottom: 0.6rem;
+  }
+  .service-card-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600; color: var(--foreground);
+    margin-bottom: 1rem; line-height: 1.2;
+  }
+  .service-card-desc {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem; color: var(--muted-foreground);
+    line-height: 1.75; margin-bottom: 1.5rem;
+  }
+  .service-card-bullets {
+    list-style: none; margin-bottom: 2rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .service-card-bullets li {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem; color: var(--foreground);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+  }
+  .service-card-bullets li::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* CTA BUTTONS */
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--primary); color: #fff;
+    padding: 0.85rem 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    border-radius: 2rem; border: 2px solid var(--primary);
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px oklch(0.62 0.11 75/0.3);
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background: oklch(0.55 0.1 75); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--foreground);
+    padding: 0.85rem 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    border-radius: 2rem; border: 2px solid var(--foreground);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+  .btn-secondary:hover { background: var(--foreground); color: #fff; transform: translateY(-2px); }
+
+  /* EXPECTATIONS STRIP */
+  .expect-strip { padding: 5rem 0; background: oklch(0.96 0.02 80); }
+  .expect-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+  .expect-grid { display: grid; gap: 2rem; margin-top: 3rem; }
+  @media (min-width: 640px) { .expect-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .expect-grid { grid-template-columns: repeat(4, 1fr); } }
+  .expect-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--primary);
+    padding: 1.75rem;
+    border-radius: 0.5rem;
+  }
+  .expect-number {
+    font-family: var(--font-serif);
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--primary); line-height: 1;
+    margin-bottom: 0.75rem;
+    opacity: 0.35;
+  }
+  .expect-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem; color: var(--foreground);
+    margin-bottom: 0.5rem;
+  }
+  .expect-body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.65;
+  }
+
+  /* FINAL CTA BAND */
+  .final-cta {
+    background: var(--foreground);
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .final-cta-inner { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+  .final-cta-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.3em; color: var(--primary);
+    margin-bottom: 1.5rem; display: block;
+  }
+  .final-cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.875rem, 5vw, 3.25rem);
+    font-weight: 600; color: #fff;
+    line-height: 1.2; margin-bottom: 1.25rem;
+  }
+  .final-cta-title em { font-style: italic; color: var(--primary); }
+  .final-cta-sub {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem; color: oklch(0.72 0.02 80);
+    margin-bottom: 2.5rem; line-height: 1.7;
+  }
+  .final-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .btn-cta-gold {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--primary); color: #fff;
+    padding: 1rem 2.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    border-radius: 2rem; border: 2px solid var(--primary);
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px oklch(0.62 0.11 75/0.4);
+  }
+  .btn-cta-gold:hover { background: oklch(0.55 0.1 75); transform: translateY(-2px); }
+  .btn-cta-outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: #fff;
+    padding: 1rem 2.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    border-radius: 2rem; border: 2px solid rgba(255,255,255,0.45);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+
+  /* CONNECT */
+  .connect { max-width: 1152px; margin: 0 auto; padding: 7rem 1.5rem; text-align: center; }
+  .connect-label { display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--primary); border: 1px solid var(--primary); padding: 0.35rem 1.25rem; margin-bottom: 2rem; }
+  .connect-headline { font-family: var(--font-serif); font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 600; line-height: 1.25; max-width: 42rem; margin: 0 auto 1rem; color: var(--foreground); }
+  .connect-sub { font-family: 'Nunito', sans-serif; font-size: 1.05rem; color: var(--muted-foreground); max-width: 32rem; margin: 0 auto 3rem; line-height: 1.7; }
+  .connect-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; font-size: 1rem; font-family: 'Nunito', sans-serif; font-weight: 500; color: var(--muted-foreground); }
+  .connect-links a { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem; border: 1.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .connect-links a:hover { color: var(--primary); border-color: var(--primary); }
+  .connect-links svg { width: 1.1rem; height: 1.1rem; }
+  .site-footer { background: var(--foreground); color: var(--primary-foreground); text-align: center; padding: 1.25rem; font-size: 0.75rem; font-family: 'Nunito', sans-serif; letter-spacing: 0.1em; opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">KAY</a>
+    <ul class="nav-links">
+      <li><a href="journey.html">Journey</a></li>
+      <li><a href="travel.html">Travel</a></li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="workwithme.html" class="active">Work With Kay</a></li>
+    </ul>
+    <div class="nav-inquire-wrap"><a href="#connect" class="nav-inquire">Inquire</a></div>
+    <div class="mobile-menu">
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="mobile-dropdown" id="mobileDropdown">
+        <ul>
+          <li><a href="journey.html" onclick="closeMenu()">Journey</a></li>
+          <li><a href="travel.html" onclick="closeMenu()">Travel</a></li>
+          <li><a href="media.html" onclick="closeMenu()">Media</a></li>
+          <li><a href="impact.html" onclick="closeMenu()">Impact</a></li>
+          <li><a href="workwithme.html" onclick="closeMenu()">Work With Kay</a></li>
+        </ul>
+        <a href="#connect" class="mobile-inquire" onclick="closeMenu()">Inquire</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384502/Screenshot_2026-04-28_at_14.54.20_awkmv8.png" alt="Work With Kay" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Collaborations</span>
+    <h1 class="page-hero-title">Work With <em>Kay</em></h1>
+    <p class="page-hero-sub">Open to partnerships, stages and conversations where there is genuine alignment; not just visibility.</p>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-strip-inner">
+    <p class="intro-strip-text">"I build with people who are serious about impact, reach and creating something that actually matters."</p>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="services-inner">
+
+    <div class="services-section-title">
+      <span class="section-label">What We Build Together</span>
+      <h2 class="section-heading">Choose your <em>path</em></h2>
+    </div>
+
+    <!-- Brand Partnerships -->
+    <div class="service-card" id="brand-partnerships">
+      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Brand Partnerships with Kay" />
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a5 5 0 0 1-5-5 5 5 0 0 1 5-5"/><path d="M13 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        </div>
+        <span class="service-card-label">01 ; Brand Partnerships</span>
+        <h3 class="service-card-title">Partner With Kay</h3>
+        <p class="service-card-desc">Kay's audience is intentional, global and engaged. If your brand aligns with travel, lifestyle, freedom and impact; this is where we start.</p>
+        <ul class="service-card-bullets">
+          <li>Sponsored content and long-form storytelling campaigns</li>
+          <li>Social media integrations across platforms</li>
+          <li>Co-branded travel experiences and activations</li>
+          <li>Product placement within curated lifestyle content</li>
+          <li>Ambassador and affiliate partnerships</li>
+        </ul>
+        <a href="mailto:hello@kay.co?subject=Brand Partnership Inquiry" class="btn-primary">Submit a Partnership Inquiry</a>
+      </div>
+    </div>
+
+    <!-- Speaking Engagements -->
+    <div class="service-card reverse" id="speaking">
+      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Speaking Engagements" />
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+        </div>
+        <span class="service-card-label">02 ; Speaking Engagements</span>
+        <h3 class="service-card-title">Book Kay to Speak</h3>
+        <p class="service-card-desc">Kay brings raw honesty, global perspective and lived experience to every stage. Her talks move rooms; from corporate panels to intimate conferences and community events.</p>
+        <ul class="service-card-bullets">
+          <li>Keynote addresses on entrepreneurship and intentional living</li>
+          <li>Panel participation at travel, lifestyle and media events</li>
+          <li>Corporate diversity, equity and inclusion sessions</li>
+          <li>Youth and community empowerment talks</li>
+          <li>Podcast and media appearances</li>
+        </ul>
+        <a href="mailto:hello@kay.co?subject=Speaking Engagement Inquiry" class="btn-primary">Book Kay to Speak</a>
+      </div>
+    </div>
+
+    <!-- Consultations -->
+    <div class="service-card" id="consultations">
+      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Consultations with Kay" />
+      <div class="service-card-body">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <span class="service-card-label">03 ; Consultations</span>
+        <h3 class="service-card-title">Personal Consultation</h3>
+        <p class="service-card-desc">For individuals and entrepreneurs ready to build a life and business beyond the conventional path. Kay offers direct, no-fluff guidance drawn from over a decade of real-world experience.</p>
+        <ul class="service-card-bullets">
+          <li>Freedom-based lifestyle strategy and roadmapping</li>
+          <li>Travel business and brand building guidance</li>
+          <li>Debt freedom and financial liberation coaching</li>
+          <li>Media and content platform strategy</li>
+          <li>One-on-one and group session formats available</li>
+        </ul>
+        <a href="mailto:hello@kay.co?subject=Consultation Inquiry" class="btn-primary">Request a Consultation</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect-strip">
+  <div class="expect-inner">
+    <span class="section-label">The Process</span>
+    <h2 class="section-heading">What to <em>Expect</em></h2>
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="expect-number">01</div>
+        <h3 class="expect-title">Submit Your Inquiry</h3>
+        <p class="expect-body">Send a brief message through the relevant form or email. Tell Kay who you are, what you are building and how you see alignment.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-number">02</div>
+        <h3 class="expect-title">Review and Alignment</h3>
+        <p class="expect-body">Every inquiry is reviewed personally. If there is genuine alignment, you will hear back within 5 to 7 business days.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-number">03</div>
+        <h3 class="expect-title">Discovery Call</h3>
+        <p class="expect-body">A short discovery conversation to understand your goals, timeline and expectations; ensuring the collaboration is right for both sides.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-number">04</div>
+        <h3 class="expect-title">Build Together</h3>
+        <p class="expect-body">Once aligned, Kay moves with intention and excellence. Expect clear communication, creative depth and results that go beyond the brief.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA BAND -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="final-cta-eyebrow">Ready to move?</span>
+    <h2 class="final-cta-title">Let's build something <em>worth remembering</em></h2>
+    <p class="final-cta-sub">Whether it is a brand story, a stage or a life reset; Kay shows up fully. Reach out and let's see what is possible.</p>
+    <div class="final-cta-btns">
+      <a href="mailto:hello@kay.co?subject=Partnership Inquiry" class="btn-cta-gold">Email Kay Directly</a>
+      <a href="https://www.instagram.com/kayco/" target="_blank" rel="noopener noreferrer" class="btn-cta-outline">Connect on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT / FOOTER -->
+<div class="divider"><div class="divider-line"></div></div>
+<section id="connect" class="connect">
+  <p class="connect-label">Connect</p>
+  <h2 class="connect-headline">If you are looking to build, explore, or move differently; let's connect.</h2>
+  <p class="connect-sub">Open to brand partnerships, speaking engagements, collaborations and meaningful conversations.</p>
+  <div class="connect-links">
+    <a href="mailto:hello@kay.co">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span>hello@kay.co</span>
+    </a>
+    <a href="https://www.instagram.com/kayco/" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>@KayCO</span>
+    </a>
+  </div>
+</section>
+<footer class="site-footer">&copy; 2025 Kay &mdash; Entrepreneur. Founder. All rights reserved.</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileDropdown').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileDropdown').classList.remove('open'); }
+  document.addEventListener('click', function(e) {
+    const menu = document.querySelector('.mobile-menu');
+    if (menu && !menu.contains(e.target)) document.getElementById('mobileDropdown').classList.remove('open');
+  });
+
+  // Smooth scroll to section if hash present
+  window.addEventListener('load', function() {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+    }
+  });
+</script>
+
+</body>
+</html>
