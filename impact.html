@@ -109,7 +109,37 @@
   .connect-links a:hover { color: var(--primary); border-color: var(--primary); }
   .connect-links svg { width: 1.1rem; height: 1.1rem; }
   .site-footer { background: var(--foreground); color: var(--primary-foreground); text-align: center; padding: 1.25rem; font-size: 0.75rem; font-family: 'Nunito', sans-serif; letter-spacing: 0.1em; opacity: 0.9; }
-  </style>
+  
+  /* ── HERO RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .hero-banner, .page-hero { min-height: 100svh; }
+    .page-hero { height: 100svh; min-height: 420px; }
+    .hero-banner-img, .page-hero-img { object-position: center top; }
+    .page-hero-content { padding: 0 1rem 3rem; }
+    .page-hero-title { font-size: clamp(2rem, 11vw, 3rem); }
+    .page-hero-sub { font-size: 0.9rem; }
+    .hero-banner-content { padding: 1.5rem 1rem; }
+    .hero-banner-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    .page-hero { height: 80vw; min-height: 380px; max-height: 560px; }
+    .page-hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+    .hero-banner { min-height: 100svh; }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .page-hero { height: 65vh; min-height: 460px; }
+    .hero-banner { min-height: 100vh; }
+  }
+  @media (min-width: 1025px) {
+    .page-hero { height: 72vh; min-height: 520px; }
+  }
+  /* Ensure images always cover on all devices */
+  .hero-banner-img, .page-hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+</style>
 
 </head>
 <body>
@@ -123,7 +153,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="mobile-dropdown" id="mobileDropdown">
-        <ul><li><a href="journey.html" onclick="closeMenu()">Journey</a></li><li><a href="travel.html" onclick="closeMenu()">Travel</a></li><li><a href="media.html" onclick="closeMenu()">Media</a></li><li><a href="impact.html" onclick="closeMenu()">Impact</a></li></ul>
+        <ul><li><a href="journey.html" onclick="closeMenu()">Journey</a></li><li><a href="travel.html" onclick="closeMenu()">Travel</a></li><li><a href="media.html" onclick="closeMenu()">Media</a></li><li><a href="impact.html" onclick="closeMenu()">Impact</a></li><li><a href="workwithme.html" onclick="closeMenu()">Work With Kay</a></li></ul>
         <a href="#connect" class="mobile-inquire" onclick="closeMenu()">Inquire</a>
       </div>
     </div>

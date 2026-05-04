@@ -74,102 +74,17 @@
     z-index: 1;
   }
 
-  /* ── FLORAL BORDER FRAME ── */
-  .hero-floral-frame {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  /* Outer decorative border line */
-  .hero-floral-frame::before {
-    content: '';
-    position: absolute;
-    inset: 1.25rem;
-    border: 1px solid oklch(0.62 0.11 75/0.55);
-    pointer-events: none;
-  }
-  /* Inner border line */
-  .hero-floral-frame::after {
-    content: '';
-    position: absolute;
-    inset: 1.6rem;
-    border: 1px solid rgba(255,255,255,0.18);
-    pointer-events: none;
-  }
-
-  /* ── CONTENT CENTER ── */
-  .hero-banner-content {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 1152px;
-    margin: 0 auto;
-    text-align: left;
-    padding: 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-  }
-  @media (max-width: 640px) {
-    .hero-banner-content { padding: 2rem 1.25rem; }
   }
   /* Decorative serif line above name */
-  .hero-eyebrow {
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-    color: oklch(0.62 0.11 75);
-    letter-spacing: 0.25em;
-    margin-bottom: 1rem;
-    opacity: 0.95;
-  }
+
   /* Main name */
-  .hero-banner-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 900;
-    font-style: normal;
-    line-height: 0.95;
-    color: oklch(0.52 0.13 75);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-    text-shadow: 0 2px 12px rgba(255,255,255,0.3);
-  }
+
   /* Thin ornamental divider */
-  .hero-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    width: min(280px, 60vw);
-  }
-  .hero-divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, oklch(0.62 0.11 75/0.8), transparent);
-  }
-  .hero-divider-gem {
-    width: 6px;
-    height: 6px;
-    border: 1.5px solid oklch(0.62 0.11 75);
-    transform: rotate(45deg);
-    flex-shrink: 0;
-  }
+
+
+
   /* Subtitle */
-  .hero-banner-label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
-    color: var(--muted-foreground);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
-  }
+
   /* CTA Buttons */
   .hero-banner-buttons {
     display: flex;
@@ -217,6 +132,18 @@
   .btn-hero-outline:hover { background: var(--foreground); color: #fff; transform: translateY(-2px); }
 
   /* ── SCROLL INDICATOR ── */
+
+  .hero-bio {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    font-weight: 500;
+    color: var(--foreground);
+    line-height: 1.75;
+    max-width: 38rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 6px rgba(255,255,255,0.5);
+  }
+  .hero-banner-buttons { margin-top: 1.5rem; }
   .hero-scroll {
     position: absolute;
     bottom: 2.5rem;
@@ -240,7 +167,7 @@
   @media (max-width: 640px) {
     .hero-floral-frame::before { inset: 0.75rem; }
     .hero-floral-frame::after { inset: 1.05rem; }
-    .hero-banner-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  
   }
 
   /* PAGE HERO (sub-pages) */
@@ -295,7 +222,37 @@
   .connect-links a:hover { color: var(--primary); border-color: var(--primary); }
   .connect-links svg { width: 1.1rem; height: 1.1rem; }
   .site-footer { background: var(--foreground); color: var(--primary-foreground); text-align: center; padding: 1.25rem; font-size: 0.75rem; font-family: 'Nunito', sans-serif; letter-spacing: 0.1em; opacity: 0.9; }
-  </style>
+  
+  /* ── HERO RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .hero-banner, .page-hero { min-height: 100svh; }
+    .page-hero { height: 100svh; min-height: 420px; }
+    .hero-banner-img, .page-hero-img { object-position: center top; }
+    .page-hero-content { padding: 0 1rem 3rem; }
+    .page-hero-title { font-size: clamp(2rem, 11vw, 3rem); }
+    .page-hero-sub { font-size: 0.9rem; }
+    .hero-banner-content { padding: 1.5rem 1rem; }
+  
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    .page-hero { height: 80vw; min-height: 380px; max-height: 560px; }
+    .page-hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+    .hero-banner { min-height: 100svh; }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .page-hero { height: 65vh; min-height: 460px; }
+    .hero-banner { min-height: 100vh; }
+  }
+  @media (min-width: 1025px) {
+    .page-hero { height: 72vh; min-height: 520px; }
+  }
+  /* Ensure images always cover on all devices */
+  .hero-banner-img, .page-hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+</style>
 <style>
   .featured-section { max-width:1152px; margin:0 auto; padding:4rem 1.5rem; }
   .featured-label { text-align:center; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.3em; color:var(--muted-foreground); margin-bottom:2rem; }
@@ -417,14 +374,14 @@
 <header>
   <nav>
     <a href="index.html" class="nav-logo">KAY</a>
-    <ul class="nav-links"><li><a href="journey.html">Journey</a></li><li><a href="travel.html">Travel</a></li><li><a href="media.html">Media</a></li><li><a href="impact.html">Impact</a></li></ul>
+    <ul class="nav-links"><li><a href="journey.html">Journey</a></li><li><a href="travel.html">Travel</a></li><li><a href="media.html">Media</a></li><li><a href="impact.html">Impact</a></li><li><a href="workwithme.html">Work With Kay</a></li></ul>
     <div class="nav-inquire-wrap"><a href="#connect" class="nav-inquire">Inquire</a></div>
     <div class="mobile-menu">
       <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="mobile-dropdown" id="mobileDropdown">
-        <ul><li><a href="journey.html" onclick="closeMenu()">Journey</a></li><li><a href="travel.html" onclick="closeMenu()">Travel</a></li><li><a href="media.html" onclick="closeMenu()">Media</a></li><li><a href="impact.html" onclick="closeMenu()">Impact</a></li></ul>
+        <ul><li><a href="journey.html" onclick="closeMenu()">Journey</a></li><li><a href="travel.html" onclick="closeMenu()">Travel</a></li><li><a href="media.html" onclick="closeMenu()">Media</a></li><li><a href="impact.html" onclick="closeMenu()">Impact</a></li><li><a href="workwithme.html" onclick="closeMenu()">Work With Kay</a></li></ul>
         <a href="#connect" class="mobile-inquire" onclick="closeMenu()">Inquire</a>
       </div>
     </div>
@@ -436,171 +393,10 @@
   <img class="hero-banner-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384502/Screenshot_2026-04-28_at_14.54.20_awkmv8.png" alt="Kay; Entrepreneur and Founder" />
   <div class="hero-banner-overlay"></div>
 
-  <!-- Full floral border frame (SVG flowers along all edges) -->
-  <div class="hero-floral-frame">
-    <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
-      <defs>
-        <style>
-          .fl { fill: none; stroke: oklch(0.72 0.12 75); stroke-width: 0.8; opacity: 0.75; }
-          .flw { fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 0.6; }
-          .flfill { fill: oklch(0.72 0.12 75); opacity: 0.6; }
-          .flfillw { fill: rgba(255,255,255,0.55); }
-        </style>
-        <!-- Petal shape -->
-        <g id="petal">
-          <ellipse cx="0" cy="-10" rx="3.5" ry="9" class="fl"/>
-        </g>
-        <!-- Full rose -->
-        <g id="rose">
-          <use href="#petal" transform="rotate(0)"/>
-          <use href="#petal" transform="rotate(45)"/>
-          <use href="#petal" transform="rotate(90)"/>
-          <use href="#petal" transform="rotate(135)"/>
-          <use href="#petal" transform="rotate(180)"/>
-          <use href="#petal" transform="rotate(225)"/>
-          <use href="#petal" transform="rotate(270)"/>
-          <use href="#petal" transform="rotate(315)"/>
-          <circle cx="0" cy="0" r="4" class="fl"/>
-          <circle cx="0" cy="0" r="2" class="flfill"/>
-        </g>
-        <!-- Small blossom -->
-        <g id="blossom">
-          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" class="flw"/>
-          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(72)" class="flw"/>
-          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(144)" class="flw"/>
-          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(216)" class="flw"/>
-          <ellipse cx="0" cy="-6" rx="2.5" ry="5.5" transform="rotate(288)" class="flw"/>
-          <circle cx="0" cy="0" r="2.5" class="flfillw"/>
-        </g>
-        <!-- Leaf -->
-        <g id="leaf">
-          <path d="M0,0 Q5,-12 0,-20 Q-5,-12 0,0Z" class="fl"/>
-        </g>
-      </defs>
 
-      <!-- ═══ TOP BORDER ═══ -->
-      <!-- Stem line top -->
-      <path d="M20,20 Q360,40 720,22 Q1080,4 1420,20" class="fl" stroke-width="0.7"/>
-      <!-- Top roses -->
-      <use href="#rose" transform="translate(20,22)"/>
-      <use href="#rose" transform="translate(180,26)"/>
-      <use href="#rose" transform="translate(360,20)"/>
-      <use href="#rose" transform="translate(540,24)"/>
-      <use href="#rose" transform="translate(720,22)"/>
-      <use href="#rose" transform="translate(900,20)"/>
-      <use href="#rose" transform="translate(1080,24)"/>
-      <use href="#rose" transform="translate(1260,22)"/>
-      <use href="#rose" transform="translate(1420,22)"/>
-      <!-- Top blossoms -->
-      <use href="#blossom" transform="translate(90,30)"/>
-      <use href="#blossom" transform="translate(270,28)"/>
-      <use href="#blossom" transform="translate(450,22)"/>
-      <use href="#blossom" transform="translate(630,26)"/>
-      <use href="#blossom" transform="translate(810,22)"/>
-      <use href="#blossom" transform="translate(990,26)"/>
-      <use href="#blossom" transform="translate(1170,28)"/>
-      <use href="#blossom" transform="translate(1350,24)"/>
-      <!-- Top leaves -->
-      <use href="#leaf" transform="translate(135,24) rotate(-20)"/>
-      <use href="#leaf" transform="translate(315,22) rotate(15)"/>
-      <use href="#leaf" transform="translate(495,20) rotate(-10)"/>
-      <use href="#leaf" transform="translate(675,24) rotate(20)"/>
-      <use href="#leaf" transform="translate(855,22) rotate(-15)"/>
-      <use href="#leaf" transform="translate(1035,24) rotate(10)"/>
-      <use href="#leaf" transform="translate(1215,22) rotate(-20)"/>
-
-      <!-- ═══ BOTTOM BORDER ═══ -->
-      <path d="M20,878 Q360,860 720,878 Q1080,896 1420,878" class="fl" stroke-width="0.7"/>
-      <use href="#rose" transform="translate(20,878)"/>
-      <use href="#rose" transform="translate(180,874)"/>
-      <use href="#rose" transform="translate(360,878)"/>
-      <use href="#rose" transform="translate(540,876)"/>
-      <use href="#rose" transform="translate(720,878)"/>
-      <use href="#rose" transform="translate(900,876)"/>
-      <use href="#rose" transform="translate(1080,878)"/>
-      <use href="#rose" transform="translate(1260,876)"/>
-      <use href="#rose" transform="translate(1420,878)"/>
-      <use href="#blossom" transform="translate(90,870)"/>
-      <use href="#blossom" transform="translate(270,874)"/>
-      <use href="#blossom" transform="translate(450,878)"/>
-      <use href="#blossom" transform="translate(630,874)"/>
-      <use href="#blossom" transform="translate(810,878)"/>
-      <use href="#blossom" transform="translate(990,874)"/>
-      <use href="#blossom" transform="translate(1170,870)"/>
-      <use href="#blossom" transform="translate(1350,876)"/>
-
-      <!-- ═══ LEFT BORDER ═══ -->
-      <path d="M20,20 Q38,225 22,450 Q6,675 20,878" class="fl" stroke-width="0.7"/>
-      <use href="#rose" transform="translate(22,100)"/>
-      <use href="#rose" transform="translate(20,200)"/>
-      <use href="#rose" transform="translate(22,300)"/>
-      <use href="#rose" transform="translate(20,400)"/>
-      <use href="#rose" transform="translate(22,500)"/>
-      <use href="#rose" transform="translate(20,600)"/>
-      <use href="#rose" transform="translate(22,700)"/>
-      <use href="#rose" transform="translate(20,800)"/>
-      <use href="#blossom" transform="translate(30,150)"/>
-      <use href="#blossom" transform="translate(28,250)"/>
-      <use href="#blossom" transform="translate(30,350)"/>
-      <use href="#blossom" transform="translate(28,450)"/>
-      <use href="#blossom" transform="translate(30,550)"/>
-      <use href="#blossom" transform="translate(28,650)"/>
-      <use href="#blossom" transform="translate(30,750)"/>
-
-      <!-- ═══ RIGHT BORDER ═══ -->
-      <path d="M1420,20 Q1402,225 1418,450 Q1434,675 1420,878" class="fl" stroke-width="0.7"/>
-      <use href="#rose" transform="translate(1418,100)"/>
-      <use href="#rose" transform="translate(1420,200)"/>
-      <use href="#rose" transform="translate(1418,300)"/>
-      <use href="#rose" transform="translate(1420,400)"/>
-      <use href="#rose" transform="translate(1418,500)"/>
-      <use href="#rose" transform="translate(1420,600)"/>
-      <use href="#rose" transform="translate(1418,700)"/>
-      <use href="#rose" transform="translate(1420,800)"/>
-      <use href="#blossom" transform="translate(1410,150)"/>
-      <use href="#blossom" transform="translate(1412,250)"/>
-      <use href="#blossom" transform="translate(1410,350)"/>
-      <use href="#blossom" transform="translate(1412,450)"/>
-      <use href="#blossom" transform="translate(1410,550)"/>
-      <use href="#blossom" transform="translate(1412,650)"/>
-      <use href="#blossom" transform="translate(1410,750)"/>
-
-      <!-- ═══ CORNER CLUSTERS ═══ -->
-      <!-- Top-left corner -->
-      <use href="#rose" transform="translate(55,55) scale(1.6)"/>
-      <use href="#blossom" transform="translate(90,45)"/>
-      <use href="#blossom" transform="translate(48,88)"/>
-      <use href="#leaf" transform="translate(72,60) rotate(40)"/>
-      <use href="#leaf" transform="translate(55,80) rotate(-30)"/>
-
-      <!-- Top-right corner -->
-      <use href="#rose" transform="translate(1385,55) scale(1.6)"/>
-      <use href="#blossom" transform="translate(1350,45)"/>
-      <use href="#blossom" transform="translate(1392,88)"/>
-      <use href="#leaf" transform="translate(1368,60) rotate(-40)"/>
-      <use href="#leaf" transform="translate(1385,80) rotate(30)"/>
-
-      <!-- Bottom-left corner -->
-      <use href="#rose" transform="translate(55,845) scale(1.6)"/>
-      <use href="#blossom" transform="translate(90,855)"/>
-      <use href="#blossom" transform="translate(48,812)"/>
-      <use href="#leaf" transform="translate(72,840) rotate(-40)"/>
-      <use href="#leaf" transform="translate(55,820) rotate(30)"/>
-
-      <!-- Bottom-right corner -->
-      <use href="#rose" transform="translate(1385,845) scale(1.6)"/>
-      <use href="#blossom" transform="translate(1350,855)"/>
-      <use href="#blossom" transform="translate(1392,812)"/>
-      <use href="#leaf" transform="translate(1368,840) rotate(40)"/>
-      <use href="#leaf" transform="translate(1385,820) rotate(-30)"/>
-    </svg>
-  </div>
 
   <!-- Text & CTAs; centered -->
   <div class="hero-banner-content">
-    <span class="hero-eyebrow">Founder &nbsp;·&nbsp; Entrepreneur &nbsp;·&nbsp; Philanthropist</span>
-    <h1 class="hero-banner-title">Kay</h1>
     <div class="hero-banner-buttons">
       <a href="#focus" class="btn-hero-gold">Explore My Work</a>
       <a href="#connect" class="btn-hero-outline">Work With Me</a>
@@ -635,7 +431,6 @@
         <p>I'm Kay, an entrepreneur, founder, and philanthropist building across travel, media, and impact.</p>
         <p>After traveling to over 70 countries with kids in tow, I turned lived experience into a global ecosystem, building businesses, platforms, and experiences that help people live with intention, build freedom, and see the world differently.</p>
         <p>My journey wasn't mapped out; it was shaped through experience, perspective, and a decision to live life on my own terms. Over time, that became more than just a lifestyle, it became the foundation for everything I build.</p>
-        <p>Today, my work sits at the intersection of travel, lifestyle, and global experiences; creating opportunities for people to explore more, think differently, and expand how they see the world.</p>
       </div>
     </div>
   </div>
