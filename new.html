@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Innovasol Enterprise — Global Media, Travel & Impact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ─── RESET & BASE ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink:     #0B0B0E;
+    --paper:   #F7F4EE;
+    --gold:    #C8922A;
+    --gold-lt: #E6BA6A;
+    --cream:   #FAF8F3;
+    --muted:   #7A7469;
+    --rule:    rgba(200,146,42,.18);
+    --nav-h:   80px;
+    --ff-display: 'Cormorant Garamond', Georgia, serif;
+    --ff-ui:      'Syne', sans-serif;
+    --ff-body:    'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--ff-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  img { display: block; max-width: 100%; }
+  a  { color: inherit; text-decoration: none; }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: .45;
+  }
+
+  /* ─── NAVIGATION ─── */
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    display: flex; align-items: center;
+    padding: 0 5vw;
+    z-index: 1000;
+    transition: background .4s, backdrop-filter .4s;
+  }
+  #nav.scrolled {
+    background: rgba(11,11,14,.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-ui);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: .04em;
+    color: var(--paper);
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem;
+    margin-left: auto;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--ff-ui);
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(247,244,238,.6);
+    transition: color .25s;
+    cursor: pointer;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--gold-lt); }
+
+  .nav-cta {
+    margin-left: 2.5rem;
+    padding: .5rem 1.4rem;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    font-family: var(--ff-ui);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    cursor: pointer;
+    transition: background .25s, color .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* Hamburger */
+  .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; margin-left: auto; }
+  .nav-burger span { display: block; width: 26px; height: 1.5px; background: var(--paper); transition: .3s; }
+
+  /* Mobile nav drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed; inset: 0;
+    background: var(--ink);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-family: var(--ff-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--paper);
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .nav-drawer a:hover { color: var(--gold); }
+  .drawer-close {
+    position: absolute; top: 2rem; right: 5vw;
+    font-size: 2rem; cursor: pointer; color: var(--muted);
+  }
+
+  /* ─── PAGE SYSTEM ─── */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ─── SECTION UTILITIES ─── */
+  .section { padding: 120px 5vw; }
+  .section-sm { padding: 80px 5vw; }
+
+  .eyebrow {
+    font-family: var(--ff-ui);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; width: 2rem; height: 1px;
+    background: var(--gold);
+  }
+
+  .display-headline {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 2rem;
+    font-family: var(--ff-ui);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+  }
+  .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--paper);
+    border-color: rgba(247,244,238,.35);
+  }
+  .btn-outline:hover { border-color: var(--paper); }
+
+  .btn svg { width: 14px; height: 14px; }
+
+  .gold-rule {
+    display: block; width: 3rem; height: 1px;
+    background: var(--gold); margin: 2rem 0;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.6); }
+  }
+
+  .anim-up  { opacity: 0; animation: fadeUp .8s ease forwards; }
+  .anim-in  { opacity: 0; animation: fadeIn .8s ease forwards; }
+  .delay-1  { animation-delay: .15s; }
+  .delay-2  { animation-delay: .3s; }
+  .delay-3  { animation-delay: .45s; }
+  .delay-4  { animation-delay: .6s; }
+
+  /* ─── ═══════════════════════════════════════ ─── */
+  /* ─── HOME PAGE                               ─── */
+  /* ─── ═══════════════════════════════════════ ─── */
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding-top: var(--nav-h);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 30%, rgba(200,146,42,.09) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 15% 70%, rgba(200,146,42,.05) 0%, transparent 55%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-content {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vh 5vw 4vh;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: var(--ff-ui);
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+  .hero-tag-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  .hero-h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(3.2rem, 8vw, 8rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -.02em;
+    max-width: 900px;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+  .hero-sub {
+    margin-top: 2.5rem;
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(247,244,238,.65);
+  }
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .hero-scroll {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative; z-index: 1;
+    padding: 2.5rem 5vw;
+  }
+  .hero-scroll-line {
+    width: 60px; height: 1px;
+    background: var(--muted);
+    position: relative; overflow: hidden;
+  }
+  .hero-scroll-line::after {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--gold-lt);
+    animation: slideIn 2s ease-in-out infinite;
+  }
+  @keyframes slideIn {
+    0%   { left: -100%; }
+    50%  { left: 100%;  }
+    100% { left: 100%;  }
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.2rem 0;
+    background: rgba(200,146,42,.03);
+  }
+  .ticker-track {
+    display: flex; gap: 0;
+    width: max-content;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-item {
+    display: flex; align-items: center; gap: 2rem;
+    padding: 0 2.5rem;
+    font-family: var(--ff-ui);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .ticker-item .sep { color: var(--gold); font-size: 1.2rem; line-height: 1; }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-strip-text h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .about-strip-text h2 em { font-style: italic; color: var(--gold-lt); }
+  .about-strip-text p {
+    margin-top: 1.5rem;
+    color: rgba(247,244,238,.65);
+    font-size: .95rem;
+    line-height: 1.9;
+  }
+  .about-strip-visual {
+    position: relative;
+  }
+  .about-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 160px;
+    gap: 12px;
+  }
+  .mosaic-block {
+    border-radius: 3px;
+    background: rgba(200,146,42,.07);
+    border: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 1.2rem;
+  }
+  .mosaic-block:first-child { grid-row: span 2; }
+  .mosaic-label {
+    font-family: var(--ff-ui);
+    font-size: .66rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .mosaic-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(200,146,42,.06), transparent 60%);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat-item {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-right: 1px solid var(--rule);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--ff-display);
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--gold-lt);
+    line-height: 1;
+  }
+  .stat-label {
+    margin-top: .5rem;
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* DIVISIONS PREVIEW */
+  .divisions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+  .division-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    transition: background .3s;
+    position: relative; overflow: hidden;
+  }
+  .division-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s;
+  }
+  .division-card:hover { background: rgba(200,146,42,.05); }
+  .division-card:hover::before { transform: scaleX(1); }
+  .div-num {
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .2em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .div-name {
+    font-family: var(--ff-display);
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: .8rem;
+  }
+  .div-sub {
+    font-size: .8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .div-arrow {
+    margin-top: 2rem;
+    width: 28px; height: 28px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    font-size: .8rem;
+    transition: all .3s;
+  }
+  .division-card:hover .div-arrow {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(200,146,42,.1);
+  }
+
+  /* VISION / MISSION */
+  .vision-mission {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border-radius: 4px; overflow: hidden;
+  }
+  .vm-block {
+    background: rgba(200,146,42,.03);
+    padding: 5rem 4rem;
+    border: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .vm-block:hover { border-color: var(--rule); }
+  .vm-label {
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .vm-block h3 {
+    font-family: var(--ff-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+  .vm-block p { color: rgba(247,244,238,.6); font-size: .9rem; line-height: 1.9; }
+
+  /* WHY STRIP */
+  .why-cards {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .why-card {
+    padding: 2.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: rgba(200,146,42,.02);
+    transition: border-color .3s, background .3s;
+  }
+  .why-card:hover {
+    border-color: rgba(200,146,42,.3);
+    background: rgba(200,146,42,.04);
+  }
+  .why-icon {
+    width: 42px; height: 42px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .why-card h4 {
+    font-family: var(--ff-ui);
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    margin-bottom: .8rem;
+  }
+  .why-card p { font-size: .85rem; color: var(--muted); line-height: 1.75; }
+
+  /* PARTNER CTA */
+  .partner-cta {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(200,146,42,.08), rgba(200,146,42,.02));
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 7rem 5vw;
+    position: relative; overflow: hidden;
+  }
+  .partner-cta::before {
+    content: '';
+    position: absolute;
+    top: -60%;left: 50%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,146,42,.12), transparent 70%);
+    transform: translateX(-50%);
+  }
+  .partner-cta h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .partner-cta p {
+    max-width: 560px; margin: 0 auto 2.5rem;
+    color: rgba(247,244,238,.6);
+    font-size: .95rem; line-height: 1.9;
+  }
+  .partner-cta .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 4rem 5vw 2.5rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .footer-brand p {
+    margin-top: 1rem;
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 240px;
+  }
+  .footer-col h5 {
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col ul li a {
+    font-size: .82rem; color: var(--muted);
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--paper); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 2rem;
+    font-family: var(--ff-ui);
+    font-size: .7rem;
+    letter-spacing: .08em;
+    color: rgba(122,116,105,.5);
+  }
+  .footer-bottom a { color: var(--gold); transition: opacity .2s; }
+  .footer-bottom a:hover { opacity: .7; }
+
+  /* ─── ═══════════════════════════════════════ ─── */
+  /* ─── ABOUT PAGE                              ─── */
+  /* ─── ═══════════════════════════════════════ ─── */
+  .page-hero {
+    min-height: 60vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: calc(var(--nav-h) + 6vh) 5vw 8vh;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 20%, rgba(200,146,42,.08), transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,146,42,.04), transparent 55%);
+  }
+  .page-hero-bg .grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,146,42,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,146,42,.035) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .page-hero h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    position: relative;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-lt); }
+  .page-hero p {
+    margin-top: 1.5rem;
+    max-width: 600px;
+    color: rgba(247,244,238,.6);
+    font-size: 1rem; line-height: 1.85;
+    position: relative;
+  }
+
+  .about-lead {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-lead-text { font-size: 1.05rem; color: rgba(247,244,238,.75); line-height: 1.9; }
+  .about-lead-text p + p { margin-top: 1.2rem; }
+  .about-lead-aside {
+    border-left: 1px solid var(--rule);
+    padding-left: 3rem;
+  }
+  .aside-quote {
+    font-family: var(--ff-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--gold-lt);
+  }
+  .aside-attrs {
+    margin-top: 2rem;
+    display: flex; flex-direction: column; gap: .8rem;
+  }
+  .attr-row {
+    display: flex; justify-content: space-between;
+    padding: .8rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: .82rem;
+  }
+  .attr-label { color: var(--muted); font-family: var(--ff-ui); letter-spacing: .06em; font-size: .73rem; text-transform: uppercase; }
+  .attr-val { color: var(--paper); font-family: var(--ff-ui); font-weight: 500; }
+
+  /* ─── ═══════════════════════════════════════ ─── */
+  /* ─── DIVISIONS PAGE                          ─── */
+  /* ─── ═══════════════════════════════════════ ─── */
+  .div-full {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+    padding: 6rem 5vw;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .div-full:nth-child(even) .div-full-text { order: 2; }
+  .div-full:nth-child(even) .div-full-visual { order: 1; }
+  .div-full-num {
+    font-family: var(--ff-display);
+    font-size: 6rem;
+    font-weight: 300;
+    color: rgba(200,146,42,.12);
+    line-height: 1;
+    position: absolute;
+    top: 4rem; right: 5vw;
+  }
+  .div-full:nth-child(even) .div-full-num { right: auto; left: 5vw; }
+  .div-badge {
+    display: inline-block;
+    padding: .4rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .div-full-text h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .div-full-text p { color: rgba(247,244,238,.65); line-height: 1.9; font-size: .95rem; }
+  .div-brands {
+    margin-top: 2rem;
+  }
+  .div-brands h5 {
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .brand-tag {
+    padding: .45rem 1rem;
+    background: rgba(200,146,42,.06);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-family: var(--ff-ui);
+    font-size: .73rem;
+    letter-spacing: .08em;
+    color: var(--paper);
+  }
+  .div-full-visual {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .div-visual-card {
+    background: rgba(200,146,42,.04);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .div-visual-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,146,42,.04), transparent);
+  }
+  .dvc-label {
+    font-family: var(--ff-ui);
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .6rem;
+  }
+  .dvc-title {
+    font-family: var(--ff-display);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  .dvc-desc { font-size: .82rem; color: var(--muted); margin-top: .5rem; line-height: 1.7; }
+  .div-focus-areas {
+    margin-top: 2rem;
+    display: flex; flex-wrap: wrap; gap: .6rem;
+  }
+  .focus-chip {
+    padding: .35rem .9rem;
+    background: rgba(247,244,238,.04);
+    border: 1px solid rgba(247,244,238,.1);
+    border-radius: 20px;
+    font-size: .75rem;
+    color: rgba(247,244,238,.6);
+    font-family: var(--ff-ui);
+  }
+
+  /* ─── ═══════════════════════════════════════ ─── */
+  /* ─── CONTACT PAGE                            ─── */
+  /* ─── ═══════════════════════════════════════ ─── */
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 6rem; align-items: start;
+  }
+  .contact-info h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .contact-info h2 em { font-style: italic; color: var(--gold-lt); }
+  .contact-info > p { color: rgba(247,244,238,.6); font-size: .9rem; line-height: 1.9; margin-bottom: 3rem; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cd-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; color: var(--gold);
+  }
+  .cd-label { font-family: var(--ff-ui); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cd-val { font-size: .9rem; margin-top: .2rem; }
+  .contact-form {
+    background: rgba(200,146,42,.03);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 3rem;
+  }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label {
+    display: block;
+    font-family: var(--ff-ui);
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .6rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(247,244,238,.04);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: .85rem 1rem;
+    color: var(--paper);
+    font-family: var(--ff-body);
+    font-size: .9rem;
+    outline: none;
+    transition: border-color .25s;
+    appearance: none;
+  }
+  .form-group select option { background: #1a1a1e; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit { width: 100%; padding: 1rem; font-size: .8rem; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .grid-4, .divisions-grid { grid-template-columns: repeat(2,1fr); }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .stats-bar .stat-item:nth-child(2) { border-right: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .div-full { gap: 3rem; }
+  }
+
+  @media (max-width: 768px) {
+    :root { --nav-h: 68px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-burger { display: flex; }
+    .grid-2, .about-strip, .about-lead,
+    .contact-layout, .vision-mission,
+    .why-cards { grid-template-columns: 1fr; }
+    .about-strip-visual { display: none; }
+    .div-full { grid-template-columns: 1fr; padding: 4rem 5vw; }
+    .div-full:nth-child(even) .div-full-text { order: 1; }
+    .div-full:nth-child(even) .div-full-visual { order: 2; }
+    .div-full-num { display: none; }
+    .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; gap: .8rem; text-align: center; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .divisions-grid { grid-template-columns: 1fr; }
+    .hero-h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
+    .section { padding: 80px 5vw; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 2rem; }
+    .about-lead-aside { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+    .vm-block { padding: 3rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="nav-logo">INNOVASOL<span>.</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">Who We Are</a></li>
+    <li><a onclick="showPage('divisions')" id="nav-divisions">Divisions</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta" onclick="showPage('contact')">Partner With Us</div>
+  <div class="nav-burger" onclick="toggleDrawer()" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-drawer" id="drawer">
+  <div class="drawer-close" onclick="toggleDrawer()">✕</div>
+  <a onclick="showPage('home');toggleDrawer()">Home</a>
+  <a onclick="showPage('about');toggleDrawer()">Who We Are</a>
+  <a onclick="showPage('divisions');toggleDrawer()">Divisions</a>
+  <a onclick="showPage('contact');toggleDrawer()">Partner With Us</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HOME PAGE                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content">
+      <div class="hero-tag anim-up">
+        <span class="hero-tag-dot"></span>
+        Global Media, Travel &amp; Impact Enterprise
+      </div>
+      <h1 class="hero-h1 anim-up delay-1">
+        Shaping the<br/>
+        Future of <em>Media,</em><br/>
+        Travel &amp; Global Impact
+      </h1>
+      <p class="hero-sub anim-up delay-2">
+        Innovasol Enterprise is a global parent company building brands, stories, and experiences that connect cultures, inspire audiences, and create meaningful worldwide impact.
+      </p>
+      <div class="hero-actions anim-up delay-3">
+        <div class="btn btn-gold" onclick="showPage('divisions')">
+          Explore Our Brands
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
+        </div>
+        <div class="btn btn-outline" onclick="showPage('contact')">Partner With Us</div>
+      </div>
+    </div>
+    <div class="hero-scroll anim-in delay-4">
+      <span class="hero-scroll-line"></span>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <div class="ticker-item">Media &amp; Entertainment <span class="sep">✦</span></div>
+      <div class="ticker-item">Travel &amp; Tourism <span class="sep">✦</span></div>
+      <div class="ticker-item">Lifestyle &amp; Influence <span class="sep">✦</span></div>
+      <div class="ticker-item">Digital Content <span class="sep">✦</span></div>
+      <div class="ticker-item">Social Impact <span class="sep">✦</span></div>
+      <div class="ticker-item">Cultural Experiences <span class="sep">✦</span></div>
+      <div class="ticker-item">Brand Strategy <span class="sep">✦</span></div>
+      <div class="ticker-item">Education <span class="sep">✦</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item">Media &amp; Entertainment <span class="sep">✦</span></div>
+      <div class="ticker-item">Travel &amp; Tourism <span class="sep">✦</span></div>
+      <div class="ticker-item">Lifestyle &amp; Influence <span class="sep">✦</span></div>
+      <div class="ticker-item">Digital Content <span class="sep">✦</span></div>
+      <div class="ticker-item">Social Impact <span class="sep">✦</span></div>
+      <div class="ticker-item">Cultural Experiences <span class="sep">✦</span></div>
+      <div class="ticker-item">Brand Strategy <span class="sep">✦</span></div>
+      <div class="ticker-item">Education <span class="sep">✦</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <section class="section">
+    <div class="about-strip">
+      <div class="about-strip-text">
+        <div class="eyebrow">Who We Are</div>
+        <h2>A Global <em>Creative</em><br/>Force for Connection</h2>
+        <p>Innovasol Enterprise is a global media, travel, and brand experience company headquartered in the United States with teams across North America and Africa.</p>
+        <p>We create and manage brands that blend storytelling, strategy, travel, culture, and impact to inspire global audiences and build meaningful human connections.</p>
+        <span class="gold-rule"></span>
+        <div class="btn btn-outline" onclick="showPage('about')">Our Full Story</div>
+      </div>
+      <div class="about-strip-visual">
+        <div class="about-mosaic">
+          <div class="mosaic-block" style="background: linear-gradient(160deg,rgba(200,146,42,.1),rgba(200,146,42,.03));">
+            <span class="mosaic-label">Rooted in Culture</span>
+          </div>
+          <div class="mosaic-block">
+            <span class="mosaic-label">North America</span>
+          </div>
+          <div class="mosaic-block">
+            <span class="mosaic-label">Africa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Specialized Divisions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Industries Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Continents Present</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Stories Told</div>
+    </div>
+  </div>
+
+  <!-- DIVISIONS PREVIEW -->
+  <section class="section">
+    <div class="eyebrow">Our Structure</div>
+    <h2 class="display-headline" style="font-size:clamp(2rem,4vw,3.5rem); max-width:600px; line-height:1.1;">
+      Four Divisions, One <em style="font-style:italic;color:var(--gold-lt);">Unified</em> Vision
+    </h2>
+    <div class="divisions-grid">
+      <div class="division-card" onclick="showPage('divisions')">
+        <div class="div-num">01</div>
+        <div class="div-name">Innovasol Collective</div>
+        <div class="div-sub">Lifestyle &amp; Influence Division</div>
+        <div class="div-arrow">→</div>
+      </div>
+      <div class="division-card" onclick="showPage('divisions')">
+        <div class="div-num">02</div>
+        <div class="div-name">Innovasol Travel</div>
+        <div class="div-sub">Travel &amp; Experiences Division</div>
+        <div class="div-arrow">→</div>
+      </div>
+      <div class="division-card" onclick="showPage('divisions')">
+        <div class="div-num">03</div>
+        <div class="div-name">Innovasol Media</div>
+        <div class="div-sub">Digital Media &amp; Creative Division</div>
+        <div class="div-arrow">→</div>
+      </div>
+      <div class="division-card" onclick="showPage('divisions')">
+        <div class="div-num">04</div>
+        <div class="div-name">Innovasol Impact</div>
+        <div class="div-sub">Philanthropy &amp; Social Impact Division</div>
+        <div class="div-arrow">→</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section class="section-sm" style="padding-top:0;">
+    <div class="vision-mission">
+      <div class="vm-block">
+        <div class="vm-label">Our Vision</div>
+        <h3>To become a leading global brand that inspires <em style="font-style:italic;color:var(--gold-lt);">connection, creativity, and change</em></h3>
+        <p>Through strategy, storytelling, and experiences that transcend borders and transform communities worldwide.</p>
+      </div>
+      <div class="vm-block" style="border-left:1px solid var(--rule);">
+        <div class="vm-label">Our Mission</div>
+        <h3>Creating meaningful impact by building <em style="font-style:italic;color:var(--gold-lt);">brands, media platforms, and experiences</em></h3>
+        <p>That connect, empower, and inspire people worldwide — from digital storytelling to curated real-world journeys.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY INNOVASOL -->
+  <section class="section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+      <div>
+        <div class="eyebrow">Why Innovasol</div>
+        <h2 class="display-headline" style="font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;">
+          Built Different,<br/><em style="font-style:italic;color:var(--gold-lt);">By Design</em>
+        </h2>
+        <span class="gold-rule"></span>
+        <p style="color:rgba(247,244,238,.6);font-size:.9rem;line-height:1.9;">Every brand within Innovasol is built with purpose at its core — where creativity meets impact, and strategy serves human connection.</p>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-icon">🌍</div>
+          <h4>Global Perspective</h4>
+          <p>We operate across continents, cultures, and communities with a truly international vision.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">✦</div>
+          <h4>Purpose-Driven Brands</h4>
+          <p>Every brand is built to create meaningful experiences and measurable impact.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📖</div>
+          <h4>Storytelling That Connects</h4>
+          <p>We use media, travel, and culture to create authentic human connection.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🚀</div>
+          <h4>Experiences That Inspire</h4>
+          <p>From digital platforms to real-world journeys, we create moments that leave lasting impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER CTA -->
+  <section class="section-sm" style="padding: 0 5vw 100px;">
+    <div class="partner-cta">
+      <h2>Let's Build Something<br/><em style="font-style:italic;color:var(--gold-lt);">Meaningful</em> Together</h2>
+      <p>Whether you're a creator, brand, organization, or community partner, Innovasol collaborates with people shaping the future through creativity, culture, and impact.</p>
+      <div class="btns">
+        <div class="btn btn-gold" onclick="showPage('contact')">Partner With Us</div>
+        <div class="btn btn-outline" onclick="showPage('contact')">Contact Our Team</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.2rem;">INNOVASOL<span style="color:var(--gold)">.</span></div>
+        <p>A global media, travel, and brand experience company connecting cultures and creating meaningful worldwide impact.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a onclick="showPage('about')">Who We Are</a></li>
+          <li><a onclick="showPage('about')">Vision &amp; Mission</a></li>
+          <li><a onclick="showPage('divisions')">Our Divisions</a></li>
+          <li><a onclick="showPage('contact')">Partner With Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Divisions</h5>
+        <ul>
+          <li><a onclick="showPage('divisions')">Innovasol Collective</a></li>
+          <li><a onclick="showPage('divisions')">Innovasol Travel</a></li>
+          <li><a onclick="showPage('divisions')">Innovasol Media</a></li>
+          <li><a onclick="showPage('divisions')">Innovasol Impact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a>Instagram</a></li>
+          <li><a>LinkedIn</a></li>
+          <li><a>Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Innovasol Enterprise. All rights reserved.</span>
+      <span>Headquartered in the United States · Operations across North America &amp; Africa</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ABOUT PAGE                                      -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"><div class="grid-lines"></div></div>
+    <div class="eyebrow" style="position:relative;">Who We Are</div>
+    <h1>We Are <em>Innovasol</em></h1>
+    <p>A global media, travel, and brand experience company building stories and experiences that connect cultures worldwide.</p>
+  </div>
+
+  <section class="section">
+    <div class="about-lead">
+      <div class="about-lead-text">
+        <div class="eyebrow">Our Story</div>
+        <p>Innovasol Enterprise is a global media, travel, and brand experience company headquartered in the United States with teams across North America and Africa.</p>
+        <p>We create and manage brands that blend storytelling, strategy, travel, culture, and impact to inspire global audiences and build meaningful human connections.</p>
+        <p>Through innovative media, immersive experiences, and community-centered initiatives, we help people explore the world, connect across cultures, and create lasting change.</p>
+        <p>We build and manage purpose-driven brands across media, travel, lifestyle, and social impact. Our work combines creativity, strategy, and global experiences to educate, inspire, and empower communities worldwide.</p>
+        <p>From digital storytelling and creator-led campaigns to curated travel experiences and philanthropic initiatives, Innovasol transforms ideas into experiences that connect people globally.</p>
+      </div>
+      <div class="about-lead-aside">
+        <p class="aside-quote">"Inspiring connection, creativity, and change through strategy, storytelling, and experiences."</p>
+        <div class="aside-attrs">
+          <div class="attr-row">
+            <span class="attr-label">Headquarters</span>
+            <span class="attr-val">United States</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-label">Operations</span>
+            <span class="attr-val">North America &amp; Africa</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-label">Divisions</span>
+            <span class="attr-val">4 Specialized Units</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-label">Focus</span>
+            <span class="attr-val">Media, Travel &amp; Impact</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-label">Positioning</span>
+            <span class="attr-val">Global Media &amp; Impact Enterprise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Specialized Divisions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Industries Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Continents Present</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Stories Told</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+      <div>
+        <div class="eyebrow">Our Vision</div>
+        <h2 class="display-headline" style="font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;margin-bottom:1.5rem;">
+          To become a leading global brand that inspires <em style="font-style:italic;color:var(--gold-lt);">connection, creativity, and change</em>
+        </h2>
+        <p style="color:rgba(247,244,238,.6);font-size:.9rem;line-height:1.9;">Through strategy, storytelling, and experiences that transcend borders and transform communities worldwide.</p>
+      </div>
+      <div style="border-left:1px solid var(--rule);padding-left:3rem;">
+        <div class="eyebrow">Our Mission</div>
+        <h2 class="display-headline" style="font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;margin-bottom:1.5rem;">
+          To create meaningful impact by building <em style="font-style:italic;color:var(--gold-lt);">brands, media platforms, and experiences</em>
+        </h2>
+        <p style="color:rgba(247,244,238,.6);font-size:.9rem;line-height:1.9;">That connect, empower, and inspire people worldwide — from digital storytelling to curated real-world journeys.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" style="padding-top:0;padding-bottom:100px;">
+    <div class="partner-cta">
+      <h2>Ready to <em style="font-style:italic;color:var(--gold-lt);">Partner</em>?</h2>
+      <p>Explore our divisions or reach out to begin a conversation about what we can build together.</p>
+      <div class="btns">
+        <div class="btn btn-gold" onclick="showPage('divisions')">Explore Divisions</div>
+        <div class="btn btn-outline" onclick="showPage('contact')">Get In Touch</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.2rem;">INNOVASOL<span style="color:var(--gold)">.</span></div>
+        <p>A global media, travel, and brand experience company connecting cultures worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">Who We Are</a></li>
+          <li><a onclick="showPage('divisions')">Our Divisions</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Divisions</h5>
+        <ul>
+          <li><a onclick="showPage('divisions')">Collective</a></li>
+          <li><a onclick="showPage('divisions')">Travel</a></li>
+          <li><a onclick="showPage('divisions')">Media</a></li>
+          <li><a onclick="showPage('divisions')">Impact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a>Instagram</a></li>
+          <li><a>LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Innovasol Enterprise.</span>
+      <span>US · North America · Africa</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- DIVISIONS PAGE                                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page" id="page-divisions">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"><div class="grid-lines"></div></div>
+    <div class="eyebrow" style="position:relative;">Company Structure</div>
+    <h1>Our Four <em>Divisions</em></h1>
+    <p>Innovasol Enterprise operates through four specialized divisions, each focused on a distinct area of influence and impact.</p>
+  </div>
+
+  <!-- DIVISION 01 -->
+  <div class="div-full">
+    <div class="div-full-num">01</div>
+    <div class="div-full-text">
+      <span class="div-badge">Lifestyle &amp; Influence Division</span>
+      <h2>Innovasol<br/><em style="font-style:italic;color:var(--gold-lt);">Collective</em></h2>
+      <p>Innovasol Collective is a global lifestyle and influence division focused on intentional living, family travel, culture, and global connection.</p>
+      <p style="margin-top:1rem;">Through storytelling, curated experiences, and community engagement, the division inspires families to explore the world, embrace cultural learning, and raise globally minded citizens.</p>
+      <div class="div-focus-areas">
+        <span class="focus-chip">Travel</span>
+        <span class="focus-chip">Lifestyle</span>
+        <span class="focus-chip">Family</span>
+        <span class="focus-chip">Cultural Connection</span>
+      </div>
+      <div class="div-brands" style="margin-top:2rem;">
+        <h5>Brands Under This Division</h5>
+        <div class="brand-tags">
+          <span class="brand-tag">The Mom Trotter</span>
+          <span class="brand-tag">The Dad Trotter</span>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <div class="btn btn-gold" onclick="showPage('contact')">Enquire About This Division</div>
+      </div>
+    </div>
+    <div class="div-full-visual">
+      <div class="div-visual-card">
+        <div class="dvc-label">Brand</div>
+        <div class="dvc-title">The Mom Trotter</div>
+        <div class="dvc-desc">A lifestyle and travel brand empowering mothers to explore the world with intention and joy.</div>
+      </div>
+      <div class="div-visual-card">
+        <div class="dvc-label">Brand</div>
+        <div class="dvc-title">The Dad Trotter</div>
+        <div class="dvc-desc">A platform celebrating fathers navigating global adventures and raising culturally aware families.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 02 -->
+  <div class="div-full">
+    <div class="div-full-num">02</div>
+    <div class="div-full-text">
+      <span class="div-badge">Travel &amp; Experiences Division</span>
+      <h2>Innovasol<br/><em style="font-style:italic;color:var(--gold-lt);">Travel</em></h2>
+      <p>Innovasol Travel is the core execution and experience division of Innovasol Enterprise, designing and managing immersive, purpose-driven travel experiences that educate, inspire, and connect communities around the world.</p>
+      <p style="margin-top:1rem;">By transforming digital audiences into real-world experiences, Innovasol Travel creates journeys rooted in culture, discovery, and global citizenship.</p>
+      <div class="div-brands" style="margin-top:2rem;">
+        <h5>Brands Under This Division</h5>
+        <div class="brand-tags">
+          <span class="brand-tag">Rooted Journeys</span>
+          <span class="brand-tag">Black Kids Do Travel</span>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <div class="btn btn-gold" onclick="showPage('contact')">Plan a Journey</div>
+      </div>
+    </div>
+    <div class="div-full-visual">
+      <div class="div-visual-card" style="border-color:rgba(200,146,42,.25);">
+        <div class="dvc-label">Featured Brand</div>
+        <div class="dvc-title">Rooted Journeys</div>
+        <div class="dvc-desc">Curated group trips, youth camps, educational tours, and custom travel experiences that promote curiosity, confidence, and cultural awareness. Connecting travelers deeply with people, history, and place.</div>
+      </div>
+      <div class="div-visual-card">
+        <div class="dvc-label">Brand</div>
+        <div class="dvc-title">Black Kids Do Travel</div>
+        <div class="dvc-desc">A platform celebrating and empowering Black families to explore the world confidently and joyfully.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 03 -->
+  <div class="div-full">
+    <div class="div-full-num">03</div>
+    <div class="div-full-text">
+      <span class="div-badge">Digital Media &amp; Creative Division</span>
+      <h2>Innovasol<br/><em style="font-style:italic;color:var(--gold-lt);">Media</em></h2>
+      <p>Innovasol Media develops and manages social-first digital content designed to educate, entertain, and inspire audiences worldwide.</p>
+      <p style="margin-top:1rem;">Through authentic storytelling, innovative formats, and culturally relevant media, the division transforms everyday moments into powerful narratives and global conversations.</p>
+      <div class="div-brands" style="margin-top:2rem;">
+        <h5>Media Brands &amp; Initiatives</h5>
+        <div class="brand-tags">
+          <span class="brand-tag">Africa Street Games</span>
+          <span class="brand-tag">Africa Academic Games</span>
+          <span class="brand-tag">Cooking — Storytelling Through Food</span>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <div class="btn btn-gold" onclick="showPage('contact')">Collaborate With Us</div>
+      </div>
+    </div>
+    <div class="div-full-visual">
+      <div class="div-visual-card">
+        <div class="dvc-label">Initiative</div>
+        <div class="dvc-title">Africa Street Games</div>
+        <div class="dvc-desc">Celebrating the energy, culture, and community spirit of street games across Africa through digital storytelling.</div>
+      </div>
+      <div class="div-visual-card">
+        <div class="dvc-label">Initiative</div>
+        <div class="dvc-title">Africa Academic Games</div>
+        <div class="dvc-desc">Showcasing academic excellence and intellectual talent across African communities on a global stage.</div>
+      </div>
+      <div class="div-visual-card">
+        <div class="dvc-label">Initiative</div>
+        <div class="dvc-title">Cooking — Storytelling Through Food</div>
+        <div class="dvc-desc">Using culinary culture and food heritage to build bridges, share stories, and celebrate diversity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVISION 04 -->
+  <div class="div-full">
+    <div class="div-full-num">04</div>
+    <div class="div-full-text">
+      <span class="div-badge">Philanthropy &amp; Social Impact Division</span>
+      <h2>Innovasol<br/><em style="font-style:italic;color:var(--gold-lt);">Impact</em></h2>
+      <p>Innovasol Impact leads community-centered initiatives focused on empowerment, representation, education, and sustainable change.</p>
+      <p style="margin-top:1rem;">The division supports nonprofit organizations and impact-driven programs that transform storytelling into measurable community outcomes.</p>
+      <div class="div-brands" style="margin-top:2rem;">
+        <h5>Impact Initiatives</h5>
+        <div class="brand-tags">
+          <span class="brand-tag">Gaia Worldwide Foundation</span>
+          <span class="brand-tag">Direct Givebacks</span>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <div class="btn btn-gold" onclick="showPage('contact')">Join Our Impact Mission</div>
+      </div>
+    </div>
+    <div class="div-full-visual">
+      <div class="div-visual-card" style="border-color:rgba(200,146,42,.25);">
+        <div class="dvc-label">Foundation</div>
+        <div class="dvc-title">Gaia Worldwide Foundation</div>
+        <div class="dvc-desc">Empowerment &amp; Education — A nonprofit initiative transforming communities through education, representation, and sustained support.</div>
+      </div>
+      <div class="div-visual-card">
+        <div class="dvc-label">Initiative</div>
+        <div class="dvc-title">Direct Givebacks</div>
+        <div class="dvc-desc">Dignity-Centered Community Support — Providing direct, meaningful support to communities with respect and care at the core.</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-sm" style="padding-bottom:100px;">
+    <div class="partner-cta">
+      <h2>Interested in <em style="font-style:italic;color:var(--gold-lt);">Partnering</em>?</h2>
+      <p>Connect with us to explore collaboration opportunities across any of our divisions.</p>
+      <div class="btns">
+        <div class="btn btn-gold" onclick="showPage('contact')">Start a Conversation</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.2rem;">INNOVASOL<span style="color:var(--gold)">.</span></div>
+        <p>Four divisions. One unified vision for global impact.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">Who We Are</a></li>
+          <li><a onclick="showPage('divisions')">Divisions</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Divisions</h5>
+        <ul>
+          <li><a onclick="showPage('divisions')">Collective</a></li>
+          <li><a onclick="showPage('divisions')">Travel</a></li>
+          <li><a onclick="showPage('divisions')">Media</a></li>
+          <li><a onclick="showPage('divisions')">Impact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a>Instagram</a></li>
+          <li><a>LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Innovasol Enterprise.</span>
+      <span>US · North America · Africa</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CONTACT PAGE                                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"><div class="grid-lines"></div></div>
+    <div class="eyebrow" style="position:relative;">Get In Touch</div>
+    <h1>Let's Build <em>Together</em></h1>
+    <p>Whether you're a creator, brand, organization, or community partner — we want to hear from you.</p>
+  </div>
+
+  <section class="section">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>Partner With <em>Innovasol</em></h2>
+        <p>Innovasol Enterprise collaborates with people and companies shaping the future through creativity, culture, and impact. Tell us about your vision — and let's see what we can build together.</p>
+
+        <div class="contact-detail">
+          <div class="cd-icon">🌍</div>
+          <div>
+            <div class="cd-label">Headquarters</div>
+            <div class="cd-val">United States</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">📍</div>
+          <div>
+            <div class="cd-label">Operations</div>
+            <div class="cd-val">North America &amp; Africa</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">✉️</div>
+          <div>
+            <div class="cd-label">Email</div>
+            <div class="cd-val">hello@innovasolenterprise.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">💼</div>
+          <div>
+            <div class="cd-label">Partnership Inquiries</div>
+            <div class="cd-val">partners@innovasolenterprise.com</div>
+          </div>
+        </div>
+
+        <div style="margin-top:3rem;">
+          <div class="eyebrow">Follow Our Story</div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+            <div class="btn btn-outline" style="padding:.6rem 1.2rem;">Instagram</div>
+            <div class="btn btn-outline" style="padding:.6rem 1.2rem;">LinkedIn</div>
+            <div class="btn btn-outline" style="padding:.6rem 1.2rem;">Twitter / X</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="eyebrow">Send a Message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Organization</label>
+          <input type="text" placeholder="Your company or brand" />
+        </div>
+        <div class="form-group">
+          <label>Area of Interest</label>
+          <select>
+            <option value="">Select a division...</option>
+            <option>Innovasol Collective — Lifestyle &amp; Influence</option>
+            <option>Innovasol Travel — Experiences</option>
+            <option>Innovasol Media — Digital Content</option>
+            <option>Innovasol Impact — Philanthropy</option>
+            <option>General Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Vision</label>
+          <textarea placeholder="Describe your project, goals, or how you'd like to collaborate with Innovasol Enterprise..."></textarea>
+        </div>
+        <button class="btn btn-gold form-submit" onclick="handleSubmit(this)">
+          Send Message
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Partner -->
+  <section class="section" style="padding-top:0;">
+    <div class="eyebrow">Why Partner With Us</div>
+    <h2 class="display-headline" style="font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;max-width:600px;margin-bottom:3rem;">
+      Collaborating with <em style="font-style:italic;color:var(--gold-lt);">Purpose</em> at Every Level
+    </h2>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-icon">🌐</div>
+        <h4>Global Reach</h4>
+        <p>Access audiences and communities across North America and Africa through our established network of brands and platforms.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📡</div>
+        <h4>Multi-Platform Presence</h4>
+        <p>From digital content and social media to in-person experiences and nonprofit impact — we operate across every channel.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>Values-Aligned</h4>
+        <p>We partner with organizations that share our commitment to culture, creativity, education, and authentic storytelling.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h4>Measurable Impact</h4>
+        <p>Every collaboration is designed with clear outcomes — audience growth, community engagement, and real-world change.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:40px;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.2rem;">INNOVASOL<span style="color:var(--gold)">.</span></div>
+        <p>Let's shape the future of media, travel, and global impact — together.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">Who We Are</a></li>
+          <li><a onclick="showPage('divisions')">Divisions</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Divisions</h5>
+        <ul>
+          <li><a onclick="showPage('divisions')">Collective</a></li>
+          <li><a onclick="showPage('divisions')">Travel</a></li>
+          <li><a onclick="showPage('divisions')">Media</a></li>
+          <li><a onclick="showPage('divisions')">Impact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a>Instagram</a></li>
+          <li><a>LinkedIn</a></li>
+          <li><a>Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Innovasol Enterprise. All rights reserved.</span>
+      <span>US · North America · Africa</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+  /* ── Page Router ── */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    restartAnimations();
+  }
+
+  function restartAnimations() {
+    document.querySelectorAll('#page-home.active .anim-up, #page-home.active .anim-in').forEach(el => {
+      el.style.animation = 'none';
+      el.offsetHeight;
+      el.style.animation = '';
+    });
+  }
+
+  /* ── Nav Scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ── Mobile Drawer ── */
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+  }
+
+  /* ── Form Submit ── */
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#2a6e4e';
+    btn.style.borderColor = '#2a6e4e';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.innerHTML = 'Send Message <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 3l4 4-4 4"/></svg>';
+      btn.style = '';
+      btn.className = 'btn btn-gold form-submit';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
