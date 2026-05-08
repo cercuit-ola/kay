@@ -650,9 +650,8 @@
 
   /* NEW JOURNEY */
   .new-journey { padding: 6rem 0; background: #fff; }
-  .new-journey-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1.8fr 1fr; gap: 3rem; align-items: start; }
-  @media (max-width: 1023px) { .new-journey-inner { grid-template-columns: 1fr 1.5fr; gap: 2rem; } .nj-images { display: none; } }
-  @media (max-width: 640px) { .new-journey-inner { grid-template-columns: 1fr; } }
+  .new-journey-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
+  @media (max-width: 767px) { .new-journey-inner { grid-template-columns: 1fr; gap: 2rem; } }
   .nj-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.05; color: var(--foreground); }
   .nj-title em { font-style: italic; color: var(--primary); display: block; }
   .nj-rule { width: 2rem; height: 2px; background: var(--primary); margin: 1.25rem 0; }
@@ -755,6 +754,39 @@
   .gc-card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (max-width: 640px) { .gc-card { width: 80vw; height: 260px; } .gc-card.featured { width: 80vw; height: 260px; box-shadow: none; } }
   </style>
+
+<style>
+/* ── Brand content blocks ── */
+.brand-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .brand-pillars { grid-template-columns: 1fr; } }
+.bp-item { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; background: #fff; }
+.bp-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); margin-top: 6px; }
+.bp-text { font-family: 'Nunito', sans-serif; font-size: 0.92rem; color: var(--foreground); line-height: 1.65; }
+.bp-text strong { font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--foreground); }
+
+.media-logos { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin-top: 1.5rem; }
+.media-pill { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent); color: var(--primary); border-radius: 2rem; }
+
+.speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .speaking-grid { grid-template-columns: 1fr; } }
+.sg-col-label { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.sg-col-label::before { content:''; display:block; width:1.2rem; height:1.5px; background:var(--primary); }
+.sg-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.sg-list li { font-family: 'Nunito', sans-serif; font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; display: flex; align-items: flex-start; gap: 0.65rem; }
+.sg-list li::before { content:'→'; color: var(--primary); font-size: 0.75rem; flex-shrink:0; margin-top:3px; }
+
+.audience-strip { background: oklch(0.97 0.015 80); padding: 4rem 0; }
+.audience-strip-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+.aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+@media (max-width: 767px) { .aud-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .aud-grid { grid-template-columns: 1fr; } }
+.aud-card { background: #fff; border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
+.aud-card-num { font-family: var(--font-serif); font-size: 1.75rem; font-style: italic; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.aud-card-text { font-family: 'Nunito', sans-serif; font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.65; }
+
+.tagline-band { background: var(--foreground); padding: 3.5rem 2rem; text-align: center; }
+.tagline-band p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-style: italic; color: oklch(0.82 0.13 78); max-width: 720px; margin: 0 auto; line-height: 1.55; }
+</style>
 </head>
 <body>
 
@@ -768,7 +800,7 @@
 
     <!-- Center Links -->
     <ul class="nav-links">
-      <li><a href="#journey" class="active">Journey</a></li>
+      <li><a href="journey.html">Journey</a></li>
       <li><a href="travel.html">Travel</a></li>
       <li><a href="media.html">Media</a></li>
       <li><a href="impact.html">Impact</a></li>
@@ -792,7 +824,7 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#journey">Journey</a>
+    <a href="journey.html">Journey</a>
     <a href="travel.html">Travel</a>
     <a href="media.html">Media</a>
     <a href="impact.html">Impact</a>
@@ -809,7 +841,7 @@
   <!-- Background image -->
   <img
     class="hero-banner-img"
-    src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg"
+    src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384502/Screenshot_2026-04-28_at_14.54.20_awkmv8.png"
     alt="Kay — Entrepreneur & Founder"
     fetchpriority="high"
   />
@@ -860,7 +892,7 @@
       </div>
 
       <p class="hero-bio">
-        Building across travel, media, and impact — creating a global ecosystem that helps people live with intention, build freedom, and see the world differently.
+        Helping families build freedom-first lives through travel, education, and global experiences.
       </p>
 
       <div class="hero-buttons">
@@ -880,24 +912,6 @@
 
     </div>
 
-    <!-- Right stat block -->
-    <div class="hero-stats" aria-label="Key achievements">
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">70+</div>
-        <div class="hero-stat-label">Countries</div>
-      </div>
-      <div class="hero-stat-rule" aria-hidden="true"></div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">$200K</div>
-        <div class="hero-stat-label">Debt Eliminated</div>
-      </div>
-      <div class="hero-stat-rule" aria-hidden="true"></div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">60+</div>
-        <div class="hero-stat-label">Media Features</div>
-      </div>
-    </div>
-
   </div>
 
   <!-- Scroll indicator -->
@@ -909,29 +923,244 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     AS FEATURED IN
+     AS FEATURED IN — MARQUEE
 ═══════════════════════════════════════════ -->
 <section class="fi-bar">
   <p class="fi-bar-label">As Featured In</p>
-  <div class="fi-logos">
-    <span class="fi-logo fi-logo-gma">GMA</span>
-    <span class="fi-sep">|</span>
-    <span class="fi-logo fi-logo-usa">USA TODAY</span>
-    <span class="fi-sep">|</span>
-    <span class="fi-logo fi-logo-people">People</span>
-    <span class="fi-sep">|</span>
-    <span class="fi-logo fi-logo-cnbc">
-      <svg viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" height="22">
-        <text x="0" y="17" font-family="Arial" font-weight="900" font-size="18" fill="#003087">CNBC</text>
-        <circle cx="42" cy="10" r="5" fill="#cc0000"/>
-      </svg>
-    </span>
-    <span class="fi-sep">|</span>
-    <span class="fi-logo fi-logo-bi">Business Insider</span>
-    <span class="fi-sep">|</span>
-    <span class="fi-logo fi-logo-yahoo">YAHOO!</span>
+  <div class="fi-marquee-wrap" aria-hidden="true">
+    <div class="fi-marquee-track" id="fiTrack">
+      <!-- Set 1 -->
+      <span class="fi-logo fi-logo-gma">GMA</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-usa">USA Today</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-people">People</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-cnbc">CNBC</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-bi">Business Insider</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-yahoo">Yahoo!</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-tn">Travel Noire</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-essence">Essence</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-nw">NerdWallet</span>
+      <span class="fi-sep">·</span>
+      <!-- Set 2 — clone for seamless loop -->
+      <span class="fi-logo fi-logo-gma">GMA</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-usa">USA Today</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-people">People</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-cnbc">CNBC</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-bi">Business Insider</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-yahoo">Yahoo!</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-tn">Travel Noire</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-essence">Essence</span>
+      <span class="fi-sep">·</span>
+      <span class="fi-logo fi-logo-nw">NerdWallet</span>
+      <span class="fi-sep">·</span>
+    </div>
   </div>
 </section>
+
+<style>
+/* ── Marquee overrides ── */
+.fi-bar {
+  padding: 2.25rem 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+/* Edge fade masks */
+.fi-bar::before, .fi-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 8rem;
+  z-index: 2;
+  pointer-events: none;
+}
+.fi-bar::before { left: 0; background: linear-gradient(to right, #fff 0%, transparent 100%); }
+.fi-bar::after  { right: 0; background: linear-gradient(to left,  #fff 0%, transparent 100%); }
+
+.fi-bar-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted-foreground);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  opacity: 0.7;
+}
+.fi-marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+.fi-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: marqueeRTL 28s linear infinite;
+}
+.fi-marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marqueeRTL {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.fi-marquee-track .fi-logo {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--foreground);
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 0 1.5rem;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.fi-marquee-track .fi-logo:hover { opacity: 1; }
+.fi-marquee-track .fi-logo-gma     { font-style: italic; }
+.fi-marquee-track .fi-logo-people  { font-style: italic; color: #c8102e; }
+.fi-marquee-track .fi-logo-cnbc    { font-family: 'Josefin Sans',sans-serif; font-size: clamp(0.75rem,1.8vw,1rem); letter-spacing:0.05em; color:#003087; }
+.fi-marquee-track .fi-logo-yahoo   { font-family: 'Josefin Sans',sans-serif; font-weight:900; color:#6001d2; }
+.fi-marquee-track .fi-logo-bi      { font-family: 'Josefin Sans',sans-serif; font-weight:800; font-size:clamp(0.72rem,1.6vw,0.95rem); }
+.fi-marquee-track .fi-logo-usa     { font-family: 'Josefin Sans',sans-serif; font-weight:700; font-size:clamp(0.72rem,1.6vw,0.95rem); letter-spacing:0.06em; }
+.fi-marquee-track .fi-logo-tn      { font-style: italic; }
+.fi-marquee-track .fi-logo-essence { font-style: italic; color: #b08c44; }
+.fi-marquee-track .fi-logo-nw      { font-family: 'Josefin Sans',sans-serif; font-size:clamp(0.72rem,1.6vw,0.95rem); }
+
+.fi-marquee-track .fi-sep {
+  color: oklch(0.75 0.06 75);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* ── 3D Icon Mark — shared across all pages ── */
+.kay-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.kay-mark svg { display: block; }
+
+/* Floating orb on hero corner */
+.hero-mark-float {
+  position: absolute;
+  top: calc(var(--nav-h) + 1.5rem);
+  right: 2.5rem;
+  z-index: 6;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+
+/* Footer mark */
+.footer-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Nav mark — tiny beside logo */
+.nav-mark-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+</style>
+
+<!-- ── Inject 3D mark into hero corner ── -->
+<script>
+(function() {
+  /* 3D SVG mark HTML — reusable */
+  window.KAY_MARK_SVG = function(size, forDark) {
+    size = size || 48;
+    var light = forDark ? 'rgba(255,255,255,0.18)' : 'rgba(200,169,110,0.12)';
+    var gold  = forDark ? 'rgba(220,185,120,0.9)'  : 'oklch(0.62 0.11 75)';
+    var goldL = forDark ? 'rgba(240,210,150,0.95)'  : 'oklch(0.72 0.12 75)';
+    var shadow= forDark ? 'rgba(0,0,0,0.6)'          : 'rgba(100,70,20,0.25)';
+    return `<svg viewBox="0 0 56 56" width="${size}" height="${size}" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 14px ${shadow})">
+      <defs>
+        <radialGradient id="kgr${size}" cx="38%" cy="28%" r="62%">
+          <stop offset="0%" stop-color="${goldL}"/>
+          <stop offset="60%" stop-color="${gold}"/>
+          <stop offset="100%" stop-color="oklch(0.42 0.09 68)"/>
+        </radialGradient>
+        <radialGradient id="kfr${size}" cx="30%" cy="20%" r="70%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+        <filter id="kbl${size}" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+      </defs>
+      <!-- Shadow base -->
+      <ellipse cx="28" cy="50" rx="14" ry="3" fill="${shadow}" filter="url(#kbl${size})" opacity="0.5"/>
+      <!-- Hexagon body -->
+      <polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" fill="url(#kgr${size})"/>
+      <!-- Top face highlight -->
+      <polygon points="28,3 50,15.5 28,28 6,15.5" fill="url(#kfr${size})" opacity="0.55"/>
+      <!-- Left face shadow -->
+      <polygon points="6,15.5 28,28 28,53 6,40.5" fill="rgba(0,0,0,0.18)"/>
+      <!-- Right face mid-shadow -->
+      <polygon points="50,15.5 28,28 28,53 50,40.5" fill="rgba(0,0,0,0.08)"/>
+      <!-- Edge strokes -->
+      <polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" stroke="rgba(255,255,255,0.22)" stroke-width="0.75" fill="none"/>
+      <line x1="28" y1="3" x2="28" y2="53" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+      <line x1="6" y1="15.5" x2="50" y2="15.5" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+      <line x1="6" y1="40.5" x2="50" y2="40.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+      <!-- Inner K lettermark -->
+      <text x="28" y="35" font-family="Georgia,serif" font-size="18" font-weight="700" font-style="italic"
+            text-anchor="middle" fill="rgba(255,255,255,0.92)" letter-spacing="-1">K</text>
+      <!-- Top glint -->
+      <ellipse cx="22" cy="12" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)" transform="rotate(-18 22 12)"/>
+    </svg>`;
+  };
+
+  /* Inject into hero corner */
+  document.addEventListener('DOMContentLoaded', function() {
+    var corner = document.querySelector('.hero-corner-geo');
+    if (corner) {
+      corner.innerHTML = window.KAY_MARK_SVG(64, true);
+      corner.style.cssText += 'background:none;';
+    }
+
+    /* Inject tiny mark into nav logo */
+    var logo = document.querySelector('.nav-logo');
+    if (logo) {
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-mark-wrap';
+      wrap.innerHTML = window.KAY_MARK_SVG(20, false) + '<span>' + logo.innerHTML + '</span>';
+      logo.innerHTML = '';
+      logo.appendChild(wrap);
+    }
+
+    /* Inject into footer */
+    var footer = document.querySelector('.site-footer');
+    if (footer) {
+      var div = document.createElement('div');
+      div.className = 'footer-mark';
+      div.innerHTML = window.KAY_MARK_SVG(28, true);
+      footer.insertBefore(div, footer.firstChild);
+    }
+  });
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      THE JOURNEY
@@ -947,25 +1176,184 @@
       </div>
     </div>
     <div class="nj-card">
-      <p>I'm Kay, an <strong>entrepreneur</strong>, founder, and philanthropist building across travel, media, and impact.</p>
-      <p>After traveling to over 70 countries with kids in tow, I turned lived experience into a global ecosystem, building businesses, platforms, and experiences that help people live with intention, build freedom, and see the world differently.</p>
-      <p>My journey wasn't mapped out; it was shaped through experience, perspective, and a decision to live life on my own terms.</p>
+      <p>I'm Kay — an <strong>entrepreneur</strong>, founder, and impact-driven leader building at the intersection of Travel · Education · Media · Financial Freedom · Global Impact.</p>
+      <p>After paying off over $200,000 in debt, I chose a life centered around freedom, travel, and intentional living — traveling across 70+ countries with my son while building <strong>Innovasol</strong>, a multi-division ecosystem including Rooted Journeys, media platforms, worldschooling programs, and community impact initiatives.</p>
+      <p>My mission: empower families worldwide to break out of traditional systems and design lives rooted in purpose, flexibility, and global exposure.</p>
       <div class="nj-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
       </div>
     </div>
-    <div class="nj-images">
-      <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Kay Safari" class="nj-img nj-img-top" />
-      <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Kay Massai Tribe" class="nj-img nj-img-mid" />
-      <div class="nj-img-bot-wrap">
-        <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Kay Paris" class="nj-img nj-img-bot" />
-        <div class="nj-img-play">
-          <svg viewBox="0 0 24 24" fill="white" width="22"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════
+     JOURNEY PHOTO GALLERY
+═══════════════════════════════════════════ -->
+<section class="journey-gallery">
+  <div class="jg-inner">
+
+    <!-- Large portrait — Safari -->
+    <div class="jg-cell jg-tall">
+      <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179323/Kay_Akpan_The_Mom_Trotter_Photos_22_cctqk9.jpg" alt="Kay & Family on Safari" class="jg-img" />
+    </div>
+
+    <!-- Right column: two stacked -->
+    <div class="jg-col">
+
+      <div class="jg-cell jg-med">
+        <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179326/Kay_Akpan_The_Mom_Trotter_Photos_82_bhbyh4.jpg" alt="Kay with Maasai Tribe" class="jg-img" />
+      </div>
+
+      <div class="jg-cell jg-med jg-play-wrap">
+        <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179308/_S7A1526_gkgrhf.jpg" alt="Kay in Paris" class="jg-img" />
+        <div class="jg-overlay">
+          <div class="jg-play-btn" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Wide bottom strip -->
+    <div class="jg-cell jg-wide">
+      <img src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179339/Kay_Akpan_The_Mom_Trotter_Photos_113_it8dsj.jpg" alt="Kay Travelling in Asia" class="jg-img" />
+    </div>
+
+  </div>
+
+  <!-- Caption strip -->
+  <div class="jg-caption">
+    <span class="jg-caption-line" aria-hidden="true"></span>
+    <span class="jg-caption-text">A life lived across continents — with intention.</span>
+    <span class="jg-caption-line" aria-hidden="true"></span>
+  </div>
+</section>
+
+<style>
+/* ═══ JOURNEY GALLERY ═══ */
+.journey-gallery {
+  background: #fff;
+  padding: 0 0 5rem;
+}
+.jg-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.75rem;
+}
+
+/* Large portrait spans 1 col, 2 rows */
+.jg-tall {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+/* Right two-stack column */
+.jg-col {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+/* Wide bottom strip spans col 3, rows 1-2 */
+.jg-wide {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+.jg-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+.jg-tall  { height: 540px; }
+.jg-med   { flex: 1; min-height: 0; }
+.jg-wide  { height: 540px; }
+
+.jg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.jg-cell:hover .jg-img { transform: scale(1.04); }
+
+
+
+/* Play overlay */
+.jg-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.22);
+  transition: background 0.3s;
+}
+.jg-play-wrap:hover .jg-overlay { background: rgba(0,0,0,0.38); }
+.jg-play-btn {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+.jg-play-btn:hover { background: oklch(0.62 0.11 75 / 0.75); transform: scale(1.08); }
+
+/* Caption strip */
+.jg-caption {
+  max-width: 1200px;
+  margin: 1.75rem auto 0;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.jg-caption-line {
+  flex: 1;
+  height: 1px;
+  background: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+.jg-caption-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .jg-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .jg-tall  { grid-column: 1; grid-row: 1; height: 320px; }
+  .jg-col   { grid-column: 2; grid-row: 1; height: 320px; }
+  .jg-med   { min-height: 148px; }
+  .jg-wide  { grid-column: 1 / 3; grid-row: 2; height: 260px; }
+  .jg-caption-text { white-space: normal; text-align: center; }
+}
+@media (max-width: 560px) {
+  .journey-gallery { padding-bottom: 3.5rem; }
+  .jg-inner { grid-template-columns: 1fr; gap: 0.6rem; }
+  .jg-tall  { grid-column: 1; grid-row: auto; height: 260px; }
+  .jg-col   { grid-column: 1; grid-row: auto; height: auto; flex-direction: row; }
+  .jg-med   { flex: 1; height: 180px; }
+  .jg-wide  { grid-column: 1; grid-row: auto; height: 200px; }
+}
+</style>
 
 <!-- ═══════════════════════════════════════════
      FOCUS AREAS
@@ -1024,24 +1412,289 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     ACHIEVEMENTS
+     ACHIEVEMENTS — BENTO GRID
 ═══════════════════════════════════════════ -->
-<section class="ach-section">
-  <div class="ach-inner">
-    <p class="ach-label">Achievements</p>
-    <div class="ach-watermark">FOUNDER</div>
-    <div class="ach-grid">
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="18" stroke="#c8a96e" stroke-width="1.5" opacity="0.4"/><circle cx="20" cy="20" r="12" stroke="#c8a96e" stroke-width="1"/><line x1="2" y1="20" x2="38" y2="20" stroke="#c8a96e" stroke-width="1"/><line x1="20" y1="2" x2="20" y2="38" stroke="#c8a96e" stroke-width="1"/><ellipse cx="20" cy="20" rx="7" ry="12" stroke="#c8a96e" stroke-width="1" opacity="0.6"/></svg></div><div class="ach-text"><h3 class="ach-stat">70+ Countries</h3><p class="ach-desc">Traveled with kids in tow.</p></div></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="14" r="10" stroke="#c8a96e" stroke-width="1.5" opacity="0.5"/><circle cx="20" cy="18" r="7" stroke="#c8a96e" stroke-width="1"/><circle cx="20" cy="22" r="4" stroke="#c8a96e" stroke-width="1" opacity="0.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="#c8a96e" stroke-width="1"/></svg></div><div class="ach-text"><h3 class="ach-stat">$200,000+ Debt Paid</h3><p class="ach-desc">Transformed to a freedom-focused lifestyle.</p></div></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect x="6" y="12" width="28" height="20" rx="2" stroke="#c8a96e" stroke-width="1.5" opacity="0.5"/><path d="M14 12V10a6 6 0 0 1 12 0v2" stroke="#c8a96e" stroke-width="1.5"/><line x1="20" y1="20" x2="20" y2="26" stroke="#c8a96e" stroke-width="1.5"/><line x1="14" y1="23" x2="26" y2="23" stroke="#c8a96e" stroke-width="1"/></svg></div><div class="ach-text"><h3 class="ach-stat">Bachelor's &amp; Master's</h3><p class="ach-desc">Background in education.</p></div></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="14" r="7" stroke="#c8a96e" stroke-width="1.5" opacity="0.6"/><path d="M8 34c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#c8a96e" stroke-width="1.5"/></svg></div><div class="ach-text"><h3 class="ach-stat">Founder &amp; CEO</h3><p class="ach-desc">Building a global ecosystem.</p></div></div>
-      <div class="ach-item ach-big"><h3 class="ach-sixty">60+</h3></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M20 6L22 16H32L24 22L26 32L20 26L14 32L16 22L8 16H18L20 6Z" stroke="#c8a96e" stroke-width="1.5" fill="#c8a96e" fill-opacity="0.12"/></svg></div><div class="ach-text"><h3 class="ach-stat">Community Impact</h3><p class="ach-desc">Creator of global travel communities and community initiatives.</p></div></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="16" stroke="#c8a96e" stroke-width="1.5" opacity="0.4"/><line x1="4" y1="20" x2="36" y2="20" stroke="#c8a96e" stroke-width="1"/><ellipse cx="20" cy="20" rx="8" ry="16" stroke="#c8a96e" stroke-width="1" opacity="0.6"/></svg></div><div class="ach-text"><h3 class="ach-stat">Global Media</h3><p class="ach-desc">Featured in GMA, USA Today, Forbes, CNBC, Vogue, and more.</p></div></div>
-      <div class="ach-item"><div class="ach-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M20 6c0 0-10 8-10 16a10 10 0 0 0 20 0C30 14 20 6 20 6z" stroke="#c8a96e" stroke-width="1.5" fill="#c8a96e" fill-opacity="0.1"/><circle cx="20" cy="22" r="4" stroke="#c8a96e" stroke-width="1.5"/></svg></div><div class="ach-text"><h3 class="ach-stat">Intentional Living</h3><p class="ach-desc">Living with purpose. Leading with intention.</p></div></div>
+<section class="bento-section">
+
+  <div class="bento-header">
+    <span class="bento-label">Achievements</span>
+    <h2 class="bento-title">Built through <em>experience</em></h2>
+  </div>
+
+  <div class="bento-grid">
+
+    <!-- ── COL 1 ROW 1–2 : Gold large — 70+ Countries ── -->
+    <div class="bc bc-gold bc-r2" style="grid-column:1; grid-row:1/3;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="bc-content bc-content-bottom">
+        <h3 class="bc-stat">70+<br>Countries</h3>
+        <p class="bc-desc">Traveled with kids in tow</p>
+      </div>
     </div>
+
+    <!-- ── COL 2 ROW 1 : Dark — $200k Debt ── -->
+    <div class="bc bc-dark" style="grid-column:2; grid-row:1;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">$200,000+<br>Debt Paid</h3>
+        <p class="bc-desc">Transitioned to a freedom-based lifestyle</p>
+      </div>
+    </div>
+
+    <!-- ── COL 3 ROW 1 : Cream — Multiple Brands ── -->
+    <div class="bc bc-cream" style="grid-column:3; grid-row:1;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">Multiple<br>Brands</h3>
+        <p class="bc-desc">Built and scaled across lifestyle, travel, and media</p>
+      </div>
+    </div>
+
+    <!-- ── COL 2 ROW 2–3 : Gold tall — Bachelor's & Master's ── -->
+    <div class="bc bc-gold bc-r2" style="grid-column:2; grid-row:2/4;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="bc-content bc-content-bottom">
+        <h3 class="bc-stat">Bachelor's<br>&amp; Master's</h3>
+        <p class="bc-desc">Background in education</p>
+      </div>
+    </div>
+
+    <!-- ── COL 3 ROW 2 : Gold dark — Intentional Living ── -->
+    <div class="bc bc-gold-dark" style="grid-column:3; grid-row:2;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">Intentional<br>Living</h3>
+        <p class="bc-desc">Built life centered around freedom</p>
+      </div>
+    </div>
+
+    <!-- ── COL 1 ROW 3–4 : Tan — Founder & CEO ── -->
+    <div class="bc bc-tan bc-r2" style="grid-column:1; grid-row:3/5;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <div class="bc-content bc-content-bottom">
+        <h3 class="bc-stat">Founder<br>&amp; CEO</h3>
+        <p class="bc-desc">Building a global ecosystem across travel, media, and impact</p>
+      </div>
+    </div>
+
+    <!-- ── COL 3 ROW 3 : White — Community Impact ── -->
+    <div class="bc bc-white" style="grid-column:3; grid-row:3;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">Community<br>Impact</h3>
+        <p class="bc-desc">Creator of global travel experiences, youth programs, and community initiatives</p>
+      </div>
+    </div>
+
+    <!-- ── COL 2 ROW 4 : White — Global Media ── -->
+    <div class="bc bc-white" style="grid-column:2; grid-row:4;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">Global<br>Media</h3>
+        <p class="bc-desc">Featured in Good Morning America, USA Today, Essence, CNBC, and People</p>
+      </div>
+    </div>
+
+    <!-- ── COL 3 ROW 4 : Dark — Featured In ── -->
+    <div class="bc bc-dark" style="grid-column:3; grid-row:4;">
+      <div class="bc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </div>
+      <div class="bc-content">
+        <h3 class="bc-stat">Featured<br>In</h3>
+        <p class="bc-desc">Good Morning America · USA Today · Essence · CNBC · People</p>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<style>
+/* ═══ BENTO ACHIEVEMENTS ═══ */
+.bento-section {
+  background: oklch(0.975 0.008 80);
+  padding: 5rem 2rem 6rem;
+}
+.bento-header {
+  max-width: 1200px;
+  margin: 0 auto 2.75rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.bento-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  white-space: nowrap;
+}
+.bento-label::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1.5px;
+  background: var(--primary);
+}
+.bento-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+.bento-title em { font-style: italic; color: var(--primary); }
+
+/* Grid */
+.bento-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 200px);
+  gap: 0.75rem;
+}
+
+/* Base card */
+.bc {
+  border-radius: 1.1rem;
+  padding: 1.6rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.bc:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+}
+
+/* Colour variants */
+.bc-gold      { background: oklch(0.56 0.10 74); }
+.bc-gold-dark { background: oklch(0.50 0.09 72); }
+.bc-dark      { background: oklch(0.14 0.01 50); }
+.bc-cream     { background: oklch(0.96 0.022 82); }
+.bc-tan       { background: oklch(0.82 0.055 72); }
+.bc-white     { background: #ffffff; border: 1px solid oklch(0.91 0.012 80); }
+
+/* Icon — top right */
+.bc-icon-wrap {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.6rem;
+}
+.bc-gold      .bc-icon-wrap,
+.bc-gold-dark .bc-icon-wrap { color: rgba(255,255,255,0.35); }
+.bc-dark      .bc-icon-wrap { color: rgba(255,255,255,0.28); }
+.bc-cream     .bc-icon-wrap,
+.bc-white     .bc-icon-wrap { color: oklch(0.70 0.09 74); opacity: 0.55; }
+.bc-tan       .bc-icon-wrap { color: oklch(0.30 0.04 60); opacity: 0.35; }
+
+/* Content */
+.bc-content { display: flex; flex-direction: column; gap: 0.55rem; }
+.bc-content-bottom { margin-top: auto; }
+
+.bc-stat {
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 2.8vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+.bc-desc {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Text colours per variant */
+.bc-gold      .bc-stat,
+.bc-gold      .bc-desc,
+.bc-gold-dark .bc-stat,
+.bc-gold-dark .bc-desc { color: #fff; }
+
+.bc-dark .bc-stat { color: #fff; }
+.bc-dark .bc-desc { color: rgba(255,255,255,0.65); }
+
+.bc-cream .bc-stat,
+.bc-white .bc-stat { color: var(--foreground); }
+.bc-cream .bc-desc,
+.bc-white .bc-desc { color: var(--muted-foreground); }
+
+.bc-tan .bc-stat { color: oklch(0.18 0.02 55); }
+.bc-tan .bc-desc { color: oklch(0.30 0.03 60); }
+
+/* Tall cards (span 2 rows) — push content to bottom */
+.bc-r2 { justify-content: flex-end; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 200px) auto auto auto auto;
+  }
+  /* Reset all explicit placements and let auto-flow handle it */
+  .bc { grid-column: unset !important; grid-row: unset !important; }
+  .bc-r2 { grid-row: span 1 !important; }
+}
+@media (max-width: 560px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .bc { min-height: 180px; }
+  .bento-header { flex-direction: column; gap: 0.5rem; }
+}
+</style>
 
 <!-- ═══════════════════════════════════════════
      GLOBAL CONTEXT CAROUSEL
@@ -1055,13 +1708,16 @@
     </div>
   </div>
   <div class="gc-outer"><div class="gc-track" id="gcTrack">
-    <div class="gc-card" data-index="0"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295912/DSC07243_mrmwfh.jpg" alt="Kay & Fam with Massai Tribe" /></div>
-    <div class="gc-card featured" data-index="1"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Kay CEO & Fam Safari" /></div>
-    <div class="gc-card" data-index="2"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295906/DSC07135_rmdxn8.jpg" alt="Kay Travel Agency" /></div>
-    <div class="gc-card" data-index="3"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285015/imgg_vxjfpa.webp" alt="Mum Trotter in Asia" /></div>
-    <div class="gc-card" data-index="4"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777285024/paris_csjrp8.webp" alt="Mum Trotter in Paris" /></div>
-    <div class="gc-card" data-index="5"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Entrepreneur" /></div>
-    <div class="gc-card" data-index="6"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay Global" /></div>
+    <div class="gc-card" data-index="0"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179329/Kay_Akpan_The_Mom_Trotter_Photos_37_mllxm4.jpg" alt="Kay" /></div>
+    <div class="gc-card featured" data-index="1"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179323/Kay_Akpan_The_Mom_Trotter_Photos_22_cctqk9.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="2"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="3"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295915/Feb_23_2026-36_jfa63n.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="4"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179331/Kay_Akpan_The_Mom_Trotter_Photos_99_hk71ik.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="5"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778162251/DSC02162_kzj1z0.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="6"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179330/Kay_Akpan_The_Mom_Trotter_Photos_30_kvntgs.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="7"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179329/Kay_Akpan_The_Mom_Trotter_Photos_87_hqhibn.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="8"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179338/Kay_Akpan_The_Mom_Trotter_Photos_153_hsbdls.jpg" alt="Kay" /></div>
+    <div class="gc-card" data-index="9"><img class="gc-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179299/_S7A0548_zcbqpl.jpg" alt="Kay" /></div>
   </div></div>
 </section>
 
@@ -1096,35 +1752,122 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     CONNECT FOOTER
+     CONNECT SECTION — SCREENSHOT MATCH
 ═══════════════════════════════════════════ -->
-<section class="new-connect" id="connect">
-  <div class="new-connect-inner">
-    <div class="new-connect-left">
-      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
-        <circle cx="30" cy="30" r="28" stroke="#c8a96e" stroke-width="1.5" opacity="0.4"/>
-        <path d="M30 10L33 28H30H27L30 10Z" fill="#c8a96e" opacity="0.7"/>
-        <path d="M30 50L33 32H30H27L30 50Z" fill="#c8a96e" opacity="0.4"/>
-        <path d="M10 30L28 33V30V27L10 30Z" fill="#c8a96e" opacity="0.4"/>
-        <path d="M50 30L32 33V30V27L50 30Z" fill="#c8a96e" opacity="0.7"/>
-        <circle cx="30" cy="30" r="4" fill="#c8a96e" opacity="0.5"/>
-      </svg>
-    </div>
-    <div class="new-connect-text">
-      <p class="new-connect-headline">If you're looking to build, explore,<br>or move differently, <em>let's connect.</em></p>
-    </div>
-    <div class="new-connect-links">
-      <a href="mailto:hello@kay.co" class="new-connect-link">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="m2 6 8 6 8-6"/></svg>
+<section class="connect-section" id="connect">
+  <div class="connect-section-inner">
+
+    <span class="connect-section-label">Connect</span>
+
+    <h2 class="connect-section-headline">
+      If you're looking to build,<br>
+      explore, or move differently;<br>
+      let's connect.
+    </h2>
+
+    <p class="connect-section-sub">
+      Open to brand partnerships, speaking engagements,<br>
+      collaborations and meaningful conversations.
+    </p>
+
+    <div class="connect-section-btns">
+      <a href="mailto:hello@kay.co" class="connect-btn">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="4" width="18" height="14" rx="2"/>
+          <path d="m2 6 9 7 9-7"/>
+        </svg>
         hello@kay.co
       </a>
-      <a href="https://www.instagram.com/kayco/" target="_blank" rel="noopener noreferrer" class="new-connect-link">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="2" width="16" height="16" rx="4"/><circle cx="10" cy="10" r="4"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
-        @iamkay
+      <a href="https://www.instagram.com/KayCO/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="2" width="18" height="18" rx="5"/>
+          <circle cx="11" cy="11" r="4.5"/>
+          <circle cx="16" cy="6" r="1.2" fill="currentColor" stroke="none"/>
+        </svg>
+        @KayCO
       </a>
     </div>
+
   </div>
 </section>
+
+<style>
+/* ═══ CONNECT SECTION — clean centered card ═══ */
+.connect-section {
+  background: var(--background);
+  padding: 7rem 2rem 8rem;
+}
+.connect-section-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.connect-section-label {
+  display: inline-block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.45rem 1.5rem;
+  margin-bottom: 2.75rem;
+}
+.connect-section-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+}
+.connect-section-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  font-weight: 400;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  margin-bottom: 3.25rem;
+}
+.connect-section-btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  background: transparent;
+  transition: border-color 0.22s, color 0.22s, background 0.22s;
+  letter-spacing: 0.02em;
+}
+.connect-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: color-mix(in oklch, var(--primary) 5%, transparent);
+}
+@media (max-width: 520px) {
+  .connect-section { padding: 5rem 1.25rem 6rem; }
+  .connect-section-headline { font-size: clamp(1.9rem, 9vw, 2.5rem); }
+  .connect-section-btns { flex-direction: column; width: 100%; }
+  .connect-btn { justify-content: center; width: 100%; }
+}
+</style>
 
 <footer class="site-footer">
   &copy; 2025 Kay &mdash; A Lifestyle of Experience, Learning, Freedom &amp; Global Impact

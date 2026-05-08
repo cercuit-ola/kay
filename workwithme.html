@@ -322,6 +322,39 @@
   .connect-links svg { width: 1.1rem; height: 1.1rem; }
   .site-footer { background: var(--foreground); color: var(--primary-foreground); text-align: center; padding: 1.25rem; font-size: 0.75rem; font-family: 'Nunito', sans-serif; letter-spacing: 0.1em; opacity: 0.9; }
 </style>
+
+<style>
+/* ── Brand content blocks ── */
+.brand-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .brand-pillars { grid-template-columns: 1fr; } }
+.bp-item { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; background: #fff; }
+.bp-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); margin-top: 6px; }
+.bp-text { font-family: 'Nunito', sans-serif; font-size: 0.92rem; color: var(--foreground); line-height: 1.65; }
+.bp-text strong { font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--foreground); }
+
+.media-logos { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin-top: 1.5rem; }
+.media-pill { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent); color: var(--primary); border-radius: 2rem; }
+
+.speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .speaking-grid { grid-template-columns: 1fr; } }
+.sg-col-label { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.sg-col-label::before { content:''; display:block; width:1.2rem; height:1.5px; background:var(--primary); }
+.sg-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.sg-list li { font-family: 'Nunito', sans-serif; font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; display: flex; align-items: flex-start; gap: 0.65rem; }
+.sg-list li::before { content:'→'; color: var(--primary); font-size: 0.75rem; flex-shrink:0; margin-top:3px; }
+
+.audience-strip { background: oklch(0.97 0.015 80); padding: 4rem 0; }
+.audience-strip-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+.aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+@media (max-width: 767px) { .aud-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .aud-grid { grid-template-columns: 1fr; } }
+.aud-card { background: #fff; border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
+.aud-card-num { font-family: var(--font-serif); font-size: 1.75rem; font-style: italic; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.aud-card-text { font-family: 'Nunito', sans-serif; font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.65; }
+
+.tagline-band { background: var(--foreground); padding: 3.5rem 2rem; text-align: center; }
+.tagline-band p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-style: italic; color: oklch(0.82 0.13 78); max-width: 720px; margin: 0 auto; line-height: 1.55; }
+</style>
 </head>
 <body>
 
@@ -357,12 +390,12 @@
 
 <!-- HERO -->
 <section class="page-hero">
-  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384502/Screenshot_2026-04-28_at_14.54.20_awkmv8.png" alt="Work With Kay" />
+  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778162250/DSC02497_e4l17f.jpg" alt="Work With Kay" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <span class="page-hero-label">Collaborations</span>
     <h1 class="page-hero-title">Work With <em>Kay</em></h1>
-    <p class="page-hero-sub">Open to partnerships, stages and conversations where there is genuine alignment; not just visibility.</p>
+    <p class="page-hero-sub">Kay partners with purpose-driven brands and individuals across travel, lifestyle, family, finance, education, and hospitality — bringing story-driven campaigns and authentic global reach.</p>
   </div>
 </section>
 
@@ -384,7 +417,7 @@
 
     <!-- Brand Partnerships -->
     <div class="service-card" id="brand-partnerships">
-      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295934/Ceo_Coo_Random48_aewmgf.jpg" alt="Brand Partnerships with Kay" />
+      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179326/Kay_Akpan_The_Mom_Trotter_Photos_82_bhbyh4.jpg" alt="Brand Partnerships with Kay" />
       <div class="service-card-body">
         <div class="service-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a5 5 0 0 1-5-5 5 5 0 0 1 5-5"/><path d="M13 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
@@ -405,7 +438,7 @@
 
     <!-- Speaking Engagements -->
     <div class="service-card reverse" id="speaking">
-      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Speaking Engagements" />
+      <img class="service-card-img" src="hhttps://res.cloudinary.com/dj4e46w8t/image/upload/v1778179299/_S7A0548_zcbqpl.jpg alt="Speaking Engagements" />
       <div class="service-card-body">
         <div class="service-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
@@ -426,7 +459,7 @@
 
     <!-- Consultations -->
     <div class="service-card" id="consultations">
-      <img class="service-card-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Consultations with Kay" />
+      <img class="service-card-img" src="hhttps://res.cloudinary.com/dj4e46w8t/image/upload/v1778179338/Kay_Akpan_The_Mom_Trotter_Photos_153_hsbdls.jpg alt="Consultations with Kay" />
       <div class="service-card-body">
         <div class="service-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
@@ -449,6 +482,61 @@
 </section>
 
 <!-- WHAT TO EXPECT -->
+
+<section class="content-section" id="brand-partnerships">
+  <div class="two-col">
+    <div>
+      <span class="section-label">Brand Partnerships</span>
+      <h2 class="section-heading">Story-driven <em>campaigns</em></h2>
+    </div>
+    <div>
+      <div class="section-body">
+        <p>Kay partners with brands across Travel · Lifestyle · Family · Finance · Education · Hospitality — bringing authentic storytelling and direct access to globally minded families.</p>
+      </div>
+      <div class="brand-pillars" style="margin-top:1.5rem;">
+        <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Story-Driven Campaigns</strong>Long-form brand storytelling that connects emotionally with family audiences worldwide.</div></div>
+        <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Destination Marketing</strong>Immersive travel content that places your brand inside authentic, lived experiences.</div></div>
+        <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Family-Focused Experiences</strong>Travel campaigns built around the realities of modern family life and global exploration.</div></div>
+        <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Social + Digital Campaigns</strong>Multi-platform content strategies reaching an engaged, action-taking audience.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="speaking" style="background:oklch(0.97 0.015 80);padding:5rem 0;">
+  <div style="max-width:1152px;margin:0 auto;padding:0 1.5rem;">
+    <div class="two-col">
+      <div>
+        <span class="section-label">Speaking Engagements</span>
+        <h2 class="section-heading">From stages to <em>screens</em></h2>
+      </div>
+      <div>
+        <div class="speaking-grid">
+          <div>
+            <p class="sg-col-label">Topics</p>
+            <ul class="sg-list">
+              <li>Family travel &amp; worldschooling</li>
+              <li>Building freedom-based lifestyles</li>
+              <li>Financial independence &amp; intentional living</li>
+              <li>Entrepreneurship &amp; personal brand building</li>
+              <li>Representation in travel</li>
+            </ul>
+          </div>
+          <div>
+            <p class="sg-col-label">Formats</p>
+            <ul class="sg-list">
+              <li>Keynotes &amp; panel discussions</li>
+              <li>Brand &amp; campaign collaborations</li>
+              <li>Media features &amp; press interviews</li>
+              <li>Podcasts &amp; digital summits</li>
+              <li>Community events &amp; workshops</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="expect-strip">
   <div class="expect-inner">
     <span class="section-label">The Process</span>
@@ -527,6 +615,61 @@
     }
   });
 </script>
+
+
+<style>
+.nav-mark-wrap { display:flex; align-items:center; gap:0.6rem; }
+.footer-mark { display:flex; align-items:center; justify-content:center; margin-bottom:0.6rem; }
+</style>
+<script>
+(function() {
+  window.KAY_MARK_SVG = function(size, forDark) {
+    size = size || 48;
+    var goldL = forDark ? 'rgba(240,210,150,0.95)' : 'oklch(0.72 0.12 75)';
+    var gold  = forDark ? 'rgba(220,185,120,0.9)'  : 'oklch(0.62 0.11 75)';
+    var shadow= forDark ? 'rgba(0,0,0,0.6)'         : 'rgba(100,70,20,0.25)';
+    var uid = size + (forDark?'d':'l');
+    return '<svg viewBox="0 0 56 56" width="'+size+'" height="'+size+'" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 14px '+shadow+')">'
+      +'<defs>'
+      +'<radialGradient id="kgr'+uid+'" cx="38%" cy="28%" r="62%"><stop offset="0%" stop-color="'+goldL+'"/><stop offset="60%" stop-color="'+gold+'"/><stop offset="100%" stop-color="oklch(0.42 0.09 68)"/></radialGradient>'
+      +'<radialGradient id="kfr'+uid+'" cx="30%" cy="20%" r="70%"><stop offset="0%" stop-color="rgba(255,255,255,0.55)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>'
+      +'<filter id="kbl'+uid+'" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.5"/></filter>'
+      +'</defs>'
+      +'<ellipse cx="28" cy="50" rx="14" ry="3" fill="'+shadow+'" filter="url(#kbl'+uid+')" opacity="0.5"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" fill="url(#kgr'+uid+')"/>'
+      +'<polygon points="28,3 50,15.5 28,28 6,15.5" fill="url(#kfr'+uid+')" opacity="0.55"/>'
+      +'<polygon points="6,15.5 28,28 28,53 6,40.5" fill="rgba(0,0,0,0.18)"/>'
+      +'<polygon points="50,15.5 28,28 28,53 50,40.5" fill="rgba(0,0,0,0.08)"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" stroke="rgba(255,255,255,0.22)" stroke-width="0.75" fill="none"/>'
+      +'<line x1="28" y1="3" x2="28" y2="53" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="15.5" x2="50" y2="15.5" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="40.5" x2="50" y2="40.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>'
+      +'<text x="28" y="35" font-family="Georgia,serif" font-size="18" font-weight="700" font-style="italic" text-anchor="middle" fill="rgba(255,255,255,0.92)" letter-spacing="-1">K</text>'
+      +'<ellipse cx="22" cy="12" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)" transform="rotate(-18 22 12)"/>'
+      +'</svg>';
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    // Nav logo mark
+    var logo = document.querySelector('.nav-logo');
+    if (logo && !logo.querySelector('.nav-mark-wrap')) {
+      var inner = logo.innerHTML;
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-mark-wrap';
+      wrap.innerHTML = window.KAY_MARK_SVG(20, false) + '<span>' + inner + '</span>';
+      logo.innerHTML = '';
+      logo.appendChild(wrap);
+    }
+    // Footer mark
+    var footer = document.querySelector('.site-footer');
+    if (footer && !footer.querySelector('.footer-mark')) {
+      var div = document.createElement('div');
+      div.className = 'footer-mark';
+      div.innerHTML = window.KAY_MARK_SVG(26, true);
+      footer.insertBefore(div, footer.firstChild);
+    }
+  });
+})();
+<\/script>
 
 </body>
 </html>

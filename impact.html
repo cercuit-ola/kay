@@ -141,6 +141,39 @@
   }
 </style>
 
+
+<style>
+/* ── Brand content blocks ── */
+.brand-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .brand-pillars { grid-template-columns: 1fr; } }
+.bp-item { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; background: #fff; }
+.bp-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); margin-top: 6px; }
+.bp-text { font-family: 'Nunito', sans-serif; font-size: 0.92rem; color: var(--foreground); line-height: 1.65; }
+.bp-text strong { font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--foreground); }
+
+.media-logos { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin-top: 1.5rem; }
+.media-pill { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent); color: var(--primary); border-radius: 2rem; }
+
+.speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .speaking-grid { grid-template-columns: 1fr; } }
+.sg-col-label { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.sg-col-label::before { content:''; display:block; width:1.2rem; height:1.5px; background:var(--primary); }
+.sg-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.sg-list li { font-family: 'Nunito', sans-serif; font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; display: flex; align-items: flex-start; gap: 0.65rem; }
+.sg-list li::before { content:'→'; color: var(--primary); font-size: 0.75rem; flex-shrink:0; margin-top:3px; }
+
+.audience-strip { background: oklch(0.97 0.015 80); padding: 4rem 0; }
+.audience-strip-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+.aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+@media (max-width: 767px) { .aud-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .aud-grid { grid-template-columns: 1fr; } }
+.aud-card { background: #fff; border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
+.aud-card-num { font-family: var(--font-serif); font-size: 1.75rem; font-style: italic; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.aud-card-text { font-family: 'Nunito', sans-serif; font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.65; }
+
+.tagline-band { background: var(--foreground); padding: 3.5rem 2rem; text-align: center; }
+.tagline-band p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-style: italic; color: oklch(0.82 0.13 78); max-width: 720px; margin: 0 auto; line-height: 1.55; }
+</style>
 </head>
 <body>
 <header>
@@ -161,7 +194,7 @@
 </header>
 
 <section class="page-hero">
-  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384505/Screenshot_2026-04-28_at_14.53.36_sdzglj.png" alt="Impact and Philanthropy" />
+  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295915/Feb_23_2026-36_jfa63n.jpg" alt="Impact and Philanthropy" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <span class="page-hero-label">Impact &amp; Philanthropy</span>
@@ -177,13 +210,14 @@
       <h2 class="section-heading">Impact that <em>outlasts</em> us</h2>
     </div>
     <div class="section-body">
-      <p>Through my work and initiatives, I support communities, create access, and build opportunities that extend beyond business. True success, for me, is measured by how many people you bring with you.</p>
-      <p>Philanthropy isn't a side note; it's woven into every brand, every trip, and every platform I build. When you lift as you climb, the whole landscape changes.</p>
-    </div>
+      <p>Kay's impact work goes beyond philanthropy — it's about dismantling barriers to travel, education, and opportunity for families who've historically been excluded from the conversation.</p>
+      <p>Through community-driven initiatives, Kay focuses on increasing representation in travel, providing access to global experiences for underserved families, and raising a generation of confident, culturally aware global citizens.</p>
+      <p>Her vision: a world where freedom of movement and access to global education isn't a privilege — it's a possibility for every family.</p>
+</div>
   </div>
 </section>
 
-<img class="full-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295910/DSC07568_iubauy.jpg" alt="Community impact" />
+<img class="full-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777295915/Feb_23_2026-36_jfa63n.jpg" alt="Kay on horseback" style="object-position: center 35%;" />
 
 <div class="gold-band">
   <div class="gold-band-inner">
@@ -194,10 +228,11 @@
 <section class="content-section">
   <span class="section-label">Areas of Focus</span>
   <h2 class="section-heading" style="margin-bottom:2.5rem;">Where we <em>show up</em></h2>
-  <div class="three-col">
-    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3 class="info-card-title">Youth Programs</h3><p class="info-card-body">Creator of global travel experiences and youth programs that expose the next generation to the world's possibilities.</p></div>
-    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3 class="info-card-title">Community Initiatives</h3><p class="info-card-body">Building community-led programs that create sustainable opportunities within underserved and global communities.</p></div>
-    <div class="info-card"><div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><h3 class="info-card-title">Access &amp; Education</h3><p class="info-card-body">Creating pathways for people who were never told the world was for them; through travel, knowledge, and community.</p></div>
+    <div class="brand-pillars" style="max-width:900px;margin-top:1.5rem;">
+    <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Worldschooling &amp; Education</strong>Real-world learning experiences and global exposure programs that redefine what education can look like for children.</div></div>
+    <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Representation in Travel</strong>Building platforms and communities that ensure diverse families see themselves reflected in global exploration.</div></div>
+    <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Community Initiatives</strong>Youth programs, group experiences, and community-led projects that create access and expand possibility.</div></div>
+    <div class="bp-item"><div class="bp-dot"></div><div class="bp-text"><strong>Financial Education</strong>Teaching families the foundations of financial freedom — so travel and intentional living become achievable realities.</div></div>
   </div>
 </section>
 <div class="divider"><div class="divider-line"></div></div>
@@ -225,5 +260,60 @@
     if (menu && !menu.contains(e.target)) document.getElementById('mobileDropdown').classList.remove('open');
   });
 </script>
+
+<style>
+.nav-mark-wrap { display:flex; align-items:center; gap:0.6rem; }
+.footer-mark { display:flex; align-items:center; justify-content:center; margin-bottom:0.6rem; }
+</style>
+<script>
+(function() {
+  window.KAY_MARK_SVG = function(size, forDark) {
+    size = size || 48;
+    var goldL = forDark ? 'rgba(240,210,150,0.95)' : 'oklch(0.72 0.12 75)';
+    var gold  = forDark ? 'rgba(220,185,120,0.9)'  : 'oklch(0.62 0.11 75)';
+    var shadow= forDark ? 'rgba(0,0,0,0.6)'         : 'rgba(100,70,20,0.25)';
+    var uid = size + (forDark?'d':'l');
+    return '<svg viewBox="0 0 56 56" width="'+size+'" height="'+size+'" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 14px '+shadow+')">'
+      +'<defs>'
+      +'<radialGradient id="kgr'+uid+'" cx="38%" cy="28%" r="62%"><stop offset="0%" stop-color="'+goldL+'"/><stop offset="60%" stop-color="'+gold+'"/><stop offset="100%" stop-color="oklch(0.42 0.09 68)"/></radialGradient>'
+      +'<radialGradient id="kfr'+uid+'" cx="30%" cy="20%" r="70%"><stop offset="0%" stop-color="rgba(255,255,255,0.55)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>'
+      +'<filter id="kbl'+uid+'" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.5"/></filter>'
+      +'</defs>'
+      +'<ellipse cx="28" cy="50" rx="14" ry="3" fill="'+shadow+'" filter="url(#kbl'+uid+')" opacity="0.5"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" fill="url(#kgr'+uid+')"/>'
+      +'<polygon points="28,3 50,15.5 28,28 6,15.5" fill="url(#kfr'+uid+')" opacity="0.55"/>'
+      +'<polygon points="6,15.5 28,28 28,53 6,40.5" fill="rgba(0,0,0,0.18)"/>'
+      +'<polygon points="50,15.5 28,28 28,53 50,40.5" fill="rgba(0,0,0,0.08)"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" stroke="rgba(255,255,255,0.22)" stroke-width="0.75" fill="none"/>'
+      +'<line x1="28" y1="3" x2="28" y2="53" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="15.5" x2="50" y2="15.5" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="40.5" x2="50" y2="40.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>'
+      +'<text x="28" y="35" font-family="Georgia,serif" font-size="18" font-weight="700" font-style="italic" text-anchor="middle" fill="rgba(255,255,255,0.92)" letter-spacing="-1">K</text>'
+      +'<ellipse cx="22" cy="12" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)" transform="rotate(-18 22 12)"/>'
+      +'</svg>';
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    // Nav logo mark
+    var logo = document.querySelector('.nav-logo');
+    if (logo && !logo.querySelector('.nav-mark-wrap')) {
+      var inner = logo.innerHTML;
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-mark-wrap';
+      wrap.innerHTML = window.KAY_MARK_SVG(20, false) + '<span>' + inner + '</span>';
+      logo.innerHTML = '';
+      logo.appendChild(wrap);
+    }
+    // Footer mark
+    var footer = document.querySelector('.site-footer');
+    if (footer && !footer.querySelector('.footer-mark')) {
+      var div = document.createElement('div');
+      div.className = 'footer-mark';
+      div.innerHTML = window.KAY_MARK_SVG(26, true);
+      footer.insertBefore(div, footer.firstChild);
+    }
+  });
+})();
+<\/script>
+
 </body>
 </html>

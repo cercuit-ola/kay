@@ -141,6 +141,39 @@
   }
 </style>
 
+
+<style>
+/* ── Brand content blocks ── */
+.brand-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .brand-pillars { grid-template-columns: 1fr; } }
+.bp-item { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; background: #fff; }
+.bp-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); margin-top: 6px; }
+.bp-text { font-family: 'Nunito', sans-serif; font-size: 0.92rem; color: var(--foreground); line-height: 1.65; }
+.bp-text strong { font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--foreground); }
+
+.media-logos { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin-top: 1.5rem; }
+.media-pill { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent); color: var(--primary); border-radius: 2rem; }
+
+.speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+@media (max-width: 640px) { .speaking-grid { grid-template-columns: 1fr; } }
+.sg-col-label { font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.sg-col-label::before { content:''; display:block; width:1.2rem; height:1.5px; background:var(--primary); }
+.sg-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.sg-list li { font-family: 'Nunito', sans-serif; font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; display: flex; align-items: flex-start; gap: 0.65rem; }
+.sg-list li::before { content:'→'; color: var(--primary); font-size: 0.75rem; flex-shrink:0; margin-top:3px; }
+
+.audience-strip { background: oklch(0.97 0.015 80); padding: 4rem 0; }
+.audience-strip-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
+.aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+@media (max-width: 767px) { .aud-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .aud-grid { grid-template-columns: 1fr; } }
+.aud-card { background: #fff; border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
+.aud-card-num { font-family: var(--font-serif); font-size: 1.75rem; font-style: italic; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.aud-card-text { font-family: 'Nunito', sans-serif; font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.65; }
+
+.tagline-band { background: var(--foreground); padding: 3.5rem 2rem; text-align: center; }
+.tagline-band p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-style: italic; color: oklch(0.82 0.13 78); max-width: 720px; margin: 0 auto; line-height: 1.55; }
+</style>
 </head>
 <body>
 <header>
@@ -161,7 +194,7 @@
 </header>
 
 <section class="page-hero">
-  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1777384505/Screenshot_2026-04-28_at_14.53.36_sdzglj.png" alt="Media and Content" />
+  <img class="page-hero-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179330/Kay_Akpan_The_Mom_Trotter_Photos_30_kvntgs.jpg" alt="Media and Content" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <span class="page-hero-label">Media &amp; Content</span>
@@ -177,9 +210,9 @@
       <h2 class="section-heading">Content that <em>creates change</em></h2>
     </div>
     <div class="section-body">
-      <p>I build and scale digital platforms that reach global audiences through storytelling, education, and engaging content. My media work isn't just about reach; it's about resonance.</p>
-      <p>From Good Morning America to USA Today, Essence, CNBC, and People; the stories I tell and the platforms I build have earned a place in global conversations about lifestyle, freedom, and what it means to live intentionally.</p>
-    </div>
+      <p>Kay builds and scales media platforms that tell the stories families and freedom-seekers need to hear. Her content bridges travel, education, financial independence, and global culture — reaching audiences who are ready to imagine a different kind of life.</p>
+      <p>Through digital storytelling, long-form content, and social platforms, Kay creates narratives that give people permission to live differently.</p>
+</div>
   </div>
 </section>
 
@@ -192,14 +225,54 @@
 <section class="content-section">
   <span class="section-label">Featured In</span>
   <h2 class="section-heading" style="margin-bottom:2.5rem;">Global <em>Recognition</em></h2>
-  <div class="three-col">
-    <div class="info-card"><h3 class="info-card-title">Good Morning America</h3><p class="info-card-body">Featured for pioneering a new wave of intentional family travel and lifestyle entrepreneurship.</p></div>
-    <div class="info-card"><h3 class="info-card-title">USA Today &amp; Essence</h3><p class="info-card-body">Highlighted as a leading voice in Black travel, freedom-based living, and building beyond the conventional path.</p></div>
-    <div class="info-card"><h3 class="info-card-title">CNBC &amp; People</h3><p class="info-card-body">Recognised for financial transformation and building a global media brand from lived experience.</p></div>
+    <p style="font-family:'Nunito',sans-serif;color:var(--muted-foreground);max-width:42rem;margin-bottom:1.5rem;line-height:1.75;">Kay has been featured across the world's most trusted media platforms — reaching millions of families, entrepreneurs, and travelers:</p>
+  <div class="media-logos">
+    <span class="media-pill">Good Morning America</span>
+    <span class="media-pill">USA Today</span>
+    <span class="media-pill">Essence</span>
+    <span class="media-pill">CNBC</span>
+    <span class="media-pill">People Magazine</span>
+    <span class="media-pill">Travel Noire</span>
+    <span class="media-pill">Business Insider</span>
+    <span class="media-pill">Yahoo News</span>
+    <span class="media-pill">NerdWallet</span>
   </div>
 </section>
 
-<img class="full-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/q_auto/f_auto/v1777299780/_S7A0353_zvwbv2.jpg" alt="Kay media" />
+<img class="full-img" src="https://res.cloudinary.com/dj4e46w8t/image/upload/v1778179299/_S7A0548_zcbqpl.jpg" alt="Kay media" />
+<div class="divider"><div class="divider-line"></div></div>
+<section class="content-section">
+  <div class="two-col">
+    <div>
+      <span class="section-label">Speaking &amp; Collaborations</span>
+      <h2 class="section-heading">On every <em>stage</em></h2>
+    </div>
+    <div>
+      <div class="speaking-grid">
+        <div>
+          <p class="sg-col-label">Kay speaks on</p>
+          <ul class="sg-list">
+            <li>Family travel &amp; worldschooling</li>
+            <li>Building freedom-based lifestyles</li>
+            <li>Financial independence &amp; intentional living</li>
+            <li>Entrepreneurship &amp; personal brand building</li>
+            <li>Representation in travel</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sg-col-label">Available for</p>
+          <ul class="sg-list">
+            <li>Brand partnerships</li>
+            <li>Speaking engagements</li>
+            <li>Panels &amp; media features</li>
+            <li>Campaign collaborations</li>
+            <li>Press interviews</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="divider"><div class="divider-line"></div></div>
 <section id="connect" class="connect">
   <p class="connect-label">Connect</p>
@@ -225,5 +298,60 @@
     if (menu && !menu.contains(e.target)) document.getElementById('mobileDropdown').classList.remove('open');
   });
 </script>
+
+<style>
+.nav-mark-wrap { display:flex; align-items:center; gap:0.6rem; }
+.footer-mark { display:flex; align-items:center; justify-content:center; margin-bottom:0.6rem; }
+</style>
+<script>
+(function() {
+  window.KAY_MARK_SVG = function(size, forDark) {
+    size = size || 48;
+    var goldL = forDark ? 'rgba(240,210,150,0.95)' : 'oklch(0.72 0.12 75)';
+    var gold  = forDark ? 'rgba(220,185,120,0.9)'  : 'oklch(0.62 0.11 75)';
+    var shadow= forDark ? 'rgba(0,0,0,0.6)'         : 'rgba(100,70,20,0.25)';
+    var uid = size + (forDark?'d':'l');
+    return '<svg viewBox="0 0 56 56" width="'+size+'" height="'+size+'" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 14px '+shadow+')">'
+      +'<defs>'
+      +'<radialGradient id="kgr'+uid+'" cx="38%" cy="28%" r="62%"><stop offset="0%" stop-color="'+goldL+'"/><stop offset="60%" stop-color="'+gold+'"/><stop offset="100%" stop-color="oklch(0.42 0.09 68)"/></radialGradient>'
+      +'<radialGradient id="kfr'+uid+'" cx="30%" cy="20%" r="70%"><stop offset="0%" stop-color="rgba(255,255,255,0.55)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>'
+      +'<filter id="kbl'+uid+'" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.5"/></filter>'
+      +'</defs>'
+      +'<ellipse cx="28" cy="50" rx="14" ry="3" fill="'+shadow+'" filter="url(#kbl'+uid+')" opacity="0.5"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" fill="url(#kgr'+uid+')"/>'
+      +'<polygon points="28,3 50,15.5 28,28 6,15.5" fill="url(#kfr'+uid+')" opacity="0.55"/>'
+      +'<polygon points="6,15.5 28,28 28,53 6,40.5" fill="rgba(0,0,0,0.18)"/>'
+      +'<polygon points="50,15.5 28,28 28,53 50,40.5" fill="rgba(0,0,0,0.08)"/>'
+      +'<polygon points="28,3 50,15.5 50,40.5 28,53 6,40.5 6,15.5" stroke="rgba(255,255,255,0.22)" stroke-width="0.75" fill="none"/>'
+      +'<line x1="28" y1="3" x2="28" y2="53" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="15.5" x2="50" y2="15.5" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>'
+      +'<line x1="6" y1="40.5" x2="50" y2="40.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>'
+      +'<text x="28" y="35" font-family="Georgia,serif" font-size="18" font-weight="700" font-style="italic" text-anchor="middle" fill="rgba(255,255,255,0.92)" letter-spacing="-1">K</text>'
+      +'<ellipse cx="22" cy="12" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)" transform="rotate(-18 22 12)"/>'
+      +'</svg>';
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    // Nav logo mark
+    var logo = document.querySelector('.nav-logo');
+    if (logo && !logo.querySelector('.nav-mark-wrap')) {
+      var inner = logo.innerHTML;
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-mark-wrap';
+      wrap.innerHTML = window.KAY_MARK_SVG(20, false) + '<span>' + inner + '</span>';
+      logo.innerHTML = '';
+      logo.appendChild(wrap);
+    }
+    // Footer mark
+    var footer = document.querySelector('.site-footer');
+    if (footer && !footer.querySelector('.footer-mark')) {
+      var div = document.createElement('div');
+      div.className = 'footer-mark';
+      div.innerHTML = window.KAY_MARK_SVG(26, true);
+      footer.insertBefore(div, footer.firstChild);
+    }
+  });
+})();
+<\/script>
+
 </body>
 </html>
